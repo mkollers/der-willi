@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SeriesListPageComponent } from './series-list-page.component';
 
-const routes: Routes = [{
-  path: '', component: SeriesListPageComponent
-}];
+const routes: Routes = [
+  { path: '', component: SeriesListPageComponent },
+  { path: ':seriesId', loadChildren: '../track-list-page/track-list-page.module#TrackListPageModule' }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -14,7 +14,6 @@ export class RankingResolver implements Resolve<Promise<Ranking[]>> {
     async resolve() {
         try {
             const rankings = await this._rankingService.getAll().toPromise();
-            console.log(rankings);
 
             // Order by ordering date descending
             return _.orderBy(rankings, r => r.points, 'desc');
