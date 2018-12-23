@@ -5,6 +5,7 @@
 @import './tabs';
 @import './toolbar';
 @import './button';
+@import './app/pages/track-list-page/_track-list-page-theme';
 
 $maennerabend-grey: (50 : #e5e5e5,
 100 : #bfbfbf,
@@ -97,3 +98,4 @@ $maennerabend-theme: map_merge($maennerabend-theme, (background: $maennerabend-b
 @include button-theme($maennerabend-theme);
 @include tabs-theme($maennerabend-theme);
 @include toolbar-theme($maennerabend-theme);
+@include track-list-page-theme($maennerabend-theme);
