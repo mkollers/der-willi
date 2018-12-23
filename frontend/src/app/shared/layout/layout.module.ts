@@ -17,8 +17,6 @@ import { HeaderService } from './services/header.service';
     MatToolbarModule
   ], exports: [
     HeaderComponent
-  ], providers: [
-    HeaderService
   ]
 })
 export class LayoutModule { }
