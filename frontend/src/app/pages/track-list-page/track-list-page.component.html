@@ -1,3 +1,7 @@
-<p>
-  track-list-page works!
-</p>
+<section fyLayout="row" fxLayoutAlign="center center">
+  <section fxFlex="275px" fxLayout="row wrap" fxLayoutGap="5px grid">
+    <div *ngFor="let track of tracks$ | async">
+      <button class="track-button" mat-button> {{ track }}</button>
+    </div>
+  </section>
+</section>
