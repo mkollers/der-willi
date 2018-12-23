@@ -3,20 +3,6 @@
   padding-top: 48px;
 }
 
-app-trackmania-tabs {
-  position: fixed;
-  top: 64px;
-  left: 0;
-  right: 0;
-}
-
-@media (max-width: 599px) {
-  app-trackmania-tabs {
-    position: fixed;
-    top: 56px;
-  }
-}
-
 // Table
 :host ::ng-deep .mat-footer-row,
 :host ::ng-deep .mat-header-row,

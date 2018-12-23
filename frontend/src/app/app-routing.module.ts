@@ -5,6 +5,9 @@ const routes: Routes = [{
   path: 'ranking',
   loadChildren: './pages/ranking-page/ranking-page.module#RankingPageModule'
 }, {
+  path: 'series',
+  loadChildren: './pages/series-list-page/series-list-page.module#SeriesListPageModule'
+}, {
   path: '**', redirectTo: 'ranking'
 }];
 

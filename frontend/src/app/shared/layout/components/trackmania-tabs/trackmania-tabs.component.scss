@@ -1,0 +1,13 @@
+:host {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+}
+
+@media (max-width: 599px) {
+  :host {
+    position: fixed;
+    top: 56px;
+  }
+}
