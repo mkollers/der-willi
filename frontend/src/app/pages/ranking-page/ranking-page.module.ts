@@ -9,7 +9,10 @@ import { RankingPageComponent } from './ranking-page.component';
   declarations: [RankingPageComponent],
   imports: [
     CommonModule,
-    RankingPageRoutingModule
+    RankingPageRoutingModule,
+
+    // Custom
+    LayoutModule
   ]
 })
 export class RankingPageModule { }
