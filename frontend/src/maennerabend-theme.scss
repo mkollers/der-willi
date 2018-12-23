@@ -4,6 +4,7 @@
 // Plus imports for other components in your app.
 @import './tabs';
 @import './toolbar';
+@import './button';
 
 $maennerabend-grey: (50 : #e5e5e5,
 100 : #bfbfbf,
@@ -93,5 +94,6 @@ $maennerabend-theme: map_merge($maennerabend-theme, (background: $maennerabend-b
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($maennerabend-theme);
+@include button-theme($maennerabend-theme);
 @include tabs-theme($maennerabend-theme);
 @include toolbar-theme($maennerabend-theme);
