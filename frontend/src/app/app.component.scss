@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   min-height: calc(100% - 64px);
-  margin-top: 64px;
+  padding-top: 64px;
 }
 
 @media (max-width: 599px) {
   #content {
     min-height: calc(100% - 56px);
-    margin-top: 56px;
+    padding-top: 56px;
   }
 }
 
