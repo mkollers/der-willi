@@ -1,0 +1,45 @@
+:host {
+  flex-direction: column;
+  padding-top: 48px;
+}
+
+app-trackmania-tabs {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+}
+
+@media (max-width: 599px) {
+  app-trackmania-tabs {
+    position: fixed;
+    top: 56px;
+  }
+}
+
+// Table
+:host ::ng-deep .mat-footer-row,
+:host ::ng-deep .mat-header-row,
+:host ::ng-deep .mat-row {
+  border-bottom: none;
+}
+
+:host ::ng-deep .mat-header-row {
+  text-transform: uppercase;
+  min-height: 40px;
+}
+
+:host ::ng-deep .mat-header-cell {
+  color: rgba(255, 255, 255, .4);
+  align-items: flex-end;
+}
+
+:host ::ng-deep .mat-cell {
+  color: rgba(255, 255, 255, .8);
+}
+
+:host ::ng-deep .mat-cell,
+:host ::ng-deep .mat-footer-cell,
+:host ::ng-deep .mat-header-cell {
+  font-weight: 300;
+}
