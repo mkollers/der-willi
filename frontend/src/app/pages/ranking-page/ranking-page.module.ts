@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 
 import { LayoutModule } from './../../shared/layout/layout.module';
@@ -16,6 +17,7 @@ import { RankingResolver } from './resolvers/ranking-resolver';
     FlexLayoutModule,
 
     // Material
+    MatButtonModule,
     MatTableModule,
 
     // Custom

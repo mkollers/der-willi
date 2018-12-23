@@ -5,13 +5,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 
+import { ActionBarComponent } from './components/action-bar/action-bar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TrackmaniaTabsComponent } from './components/trackmania-tabs/trackmania-tabs.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    TrackmaniaTabsComponent
+    TrackmaniaTabsComponent,
+    ActionBarComponent
   ], imports: [
     CommonModule,
     FlexLayoutModule,
@@ -21,6 +23,7 @@ import { TrackmaniaTabsComponent } from './components/trackmania-tabs/trackmania
     MatTabsModule,
     MatToolbarModule
   ], exports: [
+    ActionBarComponent,
     HeaderComponent,
     TrackmaniaTabsComponent
   ]

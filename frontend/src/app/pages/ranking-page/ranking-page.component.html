@@ -21,3 +21,8 @@
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></mat-row>
 </mat-table>
+
+<app-action-bar>
+  <span fxFlex></span>
+  <button mat-button color="accent">Runde Starten</button>
+</app-action-bar>
