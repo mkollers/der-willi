@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
@@ -11,15 +13,17 @@ import { TrackmaniaTabsComponent } from './components/trackmania-tabs/trackmania
 
 @NgModule({
   declarations: [
+    ActionBarComponent,
     HeaderComponent,
-    TrackmaniaTabsComponent,
-    ActionBarComponent
+    TrackmaniaTabsComponent
   ], imports: [
     CommonModule,
     FlexLayoutModule,
     RouterModule,
 
     // Material
+    MatButtonModule,
+    MatIconModule,
     MatTabsModule,
     MatToolbarModule
   ], exports: [

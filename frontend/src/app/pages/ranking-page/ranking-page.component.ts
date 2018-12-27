@@ -17,15 +17,19 @@ export class RankingPageComponent {
   displayedColumns = ['position', 'name', 'points'];
 
   constructor(
-    header: HeaderService,
-    route: ActivatedRoute,
-    title: Title
+    private _header: HeaderService,
+    private _title: Title,
+    route: ActivatedRoute
   ) {
-    header.headline = 'Trackmania Turbo';
-    title.setTitle('Trackmania Turbo - Männerabend 2.0');
+    this.setPageData();
     this.rankings$ = route.data.pipe(
       map(data => data.rankings)
     );
   }
 
+  setPageData = () => {
+    this._header.headline = 'Trackmania Turbo';
+    this._header.navigateBackUri = null;
+    this._title.setTitle('Trackmania Turbo - Männerabend 2.0');
+  }
 }

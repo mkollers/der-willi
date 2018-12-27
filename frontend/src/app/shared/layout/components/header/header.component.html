@@ -1,3 +1,9 @@
 <mat-toolbar fxLayout="row" fxLayoutGap="16px">
+  <div fxFlex="40px">
+    <button mat-icon-button [routerLink]="uri" *ngIf="navigateBackUri$ | async as uri">
+      <mat-icon svgIcon="material:outline-arrow_back"></mat-icon>
+    </button>
+  </div>
   <h1 fxFlex>{{ headline$ | async }}</h1>
+  <div fxFlex="40px"></div>
 </mat-toolbar>

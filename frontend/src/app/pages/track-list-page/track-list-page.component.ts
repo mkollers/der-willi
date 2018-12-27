@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-
-import { HeaderService } from './../../shared/layout/services/header.service';
 import { Observable } from 'rxjs';
 import { map, takeWhile, tap } from 'rxjs/operators';
-import { BaseComponent } from 'src/app/shared/helper/components/base.component';
+
+import { BaseComponent } from './../../shared/helper/components/base.component';
+import { HeaderService } from './../../shared/layout/services/header.service';
 
 @Component({
   selector: 'app-track-list-page',
@@ -16,18 +16,23 @@ export class TrackListPageComponent extends BaseComponent {
   tracks$: Observable<number[]>;
 
   constructor(
-    header: HeaderService,
-    route: ActivatedRoute,
-    title: Title
+    private _header: HeaderService,
+    private _route: ActivatedRoute,
+    private _title: Title
   ) {
     super();
+    this.setPageData();
 
-    route.data.pipe(
+    this.tracks$ = this._route.data.pipe(map(data => data.tracks));
+  }
+
+  setPageData() {
+    this._header.navigateBackUri = '/series';
+    this._route.data.pipe(
       takeWhile(() => this.alive),
       map(data => data.title),
-      tap(value => header.headline = value),
-      tap(value => title.setTitle(value))
+      tap(value => this._header.headline = value),
+      tap(value => this._title.setTitle(value))
     ).subscribe();
-    this.tracks$ = route.data.pipe(map(data => data.tracks));
   }
 }

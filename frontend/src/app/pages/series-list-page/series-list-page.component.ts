@@ -11,11 +11,15 @@ import { HeaderService } from '../../shared/layout/services/header.service';
 export class SeriesListPageComponent {
 
   constructor(
-    header: HeaderService,
-    title: Title
+    private _header: HeaderService,
+    private _title: Title
   ) {
-    header.headline = 'Trackmania Turbo';
-    title.setTitle('Trackmania Turbo - Männerabend 2.0');
+    this.setPageData();
   }
 
+  setPageData() {
+    this._header.headline = 'Trackmania Turbo';
+    this._header.navigateBackUri = null;
+    this._title.setTitle('Trackmania Turbo - Männerabend 2.0');
+  }
 }
