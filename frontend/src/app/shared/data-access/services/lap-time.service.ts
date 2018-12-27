@@ -12,8 +12,8 @@ export class LapTimeService {
 
   getAll() {
     const data: LapTime[] = [];
-    for (let i = 1; i <= faker.random.number({ min: 0, max: 30 }); i++) {
-      data.push(new LapTime(faker.name.findName(), faker.random.number({ min: 1000, max: 30000 })));
+    for (let i = 1; i <= faker.random.number({ min: 3, max: 30 }); i++) {
+      data.push(new LapTime(faker.name.findName(), faker.random.number({ min: 1000, max: 90000 })));
     }
 
     return of(data);

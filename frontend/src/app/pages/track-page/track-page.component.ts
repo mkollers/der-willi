@@ -5,6 +5,8 @@ import { map, takeWhile, tap } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/shared/helper/components/base.component';
 
 import { HeaderService } from '../../shared/layout/services/header.service';
+import { Observable } from 'rxjs';
+import { LapTime } from 'src/app/shared/data-access/models/lap-time';
 
 @Component({
   selector: 'app-track-page',
@@ -12,6 +14,8 @@ import { HeaderService } from '../../shared/layout/services/header.service';
   styleUrls: ['./track-page.component.scss']
 })
 export class TrackPageComponent extends BaseComponent {
+  lapTimes$: Observable<LapTime[]>;
+  displayedColumns = ['position', 'name', 'time'];
 
   constructor(
     private _header: HeaderService,
@@ -21,6 +25,10 @@ export class TrackPageComponent extends BaseComponent {
   ) {
     super();
     this.setPageData();
+
+    this.lapTimes$ = _route.data.pipe(
+      map(data => data.lapTimes)
+    );
   }
 
   setPageData() {
