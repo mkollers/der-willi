@@ -32,7 +32,7 @@ export class TrackListPageComponent extends BaseComponent {
       takeWhile(() => this.alive),
       map(data => data.title),
       tap(value => this._header.headline = value),
-      tap(value => this._title.setTitle(value))
+      tap(value => this._title.setTitle(`${value} - Männerabend 2.0`))
     ).subscribe();
   }
 }

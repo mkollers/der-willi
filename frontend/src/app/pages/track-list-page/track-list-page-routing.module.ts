@@ -6,7 +6,8 @@ import { TrackListResolver } from './resolvers/track-list-resolver';
 import { TrackListPageComponent } from './track-list-page.component';
 
 const routes: Routes = [
-  { path: '', component: TrackListPageComponent, resolve: { tracks: TrackListResolver, title: SeriesTitleResolver } }
+  { path: '', component: TrackListPageComponent, resolve: { tracks: TrackListResolver, title: SeriesTitleResolver } },
+  { path: ':trackId', loadChildren: '../track-page/track-page.module#TrackPageModule' }
 ];
 
 @NgModule({

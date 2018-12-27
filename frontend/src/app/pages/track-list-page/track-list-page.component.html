@@ -1,7 +1,7 @@
 <section fyLayout="row" fxLayoutAlign="center center">
-  <section fxFlex="275px" fxLayout="row wrap" fxLayoutGap="5px grid">
+  <section fxFlex="290px" fxLayout="row wrap" fxLayoutGap="8px grid">
     <div *ngFor="let track of tracks$ | async">
-      <button class="track-button" mat-button> {{ track }}</button>
+      <button class="track-button" [routerLink]="track" mat-button> {{ track | number: '3.0' }}</button>
     </div>
   </section>
 </section>
