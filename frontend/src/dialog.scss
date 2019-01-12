@@ -1,0 +1,21 @@
+@media screen and (max-width: 480px) {
+  .fullscreen-mobile {
+    bottom: 0;
+    left: 0;
+    max-width: 100% !important;
+    position: fixed !important;
+    right: 0;
+    top: 0;
+
+    .mat-dialog-container {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .mat-dialog-content {
+      max-height: none;
+    }
+  }
+}
