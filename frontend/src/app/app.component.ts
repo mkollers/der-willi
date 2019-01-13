@@ -20,7 +20,10 @@ export class AppComponent {
   /** Registers all required SVG-icons for the whole application */
   private initIcons() {
     // Material icons
-    this.registerIcons('material', ['outline-arrow_back']);
+    this.registerIcons('material', [
+      'outline-arrow_back',
+      'outline-close'
+    ]);
   }
 
   /** Registers one icon for a namespace. Requires the svg to be under "assets/icons/${namespace}/${name}.svg" */
