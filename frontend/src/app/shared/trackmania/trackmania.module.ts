@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,6 +19,7 @@ import { CreateRoundDialogComponent } from './dialogs/create-round-dialog/create
     ReactiveFormsModule,
 
     // Material
+    MatAutocompleteModule,
     MatButtonModule,
     MatDialogModule,
     MatIconModule,

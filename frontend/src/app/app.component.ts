@@ -21,6 +21,7 @@ export class AppComponent {
   private initIcons() {
     // Material icons
     this.registerIcons('material', [
+      'outline-add_circle',
       'outline-arrow_back',
       'outline-close'
     ]);

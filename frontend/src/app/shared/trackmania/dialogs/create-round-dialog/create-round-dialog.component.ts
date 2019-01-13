@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as faker from 'faker';
 
 @Component({
   selector: 'app-create-round-dialog',
@@ -8,9 +9,13 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateRoundDialogComponent {
   fg: FormGroup;
+  names: string[] = [];
 
   constructor(private _fb: FormBuilder) {
     this.initFormGroup();
+    for (let i = 0; i < faker.random.number({ min: 5, max: 30 }); i++) {
+      this.names.push(faker.name.firstName());
+    }
   }
 
   private initFormGroup() {
