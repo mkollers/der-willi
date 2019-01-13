@@ -55,5 +55,10 @@ export class RankingPageComponent {
       data: names,
       panelClass: 'fullscreen-mobile'
     });
+
+    dialogref.beforeClosed().pipe(
+      filter(again => again),
+      tap(() => this.trackRound(names))
+    ).subscribe();
   }
 }
