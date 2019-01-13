@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { LayoutModule } from '../layout/layout.module';
 import { CreateRoundDialogComponent } from './dialogs/create-round-dialog/create-round-dialog.component';
@@ -22,6 +23,7 @@ import { TrackTimesDialogComponent } from './dialogs/track-times-dialog/track-ti
     CommonModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    TextMaskModule,
 
     // Material
     MatAutocompleteModule,

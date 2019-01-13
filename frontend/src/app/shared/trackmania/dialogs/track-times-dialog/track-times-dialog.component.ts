@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import * as _ from 'lodash';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as faker from 'faker';
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-track-times-dialog',
@@ -12,6 +13,7 @@ import * as faker from 'faker';
 export class TrackTimesDialogComponent {
   fg: FormGroup;
   track = faker.random.number({ min: 1, max: 200 });
+  mask = [/\d/, /\d/, ':', /\d/, /\d/, ',', /\d/, /\d/, /\d/];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public names: string[],
@@ -23,7 +25,7 @@ export class TrackTimesDialogComponent {
 
   private initFormGroup() {
     const controls = _.chain(this.names)
-      .map((n: string) => ({ key: n, control: this._fb.control('', Validators.required) }))
+      .map((n: string) => ({ key: n, control: this._fb.control('00:00,000', Validators.required) }))
       .keyBy(o => o.key)
       .mapValues(o => o.control)
       .value();
@@ -34,5 +36,13 @@ export class TrackTimesDialogComponent {
   finish(again = false) {
     console.log(this.fg.value);
     this._dialogRef.close(again);
+  }
+
+  select($event) {
+    $event.target.select();
+    setTimeout(() => { // Safari hack
+      $event.target.select();
+      $event.target.setSelectionRange(0, 99999);
+    }, 0);
   }
 }
