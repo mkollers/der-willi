@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as _ from 'lodash';
+import * as faker from 'faker';
 
 @Component({
   selector: 'app-track-times-dialog',
@@ -10,6 +11,7 @@ import * as _ from 'lodash';
 })
 export class TrackTimesDialogComponent {
   fg: FormGroup;
+  track = faker.random.number({ min: 1, max: 200 });
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public names: string[],

@@ -11,6 +11,7 @@ import {
   CreateRoundDialogComponent
 } from '../../shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
 import { TrackTimesDialogComponent } from '../../shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
+import * as faker from 'faker';
 
 @Component({
   selector: 'app-ranking-page',
@@ -51,6 +52,8 @@ export class RankingPageComponent {
   }
 
   private trackRound(names: string[]) {
+    names = faker.helpers.shuffle(names);
+
     const dialogref = this._dialog.open(TrackTimesDialogComponent, {
       data: names,
       panelClass: 'fullscreen-mobile'
