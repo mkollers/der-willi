@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { LayoutModule } from '../layout/layout.module';
 import { CreateRoundDialogComponent } from './dialogs/create-round-dialog/create-round-dialog.component';
 
 @NgModule({
@@ -24,7 +25,10 @@ import { CreateRoundDialogComponent } from './dialogs/create-round-dialog/create
     MatDialogModule,
     MatIconModule,
     MatInputModule,
-    MatToolbarModule
+    MatToolbarModule,
+
+    // Custom
+    LayoutModule
   ], exports: [
     CreateRoundDialogComponent
   ], entryComponents: [

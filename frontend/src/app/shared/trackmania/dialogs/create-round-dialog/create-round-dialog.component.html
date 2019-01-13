@@ -6,7 +6,8 @@
   </button>
 </mat-toolbar>
 <form mat-dialog-content fxLayout="column" [formGroup]="fg">
-  <p>Trage die Namen aller Teilnehmer ein, welche an den folgenden Runden teilnehmen werden. <br /><br />Die Namen werden in der
+  <p>Trage die Namen aller Teilnehmer ein, welche an den folgenden Runden teilnehmen werden. <br /><br />Die Namen
+    werden in der
     für die Rekorde verwendet und sammeln Punkte für die Bestenliste. Achte daher bitte darauf, dass die Namen richtig
     geschrieben sind.</p>
   <ng-container formArrayName="players" *ngFor="let player of fg.get('players')['controls']; let i = index;">
@@ -15,9 +16,14 @@
       <input type="text" matInput formControlName="name" [matAutocomplete]="auto" [required]="fg.get('players')['controls'][i].get('name').errors !== null && fg.get('players')['controls'][i].get('name').errors.required">
     </mat-form-field>
   </ng-container>
-  <button fxFlexAlign="end" color="accent" mat-button (click)="addPlayer()">
-    <mat-icon svgIcon="material:outline-add_circle"></mat-icon>&nbsp;Spieler hinzufügen</button>
+  <button fxFlexAlign="start" color="accent" mat-button (click)="addPlayer()">
+    <mat-icon svgIcon="material:outline-add_circle"></mat-icon>&nbsp;Spieler hinzufügen
+  </button>
 </form>
+<mat-toolbar mat-dialog-actions>
+  <span fxFlex></span>
+  <button mat-button color="accent">Weiter</button>
+</mat-toolbar>
 
 <mat-autocomplete #auto="matAutocomplete">
   <mat-option *ngFor="let name of names" [value]="name">{{ name }}</mat-option>
