@@ -3,13 +3,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {
-  CreateRoundDialogComponent,
-} from 'src/app/shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
+import { filter, map, tap } from 'rxjs/operators';
 
-import { Ranking } from './../../shared/data-access/models/ranking';
-import { HeaderService } from './../../shared/layout/services/header.service';
+import { Ranking } from '../../shared/data-access/models/ranking';
+import { HeaderService } from '../../shared/layout/services/header.service';
+import {
+  CreateRoundDialogComponent
+} from '../../shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
+import { TrackTimesDialogComponent } from '../../shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
 
 @Component({
   selector: 'app-ranking-page',
@@ -39,7 +40,19 @@ export class RankingPageComponent {
   }
 
   start() {
-    this._dialog.open(CreateRoundDialogComponent, {
+    const dialogref = this._dialog.open(CreateRoundDialogComponent, {
+      panelClass: 'fullscreen-mobile'
+    });
+
+    dialogref.beforeClosed().pipe(
+      filter(names => names.length),
+      tap(names => this.trackRound(names))
+    ).subscribe();
+  }
+
+  private trackRound(names: string[]) {
+    const dialogref = this._dialog.open(TrackTimesDialogComponent, {
+      data: names,
       panelClass: 'fullscreen-mobile'
     });
   }

@@ -11,9 +11,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { LayoutModule } from '../layout/layout.module';
 import { CreateRoundDialogComponent } from './dialogs/create-round-dialog/create-round-dialog.component';
+import { TrackTimesDialogComponent } from './dialogs/track-times-dialog/track-times-dialog.component';
 
 @NgModule({
-  declarations: [CreateRoundDialogComponent],
+  declarations: [
+    CreateRoundDialogComponent,
+    TrackTimesDialogComponent
+  ],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -30,9 +34,11 @@ import { CreateRoundDialogComponent } from './dialogs/create-round-dialog/create
     // Custom
     LayoutModule
   ], exports: [
-    CreateRoundDialogComponent
+    CreateRoundDialogComponent,
+    TrackTimesDialogComponent
   ], entryComponents: [
-    CreateRoundDialogComponent
+    CreateRoundDialogComponent,
+    TrackTimesDialogComponent
   ]
 })
 export class TrackmaniaModule { }

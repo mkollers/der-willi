@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import * as faker from 'faker';
 
 @Component({
@@ -11,7 +12,10 @@ export class CreateRoundDialogComponent {
   fg: FormGroup;
   names: string[] = [];
 
-  constructor(private _fb: FormBuilder) {
+  constructor(
+    private _dialogRef: MatDialogRef<CreateRoundDialogComponent>,
+    private _fb: FormBuilder
+  ) {
     this.initFormGroup();
     for (let i = 0; i < faker.random.number({ min: 5, max: 30 }); i++) {
       this.names.push(faker.name.firstName());
@@ -38,5 +42,11 @@ export class CreateRoundDialogComponent {
   addPlayer() {
     const players = this.fg.get('players') as FormArray;
     players.push(this.createPlayer());
+  }
+
+  next() {
+    const players = this.fg.get('players').value;
+    const names = players.map(p => p.name);
+    this._dialogRef.close(names);
   }
 }
