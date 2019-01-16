@@ -17,7 +17,7 @@ describe('TrackTimesDialogComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: [] },
-        { provide: MatDialogRef, useClass: MatDialogRefMock },
+        { provide: MatDialogRef, useClass: MatDialogRefMock }
       ]
     })
       .compileComponents();
