@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import * as faker from 'faker';
 
 @Component({
-  selector: 'app-create-round-dialog',
+  selector: 'trackmania-create-round-dialog',
   templateUrl: './create-round-dialog.component.html',
   styleUrls: ['./create-round-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

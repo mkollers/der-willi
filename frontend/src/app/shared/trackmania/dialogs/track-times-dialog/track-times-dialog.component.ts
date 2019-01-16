@@ -1,11 +1,11 @@
-import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as faker from 'faker';
 import * as _ from 'lodash';
 
 @Component({
-  selector: 'app-track-times-dialog',
+  selector: 'trackmania-track-times-dialog',
   templateUrl: './track-times-dialog.component.html',
   styleUrls: ['./track-times-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
