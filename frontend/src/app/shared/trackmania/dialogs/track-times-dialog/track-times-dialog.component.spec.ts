@@ -1,5 +1,9 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+import { MatDialogRefMock } from '../../../../../mocks/mat-dialog-ref.mock';
 import { TrackTimesDialogComponent } from './track-times-dialog.component';
 
 describe('TrackTimesDialogComponent', () => {
@@ -8,9 +12,15 @@ describe('TrackTimesDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrackTimesDialogComponent ]
+      declarations: [TrackTimesDialogComponent],
+      imports: [ReactiveFormsModule],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: [] },
+        { provide: MatDialogRef, useClass: MatDialogRefMock },
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
