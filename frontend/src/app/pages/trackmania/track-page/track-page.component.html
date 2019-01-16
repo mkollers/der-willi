@@ -1,20 +1,21 @@
 <mat-table fxFlex [dataSource]="lapTimes$ | async">
 
-    <ng-container matColumnDef="position">
-      <mat-header-cell fxFlex="80px" *matHeaderCellDef> # </mat-header-cell>
-      <mat-cell fxFlex="80px" *matCellDef="let element; let i = index"> {{ i + 1 | number:'2.0' }} </mat-cell>
-    </ng-container>
-  
-    <ng-container matColumnDef="name">
-      <mat-header-cell fxFlex="190px" *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell fxFlex="190px" *matCellDef="let element"> {{ element.name }} </mat-cell>
-    </ng-container>
-  
-    <ng-container matColumnDef="time">
-      <mat-header-cell fxFlex="90px" *matHeaderCellDef fxLayoutAlign="end end"> Zeit </mat-header-cell>
-      <mat-cell fxFlex="90px" class="points-cell" *matCellDef="let element" fxLayoutAlign="end center">{{ element.time | timespan }}</mat-cell>
-    </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></mat-row>
-  </mat-table>
+  <ng-container matColumnDef="position">
+    <mat-header-cell fxFlex="80px" *matHeaderCellDef> # </mat-header-cell>
+    <mat-cell fxFlex="80px" *matCellDef="let element; let i = index"> {{ i + 1 | number:'2.0' }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell fxFlex="190px" *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell fxFlex="190px" *matCellDef="let element"> {{ element.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="time">
+    <mat-header-cell fxFlex="90px" *matHeaderCellDef fxLayoutAlign="end end"> Zeit </mat-header-cell>
+    <mat-cell fxFlex="90px" class="points-cell" *matCellDef="let element" fxLayoutAlign="end center">{{ element.time |
+      timespan }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></mat-row>
+</mat-table>
