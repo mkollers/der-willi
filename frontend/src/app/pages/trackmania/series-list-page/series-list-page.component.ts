@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { HeaderService } from '../../shared/layout/services/header.service';
+import { HeaderService } from '../../../shared/layout/services/header.service';
 
 @Component({
   selector: 'app-series-list-page',

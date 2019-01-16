@@ -2,13 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [{
-  path: 'ranking',
-  loadChildren: './pages/ranking-page/ranking-page.module#RankingPageModule'
+  path: 'trackmania', children: [{
+    path: 'ranking',
+    loadChildren: './pages/trackmania/ranking-page/ranking-page.module#RankingPageModule'
+  }, {
+    path: 'series',
+    loadChildren: './pages/trackmania/series-list-page/series-list-page.module#SeriesListPageModule'
+  }, {
+    path: '**', redirectTo: 'ranking'
+  }]
 }, {
-  path: 'series',
-  loadChildren: './pages/series-list-page/series-list-page.module#SeriesListPageModule'
-}, {
-  path: '**', redirectTo: 'ranking'
+  path: '**', redirectTo: 'trackmania'
 }];
 
 @NgModule({

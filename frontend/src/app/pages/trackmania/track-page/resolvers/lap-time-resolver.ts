@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import * as _ from 'lodash';
 
-import { LapTime } from '../../../shared/data-access/models/lap-time';
-import { LapTimeService } from '../../../shared/data-access/services/lap-time.service';
+import { LapTime } from '../../../../shared/data-access/models/lap-time';
+import { LapTimeService } from '../../../../shared/data-access/services/lap-time.service';
 
 @Injectable()
 export class LapTimeResolver implements Resolve<Promise<LapTime[]>> {

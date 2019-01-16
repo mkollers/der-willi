@@ -6,12 +6,12 @@ import * as faker from 'faker';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 
-import { Ranking } from '../../shared/data-access/models/ranking';
-import { HeaderService } from '../../shared/layout/services/header.service';
+import { Ranking } from '../../../shared/data-access/models/ranking';
+import { HeaderService } from '../../../shared/layout/services/header.service';
 import {
   CreateRoundDialogComponent
-} from '../../shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
-import { TrackTimesDialogComponent } from '../../shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
+} from '../../../shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
+import { TrackTimesDialogComponent } from '../../../shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
 
 @Component({
   selector: 'app-ranking-page',

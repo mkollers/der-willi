@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 
-import { LayoutModule } from '../../shared/layout/layout.module';
+import { LayoutModule } from '../../../shared/layout/layout.module';
 import { SeriesListPageRoutingModule } from './series-list-page-routing.module';
 import { SeriesListPageComponent } from './series-list-page.component';
 

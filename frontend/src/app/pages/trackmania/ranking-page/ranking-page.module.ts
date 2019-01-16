@@ -5,8 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 
-import { LayoutModule } from '../../shared/layout/layout.module';
-import { TrackmaniaModule } from '../../shared/trackmania/trackmania.module';
+import { LayoutModule } from '../../../shared/layout/layout.module';
+import { TrackmaniaModule } from '../../../shared/trackmania/trackmania.module';
 import { RankingPageRoutingModule } from './ranking-page-routing.module';
 import { RankingPageComponent } from './ranking-page.component';
 import { RankingResolver } from './resolvers/ranking-resolver';

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import * as _ from 'lodash';
 
-import { Ranking } from '../../../shared/data-access/models/ranking';
-import { RankingService } from '../../../shared/data-access/services/ranking.service';
+import { Ranking } from '../../../../shared/data-access/models/ranking';
+import { RankingService } from '../../../../shared/data-access/services/ranking.service';
 
 @Injectable()
 export class RankingResolver implements Resolve<Promise<Ranking[]>> {
