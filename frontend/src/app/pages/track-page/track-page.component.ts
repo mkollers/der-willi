@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, takeWhile, tap } from 'rxjs/operators';
-import { BaseComponent } from 'src/app/shared/helper/components/base.component';
-
-import { HeaderService } from '../../shared/layout/services/header.service';
 import { Observable } from 'rxjs';
-import { LapTime } from 'src/app/shared/data-access/models/lap-time';
+import { map, takeWhile, tap } from 'rxjs/operators';
+
+import { LapTime } from '../../shared/data-access/models/lap-time';
+import { BaseComponent } from '../../shared/helper/components/base.component';
+import { HeaderService } from '../../shared/layout/services/header.service';
 
 @Component({
   selector: 'app-track-page',
   templateUrl: './track-page.component.html',
-  styleUrls: ['./track-page.component.scss']
+  styleUrls: ['./track-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TrackPageComponent extends BaseComponent {
   lapTimes$: Observable<LapTime[]>;

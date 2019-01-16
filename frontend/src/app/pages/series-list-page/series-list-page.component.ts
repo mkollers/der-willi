@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { HeaderService } from '../../shared/layout/services/header.service';
@@ -6,7 +6,8 @@ import { HeaderService } from '../../shared/layout/services/header.service';
 @Component({
   selector: 'app-series-list-page',
   templateUrl: './series-list-page.component.html',
-  styleUrls: ['./series-list-page.component.scss']
+  styleUrls: ['./series-list-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SeriesListPageComponent {
 

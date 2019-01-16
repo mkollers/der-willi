@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -10,7 +10,8 @@ import { HeaderService } from './../../shared/layout/services/header.service';
 @Component({
   selector: 'app-track-list-page',
   templateUrl: './track-list-page.component.html',
-  styleUrls: ['./track-list-page.component.scss']
+  styleUrls: ['./track-list-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TrackListPageComponent extends BaseComponent {
   tracks$: Observable<number[]>;

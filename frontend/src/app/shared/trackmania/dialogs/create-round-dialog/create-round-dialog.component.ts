@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import * as faker from 'faker';
@@ -6,7 +6,8 @@ import * as faker from 'faker';
 @Component({
   selector: 'app-create-round-dialog',
   templateUrl: './create-round-dialog.component.html',
-  styleUrls: ['./create-round-dialog.component.scss']
+  styleUrls: ['./create-round-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateRoundDialogComponent {
   fg: FormGroup;

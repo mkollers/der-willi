@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import * as faker from 'faker';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 
@@ -11,12 +12,12 @@ import {
   CreateRoundDialogComponent
 } from '../../shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
 import { TrackTimesDialogComponent } from '../../shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
-import * as faker from 'faker';
 
 @Component({
   selector: 'app-ranking-page',
   templateUrl: './ranking-page.component.html',
-  styleUrls: ['./ranking-page.component.scss']
+  styleUrls: ['./ranking-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RankingPageComponent {
   rankings$: Observable<Ranking[]>;
