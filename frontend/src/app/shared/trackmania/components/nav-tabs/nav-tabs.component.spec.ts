@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavTabsComponent } from './nav-tabs.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('NavTabsComponent', () => {
   let component: NavTabsComponent;
@@ -8,7 +9,8 @@ describe('NavTabsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavTabsComponent ]
+      declarations: [ NavTabsComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
