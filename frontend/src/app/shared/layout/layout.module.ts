@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -18,7 +17,6 @@ import { TabsComponent } from './components/tabs/tabs.component';
     TabsComponent
   ], imports: [
     CommonModule,
-    FlexLayoutModule,
     RouterModule,
 
     // Material

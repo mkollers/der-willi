@@ -1,14 +1,30 @@
 :host {
   display: block;
-  position: fixed;
-  top: 0;
-  right: 0;
   left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
   z-index: 999;
 }
 
+.mat-toolbar {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+
+.spacer {
+  box-sizing: border-box;
+  flex: 1 1 40px;
+  max-width: 40px;
+  min-width: 40px;
+}
+
 h1 {
-  text-align: center;
+  box-sizing: border-box;
+  flex: 1 1 0%;
   font-weight: 300;
+  margin: 0 16px;
+  text-align: center;
   text-transform: uppercase;
 }
