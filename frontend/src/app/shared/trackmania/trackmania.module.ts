@@ -7,21 +7,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { TextMaskModule } from 'angular2-text-mask';
 
 import { LayoutModule } from '../layout/layout.module';
-import { TrackmaniaTabsComponent } from './components/trackmania-tabs/trackmania-tabs.component';
+import { NavTabsComponent } from './components/nav-tabs/nav-tabs.component';
 import { CreateRoundDialogComponent } from './dialogs/create-round-dialog/create-round-dialog.component';
 import { TrackTimesDialogComponent } from './dialogs/track-times-dialog/track-times-dialog.component';
 
 @NgModule({
   declarations: [
     CreateRoundDialogComponent,
-    TrackTimesDialogComponent,
-    TrackmaniaTabsComponent
+    NavTabsComponent,
+    TrackTimesDialogComponent
   ],
   imports: [
     CommonModule,
@@ -36,15 +35,14 @@ import { TrackTimesDialogComponent } from './dialogs/track-times-dialog/track-ti
     MatDialogModule,
     MatIconModule,
     MatInputModule,
-    MatTabsModule,
     MatToolbarModule,
 
     // Custom
     LayoutModule
   ], exports: [
     CreateRoundDialogComponent,
-    TrackTimesDialogComponent,
-    TrackmaniaTabsComponent
+    NavTabsComponent,
+    TrackTimesDialogComponent
   ], entryComponents: [
     CreateRoundDialogComponent,
     TrackTimesDialogComponent

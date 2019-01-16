@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrackmaniaTabsComponent } from './trackmania-tabs.component';
+import { NavTabsComponent } from './nav-tabs.component';
 
-describe('TrackmaniaTabsComponent', () => {
-  let component: TrackmaniaTabsComponent;
-  let fixture: ComponentFixture<TrackmaniaTabsComponent>;
+describe('NavTabsComponent', () => {
+  let component: NavTabsComponent;
+  let fixture: ComponentFixture<NavTabsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrackmaniaTabsComponent ]
+      declarations: [ NavTabsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TrackmaniaTabsComponent);
+    fixture = TestBed.createComponent(NavTabsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
