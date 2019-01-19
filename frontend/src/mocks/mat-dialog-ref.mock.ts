@@ -1,3 +1,6 @@
+import { of } from 'rxjs';
+
 export class MatDialogRefMock {
-    close =  () => this;
+    close = () => this;
+    beforeClosed = () => of(null);
 }

@@ -47,7 +47,7 @@ export class RankingPageComponent {
     });
 
     dialogref.beforeClosed().pipe(
-      filter(names => names.length),
+      filter(names => names && names.length),
       tap(names => this.trackRound(names))
     ).subscribe();
   }
