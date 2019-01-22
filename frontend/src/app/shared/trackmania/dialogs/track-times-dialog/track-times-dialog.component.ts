@@ -13,7 +13,7 @@ import * as _ from 'lodash';
 export class TrackTimesDialogComponent {
   fg: FormGroup;
   track = faker.random.number({ min: 1, max: 200 });
-  mask = [/\d/, /\d/, ':', /\d/, /\d/, ',', /\d/, /\d/, /\d/];
+  mask = [/[0-5]/, /[0-9]/, ':', /[0-5]/, /[0-9]/, ',', /\d/, /\d/, /\d/];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public names: string[],
@@ -38,7 +38,7 @@ export class TrackTimesDialogComponent {
     this._dialogRef.close(again);
   }
 
-  select($event) {
+  select($event: any) {
     $event.target.select();
     setTimeout(() => { // Safari hack
       $event.target.select();

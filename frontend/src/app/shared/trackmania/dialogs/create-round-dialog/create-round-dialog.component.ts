@@ -46,7 +46,7 @@ export class CreateRoundDialogComponent {
   }
 
   next() {
-    const players = this.fg.get('players').value;
+    const players: { name: string }[] = this.fg.get('players').value;
     const names = players.map(p => p.name);
     this._dialogRef.close(names);
   }

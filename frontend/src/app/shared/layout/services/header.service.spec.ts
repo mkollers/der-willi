@@ -3,10 +3,30 @@ import { TestBed } from '@angular/core/testing';
 import { HeaderService } from './header.service';
 
 describe('HeaderService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: HeaderService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.get(HeaderService);
+  });
 
   it('should be created', () => {
-    const service: HeaderService = TestBed.get(HeaderService);
     expect(service).toBeTruthy();
+  });
+
+  it('should set headline', () => {
+    // Act
+    service.headline = 'Schnitzel';
+
+    // Assert
+    expect(service.headline).toBe('Schnitzel');
+  });
+
+  it('should set navigate back uri', () => {
+    // Act
+    service.navigateBackUri = '/schnitzel';
+
+    // Assert
+    expect(service.navigateBackUri).toBe('/schnitzel');
   });
 });
