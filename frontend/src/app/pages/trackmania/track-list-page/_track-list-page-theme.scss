@@ -3,7 +3,4 @@
 @mixin track-list-page-theme($theme) {
   $foreground: map-get($theme, foreground);
 
-  app-track-list-page .track-button {
-    border: 1px solid mat-color($foreground, text);
-  }
 }
