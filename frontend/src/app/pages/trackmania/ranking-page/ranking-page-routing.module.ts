@@ -5,8 +5,7 @@ import { RankingPageComponent } from './ranking-page.component';
 import { RankingResolver } from './resolvers/ranking-resolver';
 
 const routes: Routes = [
-  { path: '', component: RankingPageComponent, resolve: { rankings: RankingResolver } },
-  { path: 'start-round', canActivate:  }
+  { path: '', component: RankingPageComponent, resolve: { rankings: RankingResolver } }
 ];
 
 @NgModule({
