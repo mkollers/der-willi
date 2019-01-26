@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import * as auth0 from 'auth0-js';
+import storage from 'local-storage-fallback';
 import { of, Subscription, timer } from 'rxjs';
 import { mergeMap, tap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
-import { StorageHelper } from '../../helper/classes/storage-helper';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class AuthService {
 
   get isAuthenticated() {
     // Check whether the current time is past the access Token's expiry time
-    const expiresAt = JSON.parse(StorageHelper.getItem('expires_at') || '{}');
+    const expiresAt = JSON.parse(storage.getItem('expires_at') || '{}');
     return new Date().getTime() < expiresAt;
   }
 
@@ -48,7 +48,7 @@ export class AuthService {
 
   private _logout() {
     // Remove tokens, expiry time, and everything else  from local or session storage
-    StorageHelper.clear();
+    storage.clear();
 
     this._unscheduleRenewal();
 
@@ -61,7 +61,7 @@ export class AuthService {
     }
     this._unscheduleRenewal();
 
-    const expiresAt = JSON.parse(StorageHelper.getItem('expires_at'));
+    const expiresAt = JSON.parse(storage.getItem('expires_at'));
 
     const expiresIn$ = of(expiresAt).pipe(
       // Use timer to track delay until expiration to run the refresh at the proper time
@@ -99,9 +99,9 @@ export class AuthService {
   private async _setSession(authResult: auth0.Auth0DecodedHash) {
     // Set the time that the Access Token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + Date.now());
-    StorageHelper.setItem('access_token', authResult.accessToken);
-    StorageHelper.setItem('id_token', authResult.idToken);
-    StorageHelper.setItem('expires_at', expiresAt);
+    storage.setItem('access_token', authResult.accessToken);
+    storage.setItem('id_token', authResult.idToken);
+    storage.setItem('expires_at', expiresAt);
 
     this._scheduleRenewal();
   }

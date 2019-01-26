@@ -1,5 +1,4 @@
 :host {
-  flex-direction: column;
   padding-top: 48px;
 }
 
@@ -12,12 +11,12 @@
 
 :host ::ng-deep .mat-header-row {
   text-transform: uppercase;
-  min-height: 40px;
 }
 
 :host ::ng-deep .mat-header-cell {
   color: rgba(255, 255, 255, .4);
   align-items: flex-end;
+  min-height: 40px;
 }
 
 :host ::ng-deep .mat-cell {
