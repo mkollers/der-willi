@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './shared/layout/layout.module';
+import { MAX_TRACK } from './shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LayoutModule } from './shared/layout/layout.module';
     LayoutModule
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+    { provide: MAX_TRACK, useValue: 160 }
   ],
   bootstrap: [AppComponent]
 })

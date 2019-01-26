@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, InjectionToken } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as faker from 'faker';
 import * as _ from 'lodash';
+
+export const MAX_TRACK = new InjectionToken<string>('MAX_TRACK');
 
 @Component({
   selector: 'trackmania-track-times-dialog',
@@ -12,15 +14,17 @@ import * as _ from 'lodash';
 })
 export class TrackTimesDialogComponent {
   fg: FormGroup;
-  track = faker.random.number({ min: 1, max: 200 });
+  track: number;
   mask = [/[0-5]/, /[0-9]/, ':', /[0-5]/, /[0-9]/, ',', /\d/, /\d/, /\d/];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public names: string[],
+    @Inject(MAX_TRACK) maxTrack: number,
     private _dialogRef: MatDialogRef<TrackTimesDialogComponent>,
     private _fb: FormBuilder
   ) {
     this.initFormGroup();
+    this.track = faker.random.number({ min: 1, max: maxTrack });
   }
 
   private initFormGroup() {
