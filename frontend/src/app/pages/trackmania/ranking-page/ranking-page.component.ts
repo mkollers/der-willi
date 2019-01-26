@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as faker from 'faker';
 import { Observable } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, takeWhile, tap } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/shared/helper/components/base.component';
 
 import { Ranking } from '../../../shared/data-access/models/ranking';
@@ -43,7 +43,7 @@ export class RankingPageComponent extends BaseComponent {
     });
 
     dialogref.beforeClosed().pipe(
-      tap(() => this._router.navigate([this._router.url], { queryParams: {} })),
+      tap(() => this._router.navigate([this._router.url], { queryParams: {} })), // Remove query params
       filter(names => names && names.length),
       tap(names => this.trackRound(names))
     ).subscribe();
@@ -57,7 +57,10 @@ export class RankingPageComponent extends BaseComponent {
 
   private _subscribeDialogParams() {
     this._route.queryParams.pipe(
-      filter(params => !!params['start-round']),
+      takeWhile(() => this.alive),
+      map(params => 'names' in params), // only if the url contains ?names=
+      distinctUntilChanged(),           // just start it once, not multiple
+      filter(contains => contains),     // filter only true values
       tap(() => this.start())
     ).subscribe();
   }
