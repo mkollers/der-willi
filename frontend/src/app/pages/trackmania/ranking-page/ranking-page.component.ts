@@ -5,9 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as faker from 'faker';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, takeWhile, tap } from 'rxjs/operators';
-import { BaseComponent } from 'src/app/shared/helper/components/base.component';
+import { AuthService } from 'src/app/shared/auth/services/auth.service';
 
 import { Ranking } from '../../../shared/data-access/models/ranking';
+import { BaseComponent } from '../../../shared/helper/components/base.component';
 import { HeaderService } from '../../../shared/layout/services/header.service';
 import { CreateRoundDialogComponent } from '../../../shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
 import { TrackTimesDialogComponent } from '../../../shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
@@ -21,8 +22,10 @@ import { TrackTimesDialogComponent } from '../../../shared/trackmania/dialogs/tr
 export class RankingPageComponent extends BaseComponent {
   rankings$: Observable<Ranking[]>;
   displayedColumns = ['position', 'name', 'points'];
+  canStart: boolean;
 
   constructor(
+    private _authService: AuthService,
     private _dialog: MatDialog,
     private _header: HeaderService,
     private _route: ActivatedRoute,
@@ -35,6 +38,8 @@ export class RankingPageComponent extends BaseComponent {
     this.rankings$ = _route.data.pipe(
       map(data => data.rankings)
     );
+
+    this._loadPermissions();
   }
 
   start() {
@@ -47,6 +52,11 @@ export class RankingPageComponent extends BaseComponent {
       filter(names => names && names.length),
       tap(names => this.trackRound(names))
     ).subscribe();
+  }
+
+  private _loadPermissions() {
+    const userInfo = this._authService.userInfo;
+    this.canStart = userInfo['https://der-willi.de/permissions'].includes('trackmania.write');
   }
 
   private _setPageData = () => {
