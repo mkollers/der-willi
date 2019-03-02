@@ -5,6 +5,7 @@ import { of, Subscription, timer } from 'rxjs';
 import { mergeMap, tap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { UserInfo } from '../models/user-info';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class AuthService {
     // Check whether the current time is past the access Token's expiry time
     const expiresAt = JSON.parse(storage.getItem('expires_at') || '{}');
     return new Date().getTime() < expiresAt;
+  }
+
+  get userInfo(): UserInfo {
+    return JSON.parse(storage.getItem('user_info'));
   }
 
   changePassword = (email: string) => this._changePassword(email);
@@ -103,6 +108,9 @@ export class AuthService {
     storage.setItem('id_token', authResult.idToken);
     storage.setItem('expires_at', expiresAt);
 
+    const userInfo = await this._getUserInfo(authResult.accessToken);
+    storage.setItem('user_info', JSON.stringify(userInfo));
+
     this._scheduleRenewal();
   }
 
@@ -113,6 +121,18 @@ export class AuthService {
           return resolve(authResult);
         }
         reject(err);
+      });
+    });
+  }
+
+  private _getUserInfo(accessToken: string): Promise<UserInfo> {
+    return new Promise<UserInfo>((resolve, reject) => {
+      this._auth0.client.userInfo(accessToken, (err, userProfile) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(userProfile as unknown as UserInfo);
+        }
       });
     });
   }
