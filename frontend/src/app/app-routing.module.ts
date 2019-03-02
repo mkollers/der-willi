@@ -11,6 +11,11 @@ const routes: Routes = [
       { path: '**', redirectTo: 'ranking' }
     ]
   },
+  {
+    path: 'error', children: [
+      { path: 'forbidden', loadChildren: './pages/auth/forbidden-page/forbidden-page.module#ForbiddenPageModule' }
+    ]
+  },
   { path: 'redirect', loadChildren: './pages/auth/redirect-page/redirect-page.module#RedirectPageModule' },
   { path: '**', redirectTo: 'trackmania' }];
 
