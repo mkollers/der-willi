@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
-import storage from 'local-storage-fallback';
+import { CanActivate, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 import { AuthService } from '../services/auth.service';
 
@@ -9,14 +9,16 @@ import { AuthService } from '../services/auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private _authService: AuthService) { }
+  constructor(
+    private _authService: AuthService,
+    private _router: Router
+  ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const isAuthenticated = this._authService.isAuthenticated;
+  async canActivate() {
+    const user = await this._authService.auth$.pipe(first()).toPromise();
 
-    if (!isAuthenticated) {
-      storage.setItem('login.redirect', state.url); // save requested url for later redirect
-      this._authService.login();
+    if (!user) {
+      this._router.navigate(['/login']);
       return false;
     }
 

@@ -3,13 +3,14 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "maennerabend": {
+    "der-willi": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
+          "changeDetection": "OnPush",
           "styleext": "scss"
         }
       },
@@ -17,7 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/maennerabend",
+            "outputPath": "dist/der-willi",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "maennerabend:build"
+            "browserTarget": "der-willi:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "maennerabend:build:production"
+              "browserTarget": "der-willi:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "maennerabend:build"
+            "browserTarget": "der-willi:build"
           }
         },
         "test": {
@@ -117,7 +118,7 @@
         }
       }
     },
-    "maennerabend-e2e": {
+    "der-willi-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -126,11 +127,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "maennerabend:serve"
+            "devServerTarget": "der-willi:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "maennerabend:serve:production"
+              "devServerTarget": "der-willi:serve:production"
             }
           }
         },
@@ -146,5 +147,5 @@
       }
     }
   },
-  "defaultProject": "maennerabend"
+  "defaultProject": "der-willi"
 }

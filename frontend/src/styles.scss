@@ -1,4 +1,8 @@
-@import './maennerabend-theme';
+@import './themes/turquoise-grey/index';
+@import './themes/dialog';
+@import './themes/tabs';
+@import './themes/toolbar';
+@import './app/pages/trackmania/track-list-page/_track-list-page-theme';
 
 html,
 body {
@@ -8,4 +12,37 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@mixin custom-theme($theme) {
+  @include tabs-theme($theme);
+  @include toolbar-theme($theme);
+  @include track-list-page-theme($theme);
+}
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+$theme: $turquoise-grey-theme;
+@include angular-material-theme($theme);
+@include custom-theme($theme);
+
+/* General styles */
+$primary: map-get($theme, primary);
+$accent: map-get($theme, accent);
+$warn: map-get($theme, warn);
+$background: map-get($theme, background);
+$foreground: map-get($theme, foreground);
+$is-dark-theme: map-get($theme, is-dark);
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: mat-color($foreground, text) !important;
+  -webkit-box-shadow: 0 0 0 30px mat-color($foreground, base, if($is-dark-theme, 0.1, 0.04)) inset !important;
+}
+
+h1 {
+  font-weight: 300;
 }

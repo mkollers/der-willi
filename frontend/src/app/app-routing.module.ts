@@ -16,7 +16,8 @@ const routes: Routes = [
       { path: 'forbidden', loadChildren: './pages/auth/forbidden-page/forbidden-page.module#ForbiddenPageModule' }
     ]
   },
-  { path: 'redirect', loadChildren: './pages/auth/redirect-page/redirect-page.module#RedirectPageModule' },
+  { path: 'login', loadChildren: './pages/auth/login-page/login-page.module#LoginPageModule' },
+  { path: 'register', loadChildren: './pages/auth/register-page/register-page.module#RegisterPageModule' },
   { path: '**', redirectTo: 'trackmania' }];
 
 @NgModule({

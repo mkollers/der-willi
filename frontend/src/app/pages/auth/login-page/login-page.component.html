@@ -1,0 +1,27 @@
+<form fxFlexFill fxLayoutAlign="center center" [formGroup]="fg" (ngSubmit)="fg.valid && login()">
+  <section fxFlex fxFlex.gt-xs="450px">
+    <h1>Anmeldung</h1>
+    <section fxLayout="column">
+      <mat-form-field color="accent">
+        <mat-label>E-Mail</mat-label>
+        <input color="primary" autofocus matInput type="email" placeholder="Ihre E-Mail Adresse" formControlName="email"
+          autocomplete="email">
+        <mat-error *ngIf="fg.controls['email'].invalid">Bitte geben Sie eine gültige E-Mail Adresse ein</mat-error>
+      </mat-form-field>
+      <mat-form-field color="accent">
+        <mat-label>Kennwort</mat-label>
+        <input matInput type="password" placeholder="Ihr Kennwort" formControlName="password"
+          autocomplete="current-password">
+        <mat-error *ngIf="fg.controls['password'].invalid">Bitte geben Sie Ihr Kennwort ein</mat-error>
+      </mat-form-field>
+    </section>
+    <section fxLayoutAlign="end end" fxLayoutGap="16px">
+      <a mat-button (click)="forgetPassword()">Kennwort vergessen?</a>
+      <span fxFlex></span>
+      <a mat-button routerLink="/register">Konto erstellen</a>
+      <button mat-flat-button color="accent" type="submit">
+        <mat-icon>&#xe877;</mat-icon>&nbsp;Anmelden
+      </button>
+    </section>
+  </section>
+</form>

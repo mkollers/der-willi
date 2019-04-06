@@ -2,13 +2,8 @@
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
-@import './button';
-@import './dialog';
-@import './tabs';
-@import './toolbar';
-@import './app/pages/trackmania/track-list-page/_track-list-page-theme';
 
-$maennerabend-grey: (50 : #e5e5e5,
+$grey: (50 : #e5e5e5,
 100 : #bfbfbf,
 200 : #959595,
 300 : #6a6a6a,
@@ -38,7 +33,7 @@ A400 : #ffffff,
 A700 : #ffffff,
 ));
 
-$maennerabend-turquoise: (50 : #e7f9f9,
+$turquoise: (50 : #e7f9f9,
 100 : #c4f0f1,
 200 : #9de6e7,
 300 : #76dbdd,
@@ -76,27 +71,18 @@ A700 : #000000,
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$maennerabend-primary: mat-palette($maennerabend-grey);
-$maennerabend-accent: mat-palette($maennerabend-turquoise);
+$turquoise-grey-primary: mat-palette($grey);
+$turquoise-grey-accent: mat-palette($turquoise);
 
 // The warn palette is optional (defaults to red).
-$maennerabend-warn: mat-palette($mat-red);
+$turquoise-grey-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$maennerabend-theme: mat-dark-theme($maennerabend-primary, $maennerabend-accent, $maennerabend-warn);
+$turquoise-grey-theme: mat-dark-theme($turquoise-grey-primary, $turquoise-grey-accent, $turquoise-grey-warn);
 
 // Set custom background color
-$maennerabend-background: map-get($maennerabend-theme, background);
-$maennerabend-background: map_merge($maennerabend-background, (background: #363636));
+$turquoise-grey-background: map-get($turquoise-grey-theme, background);
+$turquoise-grey-background: map_merge($turquoise-grey-background, (background: #363636));
 
 // Merge background with theme
-$maennerabend-theme: map_merge($maennerabend-theme, (background: $maennerabend-background));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($maennerabend-theme);
-@include button-theme($maennerabend-theme);
-@include tabs-theme($maennerabend-theme);
-@include toolbar-theme($maennerabend-theme);
-@include track-list-page-theme($maennerabend-theme);
+$turquoise-grey-theme: map_merge($turquoise-grey-theme, (background: $turquoise-grey-background));
