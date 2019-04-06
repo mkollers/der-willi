@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
   ) { }
 
   async canActivate() {
-    const user = await this._authService.auth$.pipe(first()).toPromise();
+    const user = await this._authService.user$.pipe(first()).toPromise();
 
     if (!user) {
       this._router.navigate(['/login']);

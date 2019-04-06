@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  auth$: Observable<firebase.User>;
+  user$: Observable<firebase.User>;
 
   constructor(
     private _auth: AngularFireAuth
   ) {
-    this.auth$ = this._auth.user;
+    this.user$ = this._auth.user;
   }
 
   forgetPassword = (email: string) => this._auth.auth.sendPasswordResetEmail(email);

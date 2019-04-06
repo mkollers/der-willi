@@ -9,12 +9,16 @@ import { RouterModule } from '@angular/router';
 import { ActionBarComponent } from './components/action-bar/action-bar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TabsComponent } from './components/tabs/tabs.component';
+import { ShellComponent } from './components/shell/shell.component';
+import { NoShellComponent } from './components/no-shell/no-shell.component';
 
 @NgModule({
   declarations: [
     ActionBarComponent,
     HeaderComponent,
-    TabsComponent
+    TabsComponent,
+    ShellComponent,
+    NoShellComponent
   ], imports: [
     CommonModule,
     RouterModule,
