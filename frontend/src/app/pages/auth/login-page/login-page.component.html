@@ -15,11 +15,11 @@
         <mat-error *ngIf="fg.controls['password'].invalid">Bitte geben Sie Ihr Kennwort ein</mat-error>
       </mat-form-field>
     </section>
-    <section fxLayoutAlign="end end" fxLayoutGap="16px">
-      <a mat-button (click)="forgetPassword()">Kennwort vergessen?</a>
-      <span fxFlex></span>
-      <a mat-button routerLink="/register">Konto erstellen</a>
-      <button mat-flat-button color="accent" type="submit">
+    <section fxLayoutAlign.gt-xs="end end" fxLayoutGap="16px" fxLayout.xs="column" fxLayout="row">
+      <a fxFlexOrder.gt-xs="1" fxFlexOrder.xs="4" mat-stroked-button (click)="forgetPassword()">Kennwort vergessen?</a>
+      <span fxFlexOrder.gt-xs="2" fxFlexOrder.xs="3" fxFlex></span>
+      <a fxFlexOrder.gt-xs="3" fxFlexOrder.xs="2" mat-stroked-button routerLink="/register">Konto erstellen</a>
+      <button fxFlexOrder.gt-xs="4" fxFlexOrder.xs="1" mat-flat-button color="accent" type="submit">
         <mat-icon>&#xe877;</mat-icon>&nbsp;Anmelden
       </button>
     </section>
