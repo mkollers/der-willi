@@ -57,6 +57,7 @@ export class RankingPageComponent extends BaseComponent {
   private _loadPermissions() {
     // const userInfo = this._authService.userInfo;
     // this.canStart = userInfo['https://der-willi.de/permissions'].includes('trackmania.write');
+    this.canStart = true;
   }
 
   private _setPageData = () => {
