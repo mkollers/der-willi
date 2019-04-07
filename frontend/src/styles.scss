@@ -3,6 +3,7 @@
 @import './themes/tabs';
 @import './themes/toolbar';
 @import './app/pages/trackmania/track-list-page/_track-list-page-theme';
+@import './app/shared/layout/components/header/_header-theme';
 
 html,
 body {
@@ -15,6 +16,7 @@ body {
 }
 
 @mixin custom-theme($theme) {
+  @include der-willi-header-theme($theme);
   @include tabs-theme($theme);
   @include toolbar-theme($theme);
   @include track-list-page-theme($theme);
@@ -40,9 +42,14 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-text-fill-color: mat-color($foreground, text) !important;
-  -webkit-box-shadow: 0 0 0 30px mat-color($foreground, base, if($is-dark-theme, 0.1, 0.04)) inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 h1 {
   font-weight: 300;
+}
+
+.mat-menu-content:not(:empty) {
+  padding: 0 !important;
 }

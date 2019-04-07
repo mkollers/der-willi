@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+
+@mixin der-willi-header-theme($theme) {
+  $accent: map-get($theme, accent);
+
+  #user-avatar {
+    background-color: #995bb4;
+    color: mat-color($accent, '500-contrast');
+  }
+}

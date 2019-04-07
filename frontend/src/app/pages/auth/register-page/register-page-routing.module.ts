@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { RegisterPageComponent } from './register-page.component';
+
+const routes: Routes = [
+  { path: '', component: RegisterPageComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
