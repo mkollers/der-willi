@@ -7,7 +7,7 @@ export class MetadataRepository {
             const metadataRef = admin.firestore().doc(`metadata/${uid}`);
             // Set the refresh time to the current UTC timestamp.
             // This will be captured on the client to force a token refresh.
-            await metadataRef.set({ refreshTime: new Date().getTime() });
+            await metadataRef.set({ refreshTime: new Date().toUTCString() });
             resolve();
         });
     }
