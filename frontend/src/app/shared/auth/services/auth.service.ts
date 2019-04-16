@@ -10,7 +10,7 @@ import { filter, map, switchMap, tap } from 'rxjs/operators';
 })
 export class AuthService implements OnDestroy {
   user$: Observable<firebase.User>;
-  claims$: Observable<Dictionary<boolean>>;
+  permissions: Observable<Dictionary<boolean>>;
   refreshTokenSubscription: Subscription;
 
   constructor(
@@ -18,7 +18,7 @@ export class AuthService implements OnDestroy {
     private _db: AngularFirestore
   ) {
     this.user$ = _auth.user;
-    this.claims$ = _auth.idTokenResult.pipe(
+    this.permissions = _auth.idTokenResult.pipe(
       filter(token => !!token),
       map(token => token.claims['https://www.der-willi.de/permissions'])
     );

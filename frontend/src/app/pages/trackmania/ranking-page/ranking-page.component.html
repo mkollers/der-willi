@@ -22,7 +22,7 @@
   <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></mat-row>
 </mat-table>
 
-<app-action-bar *ngIf="canStart">
+<app-action-bar *ngIf="canStart$ | async">
   <span fxFlex></span>
   <button mat-button color="accent" [routerLink]="['.']" [queryParams]="{ 'names': '' }">Runde Starten</button>
 </app-action-bar>

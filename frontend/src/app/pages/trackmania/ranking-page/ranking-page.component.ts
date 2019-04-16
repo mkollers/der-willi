@@ -5,8 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as faker from 'faker';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, takeWhile, tap } from 'rxjs/operators';
-import { AuthService } from 'src/app/shared/auth/services/auth.service';
 
+import { AuthService } from '../../../shared/auth/services/auth.service';
 import { Ranking } from '../../../shared/data-access/models/ranking';
 import { BaseComponent } from '../../../shared/helper/components/base.component';
 import { HeaderService } from '../../../shared/layout/services/header.service';
@@ -22,7 +22,7 @@ import { TrackTimesDialogComponent } from '../../../shared/trackmania/dialogs/tr
 export class RankingPageComponent extends BaseComponent {
   rankings$: Observable<Ranking[]>;
   displayedColumns = ['position', 'name', 'points'];
-  canStart: boolean;
+  canStart$: Observable<boolean>;
 
   constructor(
     private _authService: AuthService,
@@ -39,7 +39,9 @@ export class RankingPageComponent extends BaseComponent {
       map(data => data.rankings)
     );
 
-    this._loadPermissions();
+    this.canStart$ = this._authService.permissions.pipe(
+      map(permissions => permissions.trackmania_write) // TODO Start with resolved value to avoid flickering
+    );
   }
 
   start() {
@@ -52,12 +54,6 @@ export class RankingPageComponent extends BaseComponent {
       filter(names => names && names.length),
       tap(names => this.trackRound(names))
     ).subscribe();
-  }
-
-  private _loadPermissions() {
-    // const userInfo = this._authService.userInfo;
-    // this.canStart = userInfo['https://der-willi.de/permissions'].includes('trackmania.write');
-    this.canStart = true;
   }
 
   private _setPageData = () => {
