@@ -4,10 +4,21 @@ service cloud.firestore {
     match /users/{uid} {
       allow read, write: if request.auth.uid == uid;
     }
+    // Nobody can access anyone else data
+    match /metadata/{uid} {
+      allow read: if request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // Nobody is allowed to write permissions
+    match /users/{uid}/permissions {
+      allow write: if false;
+    }
 
     // Nobody is allowed to write permission
-    match /users/{uid}/permissions {
-      allow read: if false;
+    match /trackmania_times {
+      allow read: if request.auth.token['https://www.der-willi.de/permissions'].trackmania_read == true;
+      allow write: if request.auth.token['https://www.der-willi.de/permissions'].trackmania_write == true;
     }
 
     match /{document=**} {
