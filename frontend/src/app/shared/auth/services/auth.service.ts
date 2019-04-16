@@ -9,21 +9,21 @@ import { filter, map, switchMap, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
+  private _refreshTokenSubscription: Subscription;
   user$: Observable<firebase.User>;
-  permissions: Observable<Dictionary<boolean>>;
-  refreshTokenSubscription: Subscription;
+  permissions$: Observable<Dictionary<boolean>>;
 
   constructor(
     private _auth: AngularFireAuth,
     private _db: AngularFirestore
   ) {
     this.user$ = _auth.user;
-    this.permissions = _auth.idTokenResult.pipe(
+    this.permissions$ = _auth.idTokenResult.pipe(
       filter(token => !!token),
       map(token => token.claims['https://www.der-willi.de/permissions'])
     );
 
-    this.refreshTokenSubscription = this.user$.pipe(
+    this._refreshTokenSubscription = this.user$.pipe(
       filter(user => !!user),
       switchMap(this._mergeUserAndIssuedAtTime$),
       switchMap(([user, issuedAtTime]) => this._hasToEnforceTokenRefresh$(user, issuedAtTime)),
@@ -37,7 +37,7 @@ export class AuthService implements OnDestroy {
   logout = () => this._auth.auth.signOut();
   register = (email: string, password: string) => this._auth.auth.createUserWithEmailAndPassword(email, password);
 
-  ngOnDestroy = () => this.refreshTokenSubscription.unsubscribe();
+  ngOnDestroy = () => this._refreshTokenSubscription.unsubscribe();
 
   private async _mergeUserAndIssuedAtTime$(user: firebase.User): Promise<[firebase.User, Date]> {
     const issuedAtTime = (await user.getIdTokenResult()).issuedAtTime;

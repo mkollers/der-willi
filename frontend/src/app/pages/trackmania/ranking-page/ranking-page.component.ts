@@ -39,7 +39,7 @@ export class RankingPageComponent extends BaseComponent {
       map(data => data.rankings)
     );
 
-    this.canStart$ = this._authService.permissions.pipe(
+    this.canStart$ = this._authService.permissions$.pipe(
       map(permissions => permissions.trackmania_write) // TODO Start with resolved value to avoid flickering
     );
   }

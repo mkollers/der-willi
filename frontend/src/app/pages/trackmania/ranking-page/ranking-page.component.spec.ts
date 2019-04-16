@@ -52,7 +52,7 @@ describe('RankingPageComponent', () => {
   });
 
   describe('start', () => {
-    let dialog: MatDialog;
+    let dialog: MatDialogMock;
 
     beforeEach(() => {
       dialog = TestBed.get(MatDialog);
