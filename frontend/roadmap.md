@@ -1,5 +1,7 @@
 * Deep Link create dialog ✔
-* Identity Integration to protect the app
+* Identity Integration to protect the app ✔
+* Permission System ✔
+* CanLoad Guards instead of CanActivate
 * Replace StorageHelper with NPM package ✔
 * Serverless Backend
 * Improved login page
