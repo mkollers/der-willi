@@ -3,6 +3,10 @@
 }
 
 // Table
+.mat-table {
+  margin-bottom: 56px;
+}
+
 :host ::ng-deep .mat-footer-row,
 :host ::ng-deep .mat-header-row,
 :host ::ng-deep .mat-row {
