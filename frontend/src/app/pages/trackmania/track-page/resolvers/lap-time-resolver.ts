@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import * as _ from 'lodash';
+import { first } from 'rxjs/operators';
 
 import { LapTime } from '../../../../shared/data-access/models/lap-time';
 import { LapTimeService } from '../../../../shared/data-access/services/lap-time.service';
@@ -11,9 +12,10 @@ export class LapTimeResolver implements Resolve<Promise<LapTime[]>> {
         private _lapTimeService: LapTimeService
     ) { }
 
-    async resolve() {
+    async resolve(route: ActivatedRouteSnapshot) {
         try {
-            const lapTimes = await this._lapTimeService.getAll().toPromise();
+            const trackId = route.parent.params.trackId;
+            const lapTimes = await this._lapTimeService.getByTrack(trackId).pipe(first()).toPromise();
 
             // Order by ordering time ascending
             return _.orderBy(lapTimes, lt => lt.time);

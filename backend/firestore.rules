@@ -16,13 +16,13 @@ service cloud.firestore {
     }
 
     // Nobody is allowed to write permission
-    match /trackmania_times {
+    match /trackmania_times/{id} {
       allow read: if request.auth.token['https://www.der-willi.de/permissions'].trackmania_read == true;
       allow write: if request.auth.token['https://www.der-willi.de/permissions'].trackmania_write == true;
     }
 
     // Nobody is allowed to write permission
-    match /trackmania_ranking {
+    match /trackmania_ranking/{id} {
       allow read: if request.auth.token['https://www.der-willi.de/permissions'].trackmania_read == true;
       allow write: if false;
     }
