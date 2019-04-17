@@ -3,20 +3,18 @@ import * as faker from 'faker';
 import { of } from 'rxjs';
 
 import { Ranking } from '../models/ranking';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RankingService {
 
-  constructor() { }
+  constructor(
+    private _db: AngularFirestore
+  ) { }
 
   getAll() {
-    const data: Ranking[] = [];
-    for (let i = 1; i <= 15; i++) {
-      data.push(new Ranking(faker.name.findName(), faker.random.number({ max: 300 })));
-    }
-
-    return of(data);
+    return this._db.collection<Ranking>('trackmania_ranking').valueChanges();
   }
 }
