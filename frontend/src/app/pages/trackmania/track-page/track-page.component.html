@@ -12,8 +12,7 @@
 
   <ng-container matColumnDef="time">
     <mat-header-cell fxFlex="90px" *matHeaderCellDef fxLayoutAlign="end end"> Zeit </mat-header-cell>
-    <mat-cell fxFlex="90px" class="points-cell" *matCellDef="let element" fxLayoutAlign="end center">{{ element.time |
-      timespan }}</mat-cell>
+    <mat-cell fxFlex="90px" class="points-cell" *matCellDef="let element" fxLayoutAlign="end center">{{ element.time }}</mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

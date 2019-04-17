@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { LapTime } from './../models/lap-time';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,12 @@ export class LapTimeService {
   ) { }
 
   getByTrack(trackId: number) {
-    return this._db.collection<LapTime>('trackmania_times', ref => ref.where('track', '==', trackId)).valueChanges();
+    return this._db.collection<LapTime>('trackmania_times', ref => ref.where('trackId', '==', trackId)).valueChanges();
+  }
+
+  create(trackId: number, lapTime: LapTime) {
+    const data = { trackId, ...lapTime };
+
+    return this._db.collection<LapTime>('trackmania_times').add(data);
   }
 }

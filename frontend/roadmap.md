@@ -4,7 +4,8 @@
 * CanLoad Guards instead of CanActivate
 * Replace StorageHelper with NPM package ✔
 * Serverless Backend
-* Improved login page
+* Logo
+* Hot reload
 * Navigate back from round
 * Desktop View
 * Cross Browser Support

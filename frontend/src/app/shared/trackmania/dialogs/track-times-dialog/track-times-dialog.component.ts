@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as faker from 'faker';
 import * as _ from 'lodash';
+import { LapTime } from 'src/app/shared/data-access/models/lap-time';
+
+import { LapTimeService } from '../../../data-access/services/lap-time.service';
 
 export const MAX_TRACK = new InjectionToken<string>('MAX_TRACK');
 
@@ -21,7 +24,8 @@ export class TrackTimesDialogComponent {
     @Inject(MAT_DIALOG_DATA) public names: string[],
     @Inject(MAX_TRACK) maxTrack: number,
     private _dialogRef: MatDialogRef<TrackTimesDialogComponent>,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _lapTimeService: LapTimeService
   ) {
     this.initFormGroup();
     this.track = faker.random.number({ min: 1, max: maxTrack });
@@ -37,8 +41,14 @@ export class TrackTimesDialogComponent {
     this.fg = this._fb.group(controls);
   }
 
-  finish(again = false) {
-    console.log(this.fg.value);
+  async finish(again = false) { // TODO: show loading animation
+    const promises = [];
+    // tslint:disable-next-line: forin
+    for (const name in this.fg.value) {
+      const p = this._lapTimeService.create(this.track, new LapTime(name, this.fg.value[name]));
+      promises.push(p);
+    }
+    await Promise.all(promises);
     this._dialogRef.close(again);
   }
 
