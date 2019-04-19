@@ -17,7 +17,7 @@ export class TrackmaniaReadGuard implements CanActivate {
   async canActivate() {
     const claims = await this._authService.permissions$.pipe(first()).toPromise();
 
-    if (!claims['trackmania_read']) {
+    if (claims && !claims['trackmania_read']) {
       this._router.navigate(['/error/forbidden']);
       return false;
     }

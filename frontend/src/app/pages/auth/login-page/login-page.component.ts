@@ -16,6 +16,7 @@ import { LoaderService } from '../../../shared/layout/services/loader.service';
 })
 export class LoginPageComponent {
   @HostBinding('class.center-vertical') centerVertical = true;
+  @HostBinding('class.page-padding') pagePadding = true;
   fg: FormGroup;
 
   constructor(

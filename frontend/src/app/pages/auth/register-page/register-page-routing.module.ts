@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterPageComponent } from './register-page.component';
 
 const routes: Routes = [
-  { path: '', component: RegisterPageComponent }
+  { path: '', component: RegisterPageComponent },
+  { path: 'personal-data', loadChildren: '../personal-data-page/personal-data-page.module#PersonalDataPageModule' }
 ];
 
 @NgModule({
