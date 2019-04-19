@@ -46,6 +46,7 @@ export class AuthService implements OnDestroy {
 
   private _hasToEnforceTokenRefresh$(user: firebase.User, issuedAtTime: Date) {
     return this._db.collection('metadata').doc<{ refreshTime: string }>(user.uid).valueChanges().pipe(
+      filter(metadata => !!metadata),
       map(metadata => new Date(metadata.refreshTime)),
       filter(refreshTime => refreshTime > issuedAtTime)
     );
