@@ -4,7 +4,7 @@
     <section fxLayout="column">
       <mat-form-field color="accent">
         <mat-label>E-Mail</mat-label>
-        <input color="primary" autofocus matInput type="email" placeholder="Deine E-Mail Adresse" formControlName="email"
+        <input autofocus matInput type="email" placeholder="Deine E-Mail Adresse" formControlName="email"
           autocomplete="email">
         <mat-error *ngIf="fg.controls['email'].invalid">Bitte gib eine gültige E-Mail Adresse ein</mat-error>
       </mat-form-field>
