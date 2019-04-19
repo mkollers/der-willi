@@ -7,6 +7,7 @@
 * Serverless Backend
 * Logo
 * Hot reload
+* Loading Indicator
 * Add sentry logging
 * Navigate back from round
 * Desktop View

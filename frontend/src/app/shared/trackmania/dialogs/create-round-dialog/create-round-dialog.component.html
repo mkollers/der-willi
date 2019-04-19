@@ -2,7 +2,7 @@
   <div fxFlex="40px"></div>
   <h1 fxFlex>Neue Runde starten</h1>
   <button tabindex="-1" mat-icon-button mat-dialog-close>
-    <mat-icon svgIcon="material:outline-close"></mat-icon>
+    <mat-icon>&#xe5cd;</mat-icon>
   </button>
 </mat-toolbar>
 <form [formGroup]="fg" (ngSubmit)="fg.valid && next()">
@@ -19,7 +19,7 @@
       </mat-form-field>
     </ng-container>
     <button tabindex="0" fxFlexAlign="start" color="accent" mat-button (click)="addPlayer()" type="button">
-      <mat-icon svgIcon="material:outline-add_circle"></mat-icon>&nbsp;Spieler hinzufügen
+      <mat-icon>&#xe147;</mat-icon>&nbsp;Spieler hinzufügen
     </button>
   </mat-dialog-content>
   <mat-toolbar mat-dialog-actions>
