@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ForgotPasswordDialogComponent } from 'src/app/shared/auth/dialogs/forgot-password-dialog/forgot-password-dialog.component';
 
 import { AuthService } from '../../../shared/auth/services/auth.service';
 import { LoaderService } from '../../../shared/layout/services/loader.service';
@@ -47,9 +48,9 @@ export class LoginPageComponent {
   }
 
   forgetPassword() {
-    // this._dialog.open(ForgetPasswordComponent, {
-    //   minWidth: '320px'
-    // });
+    this._dialog.open(ForgotPasswordDialogComponent, {
+      minWidth: '320px'
+    });
   }
 
   private _handleError(err: any) {
