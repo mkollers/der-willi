@@ -12,6 +12,10 @@ export class UserService {
     private _db: AngularFirestore
   ) { }
 
+  getUser(uid: string) {
+    return this._db.collection<User>('users').doc<User>(uid).valueChanges();
+  }
+
   create(uid: string, user: User) {
     return this._db.collection<User>('users').doc(uid).set(user);
   }
