@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 import { ForbiddenPageRoutingModule } from './forbidden-page-routing.module';
 import { ForbiddenPageComponent } from './forbidden-page.component';
@@ -10,7 +11,10 @@ import { ForbiddenPageComponent } from './forbidden-page.component';
   imports: [
     CommonModule,
     FlexLayoutModule,
-    ForbiddenPageRoutingModule
+    ForbiddenPageRoutingModule,
+
+    // Material
+    MatButtonModule
   ]
 })
 export class ForbiddenPageModule { }
