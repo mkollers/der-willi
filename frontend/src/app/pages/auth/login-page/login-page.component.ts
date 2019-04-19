@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,6 +14,7 @@ import { LoaderService } from '../../../shared/layout/services/loader.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPageComponent {
+  @HostBinding('class.center-vertical') centerVertical = true;
   fg: FormGroup;
 
   constructor(

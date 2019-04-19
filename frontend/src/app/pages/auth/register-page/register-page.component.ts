@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { LoaderService } from '../../../shared/layout/services/loader.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterPageComponent {
+  @HostBinding('class.center-vertical') centerVertical = true;
   fg: FormGroup;
 
   constructor(
