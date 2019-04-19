@@ -13,7 +13,7 @@ import { UserService } from '../../../shared/data-access/services/user.service';
 import { LoaderService } from '../../../shared/layout/services/loader.service';
 import { PersonalDataPageComponent } from './personal-data-page.component';
 
-fdescribe('PersonalDataPageComponent', () => {
+describe('PersonalDataPageComponent', () => {
   let component: PersonalDataPageComponent;
   let fixture: ComponentFixture<PersonalDataPageComponent>;
 
