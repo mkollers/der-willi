@@ -4,20 +4,20 @@
     <section fxLayout="column">
       <mat-form-field color="accent">
         <mat-label>E-Mail Adresse</mat-label>
-        <input matInput type="email" placeholder="Ihre E-Mail Adresse" formControlName="email" autocomplete="email"
+        <input matInput type="email" placeholder="Deine E-Mail Adresse" formControlName="email" autocomplete="email"
           required>
-        <mat-error *ngIf="fg.controls['email'].invalid">Bitte geben Sie eine gültige E-Mail Adresse ein</mat-error>
+        <mat-error *ngIf="fg.controls['email'].invalid">Bitte gib eine gültige E-Mail Adresse ein</mat-error>
       </mat-form-field>
       <mat-form-field color="accent">
         <mat-label>Kennwort</mat-label>
-        <input matInput type="password" placeholder="Ihr Kennwort" formControlName="password" autocomplete="off"
+        <input matInput type="password" placeholder="Dein Kennwort" formControlName="password" autocomplete="off"
           required>
-        <mat-error *ngIf="fg.controls['password'].errors?.required">Bitte geben Sie ein Kennwort ein</mat-error>
+        <mat-error *ngIf="fg.controls['password'].errors?.required">Bitte gib ein Kennwort ein</mat-error>
         <mat-error *ngIf="fg.controls['password'].errors?.minlength">Das Kennwort muss mindestens 6 Zeichen lang sein
         </mat-error>
       </mat-form-field>
       <section fxLayoutAlign.gt-xs="end end" fxLayoutGap="16px" fxLayout.xs="column" fxLayout="row">
-        <a fxFlexOrder.gt-xs="1" fxFlexOrder.xs="2" mat-stroked-button routerLink="/login">Sie haben bereits ein Konto?</a>
+        <a fxFlexOrder.gt-xs="1" fxFlexOrder.xs="2" mat-stroked-button routerLink="/login">Du hast bereits ein Konto?</a>
         <button fxFlexOrder.gt-xs="2" fxFlexOrder.xs="1" mat-flat-button color="accent" type="submit">
           <mat-icon>&#xe877;</mat-icon>&nbsp;Registrieren
         </button>

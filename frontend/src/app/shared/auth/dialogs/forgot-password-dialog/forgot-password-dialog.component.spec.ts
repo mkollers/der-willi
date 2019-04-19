@@ -12,7 +12,7 @@ import { LoaderService } from '../../../layout/services/loader.service';
 import { AuthService } from '../../services/auth.service';
 import { ForgotPasswordDialogComponent } from './forgot-password-dialog.component';
 
-fdescribe('ForgotPasswordDialogComponent', () => {
+describe('ForgotPasswordDialogComponent', () => {
   let component: ForgotPasswordDialogComponent;
   let fixture: ComponentFixture<ForgotPasswordDialogComponent>;
 
