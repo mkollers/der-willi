@@ -1,6 +1,11 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { AuthServiceMock } from '../../../../mocks/auth-service.mock';
+import { LoaderServiceMock } from '../../../../mocks/loader-service.mock';
+import { AuthService } from '../../../shared/auth/services/auth.service';
+import { LoaderService } from '../../../shared/layout/services/loader.service';
 import { ForbiddenPageComponent } from './forbidden-page.component';
 
 describe('ForbiddenPageComponent', () => {
@@ -10,7 +15,14 @@ describe('ForbiddenPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ForbiddenPageComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      imports: [
+        RouterTestingModule
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        { provide: AuthService, useClass: AuthServiceMock },
+        { provide: LoaderService, useClass: LoaderServiceMock }
+      ]
     })
       .compileComponents();
   }));

@@ -1,12 +1,15 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { DocumentReference } from '@angular/fire/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as faker from 'faker';
-import { FocusEventMock } from 'src/mocks/focus-event.mock';
 
+import { FocusEventMock } from '../../../../../mocks/focus-event.mock';
+import { LapTimeServiceMock } from '../../../../../mocks/lapt-time-service.mock';
 import { MatDialogRefMock } from '../../../../../mocks/mat-dialog-ref.mock';
-import { TrackTimesDialogComponent } from './track-times-dialog.component';
+import { LapTimeService } from '../../../data-access/services/lap-time.service';
+import { MAX_TRACK, TrackTimesDialogComponent } from './track-times-dialog.component';
 
 describe('TrackTimesDialogComponent', () => {
   let component: TrackTimesDialogComponent;
@@ -22,7 +25,9 @@ describe('TrackTimesDialogComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: names },
-        { provide: MatDialogRef, useClass: MatDialogRefMock }
+        { provide: MAX_TRACK, useValue: names },
+        { provide: MatDialogRef, useClass: MatDialogRefMock },
+        { provide: LapTimeService, useClass: LapTimeServiceMock }
       ]
     })
       .compileComponents();
@@ -71,28 +76,32 @@ describe('TrackTimesDialogComponent', () => {
 
   describe('finish', () => {
     let dialogRef: MatDialogRef<TrackTimesDialogComponent>;
+    let lapTimeService: LapTimeService;
 
     beforeEach(() => {
       dialogRef = TestBed.get(MatDialogRef);
+      lapTimeService = TestBed.get(LapTimeService);
     });
 
-    it('should pass through again value', () => {
+    it('should pass through again value', async () => {
       // Arrange
       spyOn(dialogRef, 'close').and.stub();
+      spyOn(lapTimeService, 'create').and.returnValue(Promise.resolve() as unknown as Promise<DocumentReference>);
 
       // Act
-      component.finish(true);
+      await component.finish(true);
 
       // Assert
       expect(dialogRef.close).toHaveBeenCalledWith(true);
     });
 
-    it('should pass retry = false per default', () => {
+    it('should pass retry = false per default', async () => {
       // Arrange
       spyOn(dialogRef, 'close').and.stub();
+      spyOn(lapTimeService, 'create').and.returnValue(Promise.resolve() as unknown as Promise<DocumentReference>);
 
       // Act
-      component.finish();
+      await component.finish();
 
       // Assert
       expect(dialogRef.close).toHaveBeenCalledWith(false);

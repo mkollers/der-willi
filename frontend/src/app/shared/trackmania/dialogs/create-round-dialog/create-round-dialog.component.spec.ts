@@ -4,10 +4,12 @@ import { FormArray, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogRef } from '@angular/material/dialog';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 import * as faker from 'faker';
 
 import { MatDialogRefMock } from '../../../../../mocks/mat-dialog-ref.mock';
 import { CreateRoundDialogComponent } from './create-round-dialog.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('CreateRoundDialogComponent', () => {
   let component: CreateRoundDialogComponent;
@@ -19,11 +21,17 @@ describe('CreateRoundDialogComponent', () => {
       declarations: [CreateRoundDialogComponent],
       imports: [
         MatAutocompleteModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule
       ],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
-        { provide: MatDialogRef, useClass: MatDialogRefMock }
+        { provide: MatDialogRef, useClass: MatDialogRefMock },
+        {
+          provide: ActivatedRoute, useValue: {
+            snapshot: { queryParams: { names: '' } }
+          }
+        }
       ]
     }).compileComponents();
 

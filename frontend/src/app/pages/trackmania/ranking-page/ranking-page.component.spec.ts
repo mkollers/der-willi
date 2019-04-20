@@ -7,17 +7,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import * as faker from 'faker';
 import { of } from 'rxjs';
 
+import { AuthServiceMock } from '../../../../mocks/auth-service.mock';
 import { HeaderServiceMock } from '../../../../mocks/header-service.mock';
 import { MatDialogRefMock } from '../../../../mocks/mat-dialog-ref.mock';
 import { MatDialogMock } from '../../../../mocks/mat-dialog.mock';
 import { TitleMock } from '../../../../mocks/title.mock';
+import { AuthService } from '../../../shared/auth/services/auth.service';
 import { HeaderService } from '../../../shared/layout/services/header.service';
-import {
-  CreateRoundDialogComponent
-} from '../../../shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
-import {
-  TrackTimesDialogComponent
-} from '../../../shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
+import { CreateRoundDialogComponent } from '../../../shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
+import { TrackTimesDialogComponent } from '../../../shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
 import { RankingPageComponent } from './ranking-page.component';
 
 describe('RankingPageComponent', () => {
@@ -32,6 +30,7 @@ describe('RankingPageComponent', () => {
         RouterTestingModule
       ],
       providers: [
+        { provide: AuthService, useClass: AuthServiceMock },
         { provide: HeaderService, useClass: HeaderServiceMock },
         { provide: MatDialog, useClass: MatDialogMock },
         { provide: Title, useClass: TitleMock }

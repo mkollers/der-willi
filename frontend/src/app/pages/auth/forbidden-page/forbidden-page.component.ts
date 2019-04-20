@@ -13,8 +13,8 @@ import { LoaderService } from '../../../shared/layout/services/loader.service';
 export class ForbiddenPageComponent {
 
   constructor(
-    private _loaderService: LoaderService,
     private _authService: AuthService,
+    private _loaderService: LoaderService,
     private _router: Router
   ) { }
 
