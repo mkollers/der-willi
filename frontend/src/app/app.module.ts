@@ -5,13 +5,14 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { environment } from 'src/environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './shared/auth/auth.module';
 import { LayoutModule } from './shared/layout/layout.module';
 import { MAX_TRACK } from './shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
-import { AuthModule } from './shared/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthModule } from './shared/auth/auth.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
     // Firebase
     AngularFireModule.initializeApp(environment.firebase),
