@@ -5,10 +5,10 @@
 * Replace StorageHelper with NPM package ✔
 * Forgot password ✔
 * Serverless Backend
-* Logo and PWA
+* Logo and PWA ✔
 * Hot reload
-* Loading Indicator
-* Add sentry logging
+* Loading Indicator ✔
+* Add sentry logging 
 * Loading Indicator
 * Fix all unit tests
 * Desktop View
