@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { LapTime } from './../models/lap-time';
-import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
