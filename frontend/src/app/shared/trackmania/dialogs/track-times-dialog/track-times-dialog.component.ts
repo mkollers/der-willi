@@ -33,7 +33,7 @@ export class TrackTimesDialogComponent {
 
   private initFormGroup() {
     const controls = _.chain(this.names)
-      .map((n: string) => ({ key: n, control: this._fb.control('00:00,000', Validators.required) }))
+      .map((n: string) => ({ key: n, control: this._fb.control('00:00,00', Validators.required) }))
       .keyBy(o => o.key)
       .mapValues(o => o.control)
       .value();
@@ -45,6 +45,13 @@ export class TrackTimesDialogComponent {
     const promises = [];
     // tslint:disable-next-line: forin
     for (const name in this.fg.value) {
+      const value: string = this.fg.value[name];
+
+      // Do not save default values
+      if (value === '00:00,00') {
+        continue;
+      }
+
       const p = this._lapTimeService.create(this.track, new LapTime(name, this.fg.value[name]));
       promises.push(p);
     }

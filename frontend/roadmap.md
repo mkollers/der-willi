@@ -1,4 +1,3 @@
-* Avoid Null-Values
 * Autocomplete users
 * Ranking
 * CanLoad Guards instead of CanActivate
