@@ -7,10 +7,11 @@
 * Serverless Backend
 * Logo and PWA ✔
 * Hot reload
+* Update Service
 * Loading Indicator ✔
 * Add sentry logging 
-* Loading Indicator
-* Fix all unit tests
+* Loading Indicator ✔
+* Fix all unit tests ✔
 * Desktop View
 * Navigate back from round
 * Cross Browser Support
