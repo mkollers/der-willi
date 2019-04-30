@@ -1,17 +1,8 @@
-* Deep Link create dialog ✔
-* Identity Integration to protect the app ✔
-* Permission System ✔
-* CanLoad Guards instead of CanActivate
-* Replace StorageHelper with NPM package ✔
-* Forgot password ✔
-* Serverless Backend
-* Logo and PWA ✔
-* Hot reload
 * Update Service
-* Loading Indicator ✔
+* Ranking Order
+* CanLoad Guards instead of CanActivate
+* Hot reload
 * Add sentry logging 
-* Loading Indicator ✔
-* Fix all unit tests ✔
 * Desktop View
 * Navigate back from round
 * Cross Browser Support
