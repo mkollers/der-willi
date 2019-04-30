@@ -14,7 +14,9 @@ export class LapTimeService {
   ) { }
 
   getByTrack(trackId: number) {
-    return this._db.collection<LapTime>('trackmania_times', ref => ref.where('trackId', '==', trackId)).valueChanges();
+    return this._db.collection<LapTime>('trackmania_times',
+      ref => ref.orderBy('time').where('trackId', '==', trackId)
+    ).valueChanges();
   }
 
   create(trackId: number, lapTime: LapTime) {

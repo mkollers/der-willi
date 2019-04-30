@@ -15,10 +15,7 @@ export class LapTimeResolver implements Resolve<Promise<LapTime[]>> {
     async resolve(route: ActivatedRouteSnapshot) {
         try {
             const trackId = +route.parent.params.trackId;
-            const lapTimes = await this._lapTimeService.getByTrack(trackId).pipe(first()).toPromise();
-
-            // Order by ordering time ascending
-            return _.orderBy(lapTimes, lt => lt.time, 'desc');
+            return await this._lapTimeService.getByTrack(trackId).pipe(first()).toPromise();
         } catch (err) {
             return null;
         }
