@@ -18,7 +18,7 @@ export const MAX_TRACK = new InjectionToken<string>('MAX_TRACK');
 export class TrackTimesDialogComponent {
   fg: FormGroup;
   track: number;
-  mask = [/[0-5]/, /[0-9]/, ':', /[0-5]/, /[0-9]/, ',', /\d/, /\d/, /\d/];
+  mask = [/[0-5]/, /[0-9]/, ':', /[0-5]/, /[0-9]/, ',', /\d/, /\d/];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public names: string[],
