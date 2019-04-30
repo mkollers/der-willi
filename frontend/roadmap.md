@@ -1,4 +1,3 @@
-* Update Service
 * Ranking Order
 * CanLoad Guards instead of CanActivate
 * Hot reload

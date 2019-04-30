@@ -5,6 +5,7 @@ import { filter, mapTo, takeWhile } from 'rxjs/operators';
 
 import { BaseComponent } from './shared/helper/components/base.component';
 import { LoaderService } from './shared/layout/services/loader.service';
+import { UpdateService } from './shared/layout/services/update.service';
 
 @Component({
   selector: 'app-root',
@@ -17,12 +18,16 @@ export class AppComponent extends BaseComponent {
 
   constructor(
     private _loaderService: LoaderService,
-    private _router: Router
+    private _router: Router,
+    updateService: UpdateService
   ) {
     super();
 
     // Display a loading indicator while navigating from one route to another
     this._setupLoadingIndicator();
+
+    // Show an information, when a newer version than the current, loaded by the PWA service worker, version is available
+    updateService.subscribeUpdates();
   }
 
   /** Start subscribing routing events to track when routing starts and wenn it ends, to a loading indicator */

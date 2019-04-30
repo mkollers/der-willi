@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
@@ -28,6 +29,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatSnackBarModule,
     MatTabsModule,
     MatToolbarModule
   ], exports: [
