@@ -20,7 +20,6 @@ export class LapTimeService {
 
   create(trackId: number, lapTime: LapTime) {
     const data = { trackId, ...lapTime };
-
     return this._db.collection<LapTime>('trackmania_times').add(data);
   }
 }
