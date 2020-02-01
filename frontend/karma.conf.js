@@ -14,17 +14,38 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
+      // jasmine: {
+      //   random: false
+      // }
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, '../coverage'),
-      reports: ['html', 'lcovonly'],
+      dir: require('path').join(__dirname, './coverage'),
+      reports: [
+        'html',
+        'lcovonly',
+        'cobertura',
+        // 'text-summary'
+      ],
       fixWebpackSourcePaths: true
+    },
+    junitReporter: {
+      outputDir: './coverage', // results will be saved as $outputDir/$browserName.xml
+      outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile
+      suite: '', // suite will become the package name attribute in xml testsuite element
+      useBrowserName: false, // add browser name to report and classes names
+      nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
+      classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
+      properties: {} // key value pair of properties to add to the <properties> section of the report
     },
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
+        flags: ['--disable-web-security',
+          '--disable-site-isolation-trials',
+          '--no-sandbox',
+          '--headless'
+        ]
       }
     },
     reporters: ['progress', 'kjhtml'],
@@ -32,6 +53,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
+    restartOnFileChange: true,
+    usePolling: true,
     browsers: ['ChromeHeadlessNoSandbox'],
     singleRun: false
   });

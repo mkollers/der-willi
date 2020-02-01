@@ -48,8 +48,8 @@ export class LoginPageComponent extends BaseComponent {
     }
   }
 
-  async forgotPassword() {
-    this._dialog.open<ForgotPasswordDialogComponent, MatDialogConfig<unknown>, void>(ForgotPasswordDialogComponent, {
+  forgotPassword() {
+    this._dialog.open<ForgotPasswordDialogComponent, MatDialogConfig, void>(ForgotPasswordDialogComponent, {
       width: '450px',
       maxWidth: 'calc(100% - 32px)'
     });

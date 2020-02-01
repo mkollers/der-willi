@@ -1,10 +1,12 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { LoaderServiceMock } from '@mocks/loader-service.mock';
+import { UpdateServiceMock } from '@mocks/update-service.mock';
+import { LoaderService } from '@shared/layout/services/loader.service';
+import { UpdateService } from '@shared/layout/services/update.service';
 
-import { LoaderServiceMock } from '../mocks/loader-service.mock';
 import { AppComponent } from './app.component';
-import { LoaderService } from './shared/layout/services/loader.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -17,7 +19,8 @@ describe('AppComponent', () => {
       ],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
-        { provide: LoaderService, useClass: LoaderServiceMock }
+        { provide: LoaderService, useClass: LoaderServiceMock },
+        { provide: UpdateService, useClass: UpdateServiceMock }
       ]
     }).compileComponents();
   }));
