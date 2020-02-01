@@ -8,13 +8,13 @@
 }
 
 #content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   min-height: 100%;
 }
 
 :host ::ng-deep router-outlet+* {
-  display: flex;
-  overflow: auto;
-  flex: 1 0 auto;
+  display: grid;
+  grid-area: 1 / 1 / 2 / 2;
 }

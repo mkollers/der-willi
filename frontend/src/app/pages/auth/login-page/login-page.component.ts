@@ -3,10 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
-import { ForgotPasswordDialogComponent } from '../../../shared/auth/dialogs/forgot-password-dialog/forgot-password-dialog.component';
-import { AuthService } from '../../../shared/auth/services/auth.service';
-import { LoaderService } from '../../../shared/layout/services/loader.service';
+import { ForgotPasswordDialogComponent } from '@shared/auth/dialogs/forgot-password-dialog/forgot-password-dialog.component';
+import { AuthService } from '@shared/auth/services/auth.service';
+import { LoaderService } from '@shared/layout/services/loader.service';
 
 @Component({
   selector: 'app-login-page',
@@ -15,8 +14,6 @@ import { LoaderService } from '../../../shared/layout/services/loader.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPageComponent {
-  @HostBinding('class.center-vertical') centerVertical = true;
-  @HostBinding('class.page-padding') pagePadding = true;
   fg: FormGroup;
 
   constructor(
@@ -48,7 +45,7 @@ export class LoginPageComponent {
     }
   }
 
-  forgetPassword() {
+  forgotPassword() {
     this._dialog.open(ForgotPasswordDialogComponent, {
       minWidth: '320px'
     });

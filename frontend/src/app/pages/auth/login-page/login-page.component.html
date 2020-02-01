@@ -1,27 +1,20 @@
-<form fxFlexFill fxLayoutAlign="center center" [formGroup]="fg" (ngSubmit)="fg.valid && login()">
-  <section fxFlex fxFlex.gt-xs="450px">
-    <h1>Anmeldung</h1>
-    <section fxLayout="column">
-      <mat-form-field color="accent">
-        <mat-label>E-Mail</mat-label>
-        <input autofocus matInput type="email" placeholder="Deine E-Mail Adresse" formControlName="email"
-          autocomplete="email">
-        <mat-error *ngIf="fg.controls['email'].invalid">Bitte gib eine gültige E-Mail Adresse ein</mat-error>
-      </mat-form-field>
-      <mat-form-field color="accent">
-        <mat-label>Kennwort</mat-label>
-        <input matInput type="password" placeholder="Dein Kennwort" formControlName="password"
-          autocomplete="current-password">
-        <mat-error *ngIf="fg.controls['password'].invalid">Bitte gib dein Kennwort ein</mat-error>
-      </mat-form-field>
-    </section>
-    <section fxLayoutAlign.gt-xs="end end" fxLayoutGap="8px" fxLayout.xs="column" fxLayout="row">
-      <a fxFlexOrder.gt-xs="1" fxFlexOrder.xs="4" mat-stroked-button (click)="forgetPassword()">Kennwort vergessen?</a>
-      <span fxFlexOrder.gt-xs="2" fxFlexOrder.xs="3" fxFlex></span>
-      <a fxFlexOrder.gt-xs="3" fxFlexOrder.xs="2" mat-stroked-button routerLink="/register">Konto erstellen</a>
-      <button fxFlexOrder.gt-xs="4" fxFlexOrder.xs="1" mat-flat-button color="accent" type="submit">
-        <mat-icon>&#xe877;</mat-icon>&nbsp;Anmelden
-      </button>
-    </section>
-  </section>
+<form class="login-form" [formGroup]="fg" (ngSubmit)="fg.valid && login()">
+  <h1 class="headline">Anmeldung</h1>
+  <mat-form-field color="accent" class="input-wrapper email">
+    <mat-label>E-Mail</mat-label>
+    <input autofocus matInput type="email" placeholder="Deine E-Mail Adresse" formControlName="email"
+      autocomplete="email">
+    <mat-error *ngIf="fg.controls['email'].invalid">Bitte gib eine gültige E-Mail Adresse ein</mat-error>
+  </mat-form-field>
+  <mat-form-field color="accent" class="input-wrapper password">
+    <mat-label>Kennwort</mat-label>
+    <input matInput type="password" placeholder="Dein Kennwort" formControlName="password"
+      autocomplete="current-password">
+    <mat-error *ngIf="fg.controls['password'].invalid">Bitte gib dein Kennwort ein</mat-error>
+  </mat-form-field>
+  <a class="btn forgot-password" mat-stroked-button (click)="forgotPassword()">Kennwort vergessen?</a>
+  <a class="btn signup" mat-stroked-button routerLink="/signup">Konto erstellen</a>
+  <button class="btn submit login" mat-flat-button color="accent" type="submit">
+    <mat-icon>&#xe877;</mat-icon>&nbsp;Anmelden
+  </button>
 </form>
