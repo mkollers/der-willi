@@ -8,11 +8,11 @@ import { AuthServiceMock } from '@mocks/auth-service.mock';
 import { LoaderServiceMock } from '@mocks/loader-service.mock';
 import { MatDialogMock } from '@mocks/mat-dialog.mock';
 import { MatSnackbarMock } from '@mocks/mat-snackbar.mock';
+import { ForgotPasswordDialogComponent } from '@shared/auth/dialogs/forgot-password-dialog/forgot-password-dialog.component';
 import { AuthService } from '@shared/auth/services/auth.service';
 import { LoaderService } from '@shared/layout/services/loader.service';
 
 import { LoginPageComponent } from './login-page.component';
-import { ForgotPasswordDialogComponent } from '@shared/auth/dialogs/forgot-password-dialog/forgot-password-dialog.component';
 
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
@@ -66,6 +66,81 @@ describe('LoginPageComponent', () => {
         width: '450px',
         maxWidth: 'calc(100% - 32px)'
       });
+    });
+  });
+
+  describe('login', () => {
+    let authService: AuthService;
+
+    beforeEach(() => {
+      authService = TestBed.get(AuthService);
+    });
+
+    describe('loading animation', () => {
+      let loader: LoaderService;
+
+      beforeEach(() => {
+        loader = TestBed.get(LoaderService);
+      });
+
+      it('show loading on login called', async () => {
+        // Arrange
+        spyOn(authService, 'login').and.stub();
+
+        // Act
+        await fixture.ngZone.run(async () => {
+          await component.login();
+        });
+
+        // Assert
+        expect(loader.isLoading).toEqual(true);
+      });
+
+      it('hide loading on login error', async () => {
+        // Arrange
+        spyOn(authService, 'login').and.returnValue(Promise.reject('Nuclear meltdown'));
+        spyOn(console, 'error').and.stub();
+
+        // Act
+        await component.login();
+
+        // Assert
+        expect(loader.isLoading).toEqual(false);
+      });
+    });
+
+    describe('error handling', () => {
+      let snackBar: MatSnackBar;
+
+      beforeEach(() => {
+        snackBar = TestBed.get(MatSnackBar);
+      });
+
+      const errors = [{
+        code: 'auth/invalid-email',
+        message: 'Die E-Mail Adresse ist falsch formatiert.'
+      }, {
+        code: 'auth/user-not-found',
+        message: 'Diese E-Mail Adresse ist uns leider nicht bekannt'
+      }, {
+        code: 'auth/wrong-password',
+        message: 'Das angegebene Kennwort ist leider falsch'
+      }];
+
+      for (const err of errors) {
+        it(err.code, async () => {
+          // Arrange
+          spyOn(authService, 'login').and.returnValue(Promise.reject({ code: err.code }));
+          spyOn(console, 'error').and.stub();
+          spyOn(snackBar, 'open').and.stub();
+
+          // Act
+          await component.login();
+
+          // Assert
+          expect(snackBar.open).toHaveBeenCalledWith(err.message, '', { duration: 10000 });
+        });
+      }
     });
   });
 });

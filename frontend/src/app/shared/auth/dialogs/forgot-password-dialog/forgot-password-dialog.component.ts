@@ -36,7 +36,7 @@ export class ForgotPasswordDialogComponent {
       this.dialogRef.close();
       this._snackBar.open('Wir haben dir soeben eine E-Mail zugesendet', '', { duration: 10000 });
     } catch (err) {
-      console.log(err);
+      console.error(err);
       this._snackBar.open('Hoppla, da ist was schiefgelaufen...', '', { duration: 10000 });
     }
 
