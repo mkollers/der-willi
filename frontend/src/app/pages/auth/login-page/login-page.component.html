@@ -1,5 +1,8 @@
 <form class="login-form" [formGroup]="fg" (ngSubmit)="fg.valid && login()">
   <h1 class="headline">Anmeldung</h1>
+  <p>
+    Melde dich wieder mit deinem bestehenden Willi-Konto an.
+  </p>
   <mat-form-field color="accent" class="input-wrapper email">
     <mat-label>E-Mail</mat-label>
     <input autofocus matInput type="email" placeholder="Deine E-Mail Adresse" formControlName="email"
