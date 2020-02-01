@@ -26,7 +26,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: NoShellComponent, loadChildren: './pages/auth/login-page/login-page.module#LoginPageModule' },
-  { path: 'register', component: NoShellComponent, loadChildren: './pages/auth/register-page/register-page.module#RegisterPageModule' },
+  { path: 'signup', component: NoShellComponent, loadChildren: './pages/auth/register-page/register-page.module#RegisterPageModule' },
   { path: '**', redirectTo: 'trackmania' }];
 
 @NgModule({
