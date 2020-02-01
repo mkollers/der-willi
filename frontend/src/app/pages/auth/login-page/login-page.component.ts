@@ -7,6 +7,7 @@ import { ForgotPasswordDialogComponent } from '@shared/auth/dialogs/forgot-passw
 import { AuthService } from '@shared/auth/services/auth.service';
 import { BaseComponent } from '@shared/helper/components/base.component';
 import { LoaderService } from '@shared/layout/services/loader.service';
+import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
 
 @Component({
   selector: 'app-login-page',
@@ -56,22 +57,7 @@ export class LoginPageComponent extends BaseComponent {
   }
 
   private _handleError(err: any) {
-    let content = 'Hoppla, da ist was schiefgelaufen...';
-
-    switch (err.code) {
-      case 'auth/invalid-email':
-        content = 'Die E-Mail Adresse ist falsch formatiert.';
-        break;
-      case 'auth/user-not-found':
-        content = 'Diese E-Mail Adresse ist uns leider nicht bekannt';
-        break;
-      case 'auth/wrong-password':
-        content = 'Das angegebene Kennwort ist leider falsch';
-        break;
-      default:
-        console.error(err);
-        break;
-    }
-    this._snackBar.open(content, '', { duration: 10000 });
+    const message = AuthErrorMessages[err.code] || 'Hoppla, da ist was schiefgelaufen...';
+    this._snackBar.open(message, '', { duration: 10000 });
   }
 }

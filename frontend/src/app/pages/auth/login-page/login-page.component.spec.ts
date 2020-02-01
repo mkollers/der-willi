@@ -13,6 +13,7 @@ import { AuthService } from '@shared/auth/services/auth.service';
 import { LoaderService } from '@shared/layout/services/loader.service';
 
 import { LoginPageComponent } from './login-page.component';
+import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
 
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
@@ -116,21 +117,11 @@ describe('LoginPageComponent', () => {
         snackBar = TestBed.get(MatSnackBar);
       });
 
-      const errors = [{
-        code: 'auth/invalid-email',
-        message: 'Die E-Mail Adresse ist falsch formatiert.'
-      }, {
-        code: 'auth/user-not-found',
-        message: 'Diese E-Mail Adresse ist uns leider nicht bekannt'
-      }, {
-        code: 'auth/wrong-password',
-        message: 'Das angegebene Kennwort ist leider falsch'
-      }];
-
-      for (const err of errors) {
-        it(err.code, async () => {
+      // tslint:disable-next-line: forin
+      for (const code in AuthErrorMessages) {
+        it(code, async () => {
           // Arrange
-          spyOn(authService, 'login').and.returnValue(Promise.reject({ code: err.code }));
+          spyOn(authService, 'login').and.returnValue(Promise.reject({ code: code }));
           spyOn(console, 'error').and.stub();
           spyOn(snackBar, 'open').and.stub();
 
@@ -138,7 +129,7 @@ describe('LoginPageComponent', () => {
           await component.login();
 
           // Assert
-          expect(snackBar.open).toHaveBeenCalledWith(err.message, '', { duration: 10000 });
+          expect(snackBar.open).toHaveBeenCalledWith(AuthErrorMessages[code], '', { duration: 10000 });
         });
       }
     });
