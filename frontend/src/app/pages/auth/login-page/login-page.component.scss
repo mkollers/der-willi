@@ -9,11 +9,12 @@
 .login-form {
   display: grid;
   grid-area: 2 / 2 / 3 / 3;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: auto auto 1fr auto;
   grid-template-rows: repeat(4, auto);
   grid-column-gap: .5rem;
   grid-row-gap: .5rem;
-  max-width: 35rem;
+  width: 30rem;
+  max-width: calc(100vw - 2rem);
 
   .headline {
     grid-area: 1 / 1 / 2 / 5;
@@ -71,7 +72,7 @@
       grid-area: 6 / 1 / 7 / 2;
     }
 
-    .btn-signup {
+    .btn.signup {
       grid-area: 5 / 1 / 6 / 2;
     }
 
