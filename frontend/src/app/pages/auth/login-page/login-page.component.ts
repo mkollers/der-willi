@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ForgotPasswordDialogComponent } from '@shared/auth/dialogs/forgot-password-dialog/forgot-password-dialog.component';
 import { AuthService } from '@shared/auth/services/auth.service';
+import { BaseComponent } from '@shared/helper/components/base.component';
 import { LoaderService } from '@shared/layout/services/loader.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { LoaderService } from '@shared/layout/services/loader.service';
   styleUrls: ['./login-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginPageComponent {
+export class LoginPageComponent extends BaseComponent {
   fg: FormGroup;
 
   constructor(
@@ -24,6 +25,8 @@ export class LoginPageComponent {
     private _router: Router,
     fb: FormBuilder
   ) {
+    super();
+
     this.fg = fb.group({
       email: fb.control('', [Validators.required, Validators.email]),
       password: fb.control('', Validators.required)
@@ -45,9 +48,10 @@ export class LoginPageComponent {
     }
   }
 
-  forgotPassword() {
-    this._dialog.open(ForgotPasswordDialogComponent, {
-      minWidth: '320px'
+  async forgotPassword() {
+    this._dialog.open<ForgotPasswordDialogComponent, MatDialogConfig<unknown>, void>(ForgotPasswordDialogComponent, {
+      width: '450px',
+      maxWidth: 'calc(100% - 32px)'
     });
   }
 

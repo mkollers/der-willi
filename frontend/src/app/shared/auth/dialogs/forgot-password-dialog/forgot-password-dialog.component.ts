@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoaderService } from '@shared/layout/services/loader.service';
 
-import { LoaderService } from '../../../layout/services/loader.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -32,7 +32,7 @@ export class ForgotPasswordDialogComponent {
 
     try {
       const email = this.fg.value.email;
-      await this._authService.forgetPassword(email);
+      await this._authService.forgotPassword(email);
       this.dialogRef.close();
       this._snackBar.open('Wir haben dir soeben eine E-Mail zugesendet', '', { duration: 10000 });
     } catch (err) {

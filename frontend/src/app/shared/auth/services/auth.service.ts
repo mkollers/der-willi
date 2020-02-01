@@ -32,7 +32,7 @@ export class AuthService implements OnDestroy {
     ).subscribe();
   }
 
-  forgetPassword = (email: string) => this._auth.auth.sendPasswordResetEmail(email);
+  forgotPassword = (email: string) => this._auth.auth.sendPasswordResetEmail(email);
   login = (email: string, password: string) => this._auth.auth.signInWithEmailAndPassword(email, password);
   logout = () => this._auth.auth.signOut();
   register = (email: string, password: string) => this._auth.auth.createUserWithEmailAndPassword(email, password);
