@@ -1,0 +1,69 @@
+@import './../../../../themes/breakpoints.scss';
+
+:host {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1fr auto 1fr;
+}
+
+form {
+  display: grid;
+  grid-area: 2 / 2 / 3 / 3;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: repeat(4, auto);
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  width: 30rem;
+  max-width: calc(100vw - 2rem);
+
+  h1 {
+    grid-area: 1 / 1 / 2 / 4;
+    margin: 0;
+  }
+
+  .mat-form-field.email {
+    grid-area: 2 / 1 / 3 / 4;
+  }
+
+  .mat-form-field.password {
+    grid-area: 3 / 1 / 4 / 4;
+  }
+
+  .btn.login{
+    grid-area: 4 / 1 / 5 / 2;
+  }
+
+  .btn.submit {
+    grid-area: 4 / 3 / 5 / 4;
+  }
+}
+
+@media #{$mat-lt-sm} {
+  form {
+    grid-column-gap: .5rem;
+    grid-row-gap: .5rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+    margin: 1rem;
+
+    h1 {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .mat-form-field.email {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .mat-form-field.password {
+      grid-area: 3 / 1 / 4 / 2;
+    }
+
+    .btn.login {
+      grid-area: 5 / 1 / 6 / 2;
+    }
+
+    .btn.submit {
+      grid-area: 4 / 1 / 5 / 2;
+    }
+  }
+}

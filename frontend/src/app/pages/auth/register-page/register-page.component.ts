@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../../../shared/auth/services/auth.service';
 import { LoaderService } from '../../../shared/layout/services/loader.service';
+import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
 
 @Component({
   selector: 'app-register-page',
@@ -13,8 +14,6 @@ import { LoaderService } from '../../../shared/layout/services/loader.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterPageComponent {
-  @HostBinding('class.center-vertical') centerVertical = true;
-  @HostBinding('class.page-padding') pagePadding = true;
   fg: FormGroup;
 
   constructor(
@@ -32,10 +31,11 @@ export class RegisterPageComponent {
 
   async submit() {
     this._loaderService.isLoading = true;
-    const email: string = this.fg.value.email;
-    const password: string = this.fg.value.password;
 
     try {
+      const email: string = this.fg.value.email;
+      const password: string = this.fg.value.password;
+
       await this._authService.register(email, password);
       this._router.navigateByUrl('/register/personal-data');
     } catch (err) {
@@ -45,19 +45,7 @@ export class RegisterPageComponent {
   }
 
   private _handleError(err: any) {
-    let content = 'Hoppla, da ist was schiefgelaufen...';
-
-    switch (err.code) {
-      case 'auth/email-already-in-use':
-        content = 'Die angegebene E-Mail wird bereits verwendet';
-        break;
-      case 'auth/weak-password':
-        content = 'Das Kennwort muss mindestens 6 Zeichen lang sein';
-        break;
-      default:
-        console.error(err);
-        break;
-    }
-    this._snackBar.open(content, '', { duration: 10000 });
+    const message = AuthErrorMessages[err.code] || 'Hoppla, da ist was schiefgelaufen...';
+    this._snackBar.open(message, '', { duration: 10000 });
   }
 }

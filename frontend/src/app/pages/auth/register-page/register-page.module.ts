@@ -16,7 +16,6 @@ import { RegisterPageComponent } from './register-page.component';
   imports: [
     CommonModule,
     RegisterPageRoutingModule,
-    FlexLayoutModule,
     ReactiveFormsModule,
 
     // Material
