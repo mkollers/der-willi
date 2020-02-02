@@ -9,11 +9,11 @@ import { TrackmaniaReadGuard } from './shared/trackmania/guards/trackmania-read.
 
 const routes: Routes = [
   {
-    path: 'trackmania', component: ShellComponent, canActivate: [AuthGuard, PersonalDataGuard],
+    path: '', component: ShellComponent, canActivate: [AuthGuard, PersonalDataGuard],
     runGuardsAndResolvers: 'always', children: [
       {
         path: '', canActivate: [TrackmaniaReadGuard], children: [
-          { path: 'ranking', loadChildren: './pages/trackmania/ranking-page/ranking-page.module#RankingPageModule' },
+          { path: 'ranking', loadChildren: () => import('./pages/ranking-page/ranking-page.module').then(m => m.RankingPageModule) },
           { path: 'series', loadChildren: './pages/trackmania/series-list-page/series-list-page.module#SeriesListPageModule' },
           { path: '**', redirectTo: 'ranking' }
         ]
@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   { path: 'login', component: NoShellComponent, loadChildren: './pages/auth/login-page/login-page.module#LoginPageModule' },
   { path: 'signup', component: NoShellComponent, loadChildren: './pages/auth/register-page/register-page.module#RegisterPageModule' },
-  { path: '**', redirectTo: 'trackmania' }];
+  { path: '**', redirectTo: '' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

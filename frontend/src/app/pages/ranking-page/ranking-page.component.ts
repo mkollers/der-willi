@@ -2,16 +2,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '@shared/auth/services/auth.service';
+import { Ranking } from '@shared/data-access/models/ranking';
+import { BaseComponent } from '@shared/helper/components/base.component';
+import { HeaderService } from '@shared/layout/services/header.service';
+import { CreateRoundDialogComponent } from '@shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
+import { TrackTimesDialogComponent } from '@shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
 import * as faker from 'faker';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, takeWhile, tap } from 'rxjs/operators';
-
-import { AuthService } from '../../../shared/auth/services/auth.service';
-import { Ranking } from '../../../shared/data-access/models/ranking';
-import { BaseComponent } from '../../../shared/helper/components/base.component';
-import { HeaderService } from '../../../shared/layout/services/header.service';
-import { CreateRoundDialogComponent } from '../../../shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
-import { TrackTimesDialogComponent } from '../../../shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
 
 @Component({
   selector: 'app-ranking-page',
@@ -35,11 +34,12 @@ export class RankingPageComponent extends BaseComponent {
     super();
     this._setPageData();
     this._subscribeDialogParams();
+
     this.rankings$ = _route.data.pipe(
       map(data => data.rankings)
     );
 
-    this.canStart$ = this._authService.permissions$.pipe(      
+    this.canStart$ = this._authService.permissions$.pipe(
       map(permissions => permissions && permissions.trackmania_write) // TODO Start with resolved value to avoid flickering
     );
   }

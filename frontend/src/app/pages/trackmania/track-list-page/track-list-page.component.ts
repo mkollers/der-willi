@@ -28,7 +28,7 @@ export class TrackListPageComponent extends BaseComponent {
   }
 
   setPageData() {
-    this._header.navigateBackUri = '/trackmania/series';
+    this._header.navigateBackUri = '/series';
     this._route.data.pipe(
       takeWhile(() => this.alive),
       map(data => data.title),

@@ -11,10 +11,10 @@ import { Tab } from '../../../layout/components/tabs/tab';
 export class NavTabsComponent {
   tabs: Tab[] = [{
     name: 'Bestenliste',
-    url: '/trackmania/ranking'
+    url: '/ranking'
   }, {
     name: 'Tracks',
-    url: '/trackmania/series'
+    url: '/series'
   }];
 
   constructor() { }

@@ -1,0 +1,28 @@
+<trackmania-nav-tabs></trackmania-nav-tabs>
+
+<mat-table [dataSource]="rankings$ |async">
+
+  <ng-container matColumnDef="position">
+    <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+    <mat-cell *matCellDef="let element; let i = index"> {{ i + 1 | number:'2.0' }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="points">
+    <mat-header-cell *matHeaderCellDef fxLayoutAlign="end end"> Punkte </mat-header-cell>
+    <mat-cell class="points-cell" *matCellDef="let element">{{ element.points
+      }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></mat-row>
+</mat-table>
+
+<app-action-bar *ngIf="canStart$ | async">
+  <span></span>
+  <button mat-button color="accent" [routerLink]="['.']" [queryParams]="{ 'names': '' }">Runde Starten</button>
+</app-action-bar>
