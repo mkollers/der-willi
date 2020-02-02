@@ -8,7 +8,7 @@
   </mat-form-field>
   <mat-form-field color="accent" class="password">
     <mat-label>Kennwort</mat-label>
-    <input matInput type="password" placeholder="Dein Kennwort" formControlName="password" autocomplete="off" required>
+    <input matInput type="password" placeholder="Dein Kennwort" formControlName="password" autocomplete="new-password" required>
     <mat-error *ngIf="fg.controls['password'].errors?.required">Bitte gib ein Kennwort ein</mat-error>
     <mat-error *ngIf="fg.controls['password'].errors?.minlength">Das Kennwort muss mindestens 6 Zeichen lang sein
     </mat-error>
