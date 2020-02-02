@@ -13,10 +13,7 @@ export class RankingResolver implements Resolve<Promise<Ranking[]>> {
 
     async resolve() {
         try {
-            const rankings = await this._rankingService.getAll().pipe(first()).toPromise();
-
-            // Order by ordering date descending
-            return orderBy(rankings, r => r.points, 'desc');
+            return await this._rankingService.getAll().pipe(first()).toPromise();
         } catch (err) {
             return null;
         }

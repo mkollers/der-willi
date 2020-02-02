@@ -11,6 +11,7 @@ import { map, tap } from 'rxjs/operators';
 
 import { LapTime } from '../models/lap-time';
 import { Ranking } from '../models/ranking';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class RankingService {
     private _db: AngularFirestore
   ) { }
 
-  getAll() {
+  getAll(): Observable<Ranking[]> {
     return this._db.collection<LapTime>('trackmania_times')
       .valueChanges().pipe(
         map(times => orderBy(times, t => [t.trackId, t.time])),
@@ -34,7 +35,7 @@ export class RankingService {
         map(dimensional => flatten(dimensional)),
         map(vals => groupBy(vals, v => v.name)),
         map(vals => mapValues(vals, v => sumBy(v, t => t.points))),
-        map(vals => Object.keys(vals).map(key => new Ranking(key, vals[key])))
+        map(vals => orderBy(Object.keys(vals).map(key => new Ranking(key, vals[key])), r => r.points, 'desc'))
       );
   }
 }

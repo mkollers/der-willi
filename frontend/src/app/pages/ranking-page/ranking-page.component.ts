@@ -9,8 +9,9 @@ import { HeaderService } from '@shared/layout/services/header.service';
 import { CreateRoundDialogComponent } from '@shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
 import { TrackTimesDialogComponent } from '@shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
 import * as faker from 'faker';
-import { Observable } from 'rxjs';
-import { distinctUntilChanged, filter, map, takeWhile, tap } from 'rxjs/operators';
+import { Observable, merge } from 'rxjs';
+import { distinctUntilChanged, filter, map, takeWhile, tap, skip } from 'rxjs/operators';
+import { RankingService } from '@shared/data-access/services/ranking.service';
 
 @Component({
   selector: 'app-ranking-page',
@@ -27,6 +28,7 @@ export class RankingPageComponent extends BaseComponent {
     private _authService: AuthService,
     private _dialog: MatDialog,
     private _header: HeaderService,
+    private _rankingService: RankingService,
     private _route: ActivatedRoute,
     private _router: Router,
     private _title: Title
@@ -35,9 +37,11 @@ export class RankingPageComponent extends BaseComponent {
     this._setPageData();
     this._subscribeDialogParams();
 
-    this.rankings$ = _route.data.pipe(
-      map(data => data.rankings)
+    const coldRankings$ = _route.data.pipe(map(data => data.rankings));
+    const hotRankings$ = _rankingService.getAll().pipe(
+      skip(1)
     );
+    this.rankings$ = merge(coldRankings$, hotRankings$);
 
     this.canStart$ = this._authService.permissions$.pipe(
       map(permissions => permissions && permissions.trackmania_write) // TODO Start with resolved value to avoid flickering
