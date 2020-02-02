@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import { AuthModule } from '@shared/auth/auth.module';
 import { LayoutModule } from '@shared/layout/layout.module';
 import { TrackmaniaModule } from '@shared/trackmania/trackmania.module';
 
@@ -22,6 +23,7 @@ import { RankingResolver } from './resolvers/ranking-resolver';
     MatTableModule,
 
     // Custom
+    AuthModule,
     LayoutModule,
     TrackmaniaModule
   ], providers: [

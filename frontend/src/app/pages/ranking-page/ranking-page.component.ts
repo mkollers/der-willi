@@ -9,8 +9,8 @@ import { BaseComponent } from '@shared/helper/components/base.component';
 import { HeaderService } from '@shared/layout/services/header.service';
 import { CreateRoundDialogComponent } from '@shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
 import { TrackTimesDialogComponent } from '@shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
-import * as faker from 'faker';
 import storage from 'local-storage-fallback';
+import shuffle from 'lodash/shuffle';
 import { merge, Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, skip, takeWhile, tap } from 'rxjs/operators';
 
@@ -62,11 +62,11 @@ export class RankingPageComponent extends BaseComponent {
     dialogref.beforeClosed().pipe(
       tap(() => this._router.navigate([this._router.url], { queryParams: {} })), // Remove query params
       filter(names => names && names.length), // Open next dialog if names are set
-      tap(names => this.trackRound(names))
+      tap(names => this._trackRound(names))
     ).subscribe();
   }
 
-  private _setPageData = () => {
+  private _setPageData() {
     this._header.headline = 'Trackmania Turbo';
     this._header.navigateBackUri = null;
     this._title.setTitle('Trackmania Turbo - Männerabend 2.0');
@@ -82,8 +82,8 @@ export class RankingPageComponent extends BaseComponent {
     ).subscribe();
   }
 
-  private trackRound(names: string[]) {
-    names = faker.helpers.shuffle(names);
+  private _trackRound(names: string[]) {
+    names = shuffle(names);
 
     const dialogref = this._dialog.open(TrackTimesDialogComponent, {
       data: names,
@@ -92,7 +92,7 @@ export class RankingPageComponent extends BaseComponent {
 
     dialogref.beforeClosed().pipe(
       filter(again => again),
-      tap(() => this.trackRound(names))
+      tap(() => this._trackRound(names))
     ).subscribe();
   }
 }

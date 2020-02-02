@@ -7,7 +7,7 @@
   <h1 fxFlex>{{ headline$ | async }}</h1>
   <div class="spacer">
     <button mat-icon-button id="user-avatar" *ngIf="user$ | async as user" [matMenuTriggerFor]="appMenu">
-      {{ user.email[0].toUpperCase() }}
+      {{ user.email[0]?.toUpperCase() }}
     </button>
   </div>
 </mat-toolbar>
