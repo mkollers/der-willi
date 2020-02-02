@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Ranking } from '@shared/data-access/models/ranking';
 import { RankingService } from '@shared/data-access/services/ranking.service';
-import orderBy from 'lodash/orderBy';
 import { first } from 'rxjs/operators';
 
 @Injectable()

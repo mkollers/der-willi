@@ -4,14 +4,15 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@shared/auth/services/auth.service';
 import { Ranking } from '@shared/data-access/models/ranking';
+import { RankingService } from '@shared/data-access/services/ranking.service';
 import { BaseComponent } from '@shared/helper/components/base.component';
 import { HeaderService } from '@shared/layout/services/header.service';
 import { CreateRoundDialogComponent } from '@shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
 import { TrackTimesDialogComponent } from '@shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
 import * as faker from 'faker';
-import { Observable, merge } from 'rxjs';
-import { distinctUntilChanged, filter, map, takeWhile, tap, skip } from 'rxjs/operators';
-import { RankingService } from '@shared/data-access/services/ranking.service';
+import storage from 'local-storage-fallback';
+import { merge, Observable } from 'rxjs';
+import { distinctUntilChanged, filter, map, skip, takeWhile, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ranking-page',
@@ -28,17 +29,17 @@ export class RankingPageComponent extends BaseComponent {
     private _authService: AuthService,
     private _dialog: MatDialog,
     private _header: HeaderService,
-    private _rankingService: RankingService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _title: Title
+    private _title: Title,
+    rankingService: RankingService,
   ) {
     super();
     this._setPageData();
     this._subscribeDialogParams();
 
     const coldRankings$ = _route.data.pipe(map(data => data.rankings));
-    const hotRankings$ = _rankingService.getAll().pipe(
+    const hotRankings$ = rankingService.getAll().pipe(
       skip(1)
     );
     this.rankings$ = merge(coldRankings$, hotRankings$);
@@ -48,6 +49,11 @@ export class RankingPageComponent extends BaseComponent {
     );
   }
 
+  startRound() {
+    const names = storage.getItem('names') || '';
+    return this._router.navigate(['.'], { queryParams: { names } });
+  }
+
   start() {
     const dialogref = this._dialog.open(CreateRoundDialogComponent, {
       panelClass: 'fullscreen-mobile'
@@ -55,7 +61,7 @@ export class RankingPageComponent extends BaseComponent {
 
     dialogref.beforeClosed().pipe(
       tap(() => this._router.navigate([this._router.url], { queryParams: {} })), // Remove query params
-      filter(names => names && names.length),
+      filter(names => names && names.length), // Open next dialog if names are set
       tap(names => this.trackRound(names))
     ).subscribe();
   }

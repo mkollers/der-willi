@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BaseComponent } from '@shared/helper/components/base.component';
 import * as faker from 'faker';
+import storage from 'local-storage-fallback';
 import * as _ from 'lodash';
 import { distinctUntilChanged, map, takeWhile, tap } from 'rxjs/operators';
-
-import { BaseComponent } from '../../../../shared/helper/components/base.component';
 
 @Component({
   selector: 'trackmania-create-round-dialog',
@@ -39,14 +39,18 @@ export class CreateRoundDialogComponent extends BaseComponent {
       map(names => _.filter(names, n => !!n)),                          // remove empty string from list
       map(names => names.join(',')),                                    // join to comma seperated string
       distinctUntilChanged(),
-      tap(names => this._router.navigate(['.'], { queryParams: { names } }))
+      tap(names => this._router.navigate(['.'], { queryParams: { names } })),
+      tap(names => storage.setItem('names', names))
     ).subscribe();
   }
 
   private _initFormGroup() {
-    // Prefill data from query params
-    const names = this._route.snapshot.queryParams.names.split(',');
+    // Prefill data from query params or localstorage
+    let names: string[];
+    names = this._route.snapshot.queryParams.names.split(',');
+
     const players = [this._createPlayer(true, names[0]), this._createPlayer(true, names[1])];
+    console.log(players);
 
     for (let i = 2; i < names.length; i++) {
       const player = this._createPlayer(true, names[i]);

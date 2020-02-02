@@ -24,5 +24,5 @@
 
 <app-action-bar *ngIf="canStart$ | async">
   <span></span>
-  <button mat-button color="accent" [routerLink]="['.']" [queryParams]="{ 'names': '' }">Runde Starten</button>
+  <button mat-button color="accent" (click)="startRound()">Runde Starten</button>
 </app-action-bar>
