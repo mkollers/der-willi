@@ -2,7 +2,6 @@
 @import './themes/dialog';
 @import './themes/tabs';
 @import './themes/toolbar';
-@import './app/pages/track-list-page/_track-list-page-theme';
 @import './app/shared/layout/components/header/_header-theme';
 
 html,
@@ -19,7 +18,6 @@ body {
   @include der-willi-header-theme($theme);
   @include tabs-theme($theme);
   @include toolbar-theme($theme);
-  @include track-list-page-theme($theme);
 }
 
 // Include theme styles for core and each component used in your app.

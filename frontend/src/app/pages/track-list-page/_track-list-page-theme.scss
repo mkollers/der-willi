@@ -1,6 +1,0 @@
-@import "~@angular/material/theming";
-
-@mixin track-list-page-theme($theme) {
-  $foreground: map-get($theme, foreground);
-
-}
