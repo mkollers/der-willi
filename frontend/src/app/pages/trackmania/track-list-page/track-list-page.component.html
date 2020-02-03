@@ -1,8 +1,0 @@
-<section fyLayout="row" fxLayoutAlign="center center">
-  <section fxLayout="row wrap" fxLayoutGap="2px grid">
-    <button *ngFor="let track of tracks$ | async" fxFlex="calc(20% - 2px)" class="track-button" [routerLink]="track"
-      mat-button>
-      <img [src]="'/assets/tracks/' + (track | number: '3.0') + '.png'">
-    </button>
-  </section>
-</section>

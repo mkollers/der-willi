@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { BaseComponent } from '@shared/helper/components/base.component';
+import { HeaderService } from '@shared/layout/services/header.service';
 import { Observable } from 'rxjs';
 import { map, takeWhile, tap } from 'rxjs/operators';
-
-import { BaseComponent } from './../../../shared/helper/components/base.component';
-import { HeaderService } from './../../../shared/layout/services/header.service';
 
 @Component({
   selector: 'app-track-list-page',
@@ -14,26 +13,19 @@ import { HeaderService } from './../../../shared/layout/services/header.service'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TrackListPageComponent extends BaseComponent {
-  tracks$: Observable<number[]>;
+  tracks = new Array(160);
 
   constructor(
     private _header: HeaderService,
-    private _route: ActivatedRoute,
     private _title: Title
   ) {
     super();
-    this.setPageData();
-
-    this.tracks$ = this._route.data.pipe(map(data => data.tracks));
+    this._setPageData();
   }
 
-  setPageData() {
-    this._header.navigateBackUri = '/series';
-    this._route.data.pipe(
-      takeWhile(() => this.alive),
-      map(data => data.title),
-      tap(value => this._header.headline = value),
-      tap(value => this._title.setTitle(`${value} - Männerabend 2.0`))
-    ).subscribe();
+  private _setPageData() {
+    this._header.headline = 'Tracks';
+    this._header.navigateBackUri = null;
+    this._title.setTitle(`Tracks - Männerabend 2.0`);
   }
 }

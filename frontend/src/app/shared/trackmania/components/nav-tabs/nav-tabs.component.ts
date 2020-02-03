@@ -14,7 +14,7 @@ export class NavTabsComponent {
     url: '/ranking'
   }, {
     name: 'Tracks',
-    url: '/series'
+    url: '/tracks'
   }];
 
   constructor() { }

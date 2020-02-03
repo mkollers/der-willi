@@ -1,0 +1,43 @@
+@import '../../../themes/breakpoints.scss';
+
+:host {
+  column-gap: .5rem;
+  display: grid;
+  padding: 3.5rem .5rem .5rem .5rem;
+  row-gap: .5rem;
+}
+
+.track-button {
+  padding: 0;
+  border-radius: 0;
+}
+
+.track-button:disabled {
+  opacity: .2;
+}
+
+img {
+  width: 100%;
+  display: inline-block;
+}
+
+@media #{$mat-gt-sm} {
+  :host {
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+}
+
+@media #{$mat-sm} {
+  :host {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+  }
+}
+
+@media #{$mat-xs} {
+  :host {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(32, 1fr);
+  }
+}
