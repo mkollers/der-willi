@@ -14,7 +14,10 @@ const routes: Routes = [
       {
         path: '', canActivate: [TrackmaniaReadGuard], children: [
           { path: 'ranking', loadChildren: () => import('./pages/ranking-page/ranking-page.module').then(m => m.RankingPageModule) },
-          { path: 'series', loadChildren: './pages/trackmania/series-list-page/series-list-page.module#SeriesListPageModule' },
+          {
+            path: 'series',
+            loadChildren: () => import('./pages/series-list-page/series-list-page.module').then(m => m.SeriesListPageModule)
+          },
           { path: '**', redirectTo: 'ranking' }
         ]
       }
