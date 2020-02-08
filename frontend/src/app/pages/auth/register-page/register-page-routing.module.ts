@@ -5,7 +5,10 @@ import { RegisterPageComponent } from './register-page.component';
 
 const routes: Routes = [
   { path: '', component: RegisterPageComponent },
-  { path: 'personal-data', loadChildren: '../personal-data-page/personal-data-page.module#PersonalDataPageModule' }
+  {
+    path: 'personal-data',
+    loadChildren: () => import('../personal-data-page/personal-data-page.module').then(m => m.PersonalDataPageModule)
+  }
 ];
 
 @NgModule({

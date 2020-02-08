@@ -25,11 +25,22 @@ const routes: Routes = [
   },
   {
     path: 'error', component: NoShellComponent, children: [
-      { path: 'forbidden', loadChildren: './pages/auth/forbidden-page/forbidden-page.module#ForbiddenPageModule' }
+      {
+        path: 'forbidden',
+        loadChildren: () => import('./pages/auth/forbidden-page/forbidden-page.module').then(m => m.ForbiddenPageModule)
+      }
     ]
   },
-  { path: 'login', component: NoShellComponent, loadChildren: './pages/auth/login-page/login-page.module#LoginPageModule' },
-  { path: 'signup', component: NoShellComponent, loadChildren: './pages/auth/register-page/register-page.module#RegisterPageModule' },
+  {
+    path: 'login',
+    component: NoShellComponent,
+    loadChildren: () => import('./pages/auth/login-page/login-page.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'signup',
+    component: NoShellComponent,
+    loadChildren: () => import('./pages/auth/register-page/register-page.module').then(m => m.RegisterPageModule)
+  },
   { path: '**', redirectTo: '' }];
 
 @NgModule({
