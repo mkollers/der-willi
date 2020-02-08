@@ -1,5 +1,6 @@
 <nav mat-tab-nav-bar color="accent">
-  <a *ngFor="let tab of tabs" mat-tab-link [routerLink]="tab.url" routerLinkActive #rla="routerLinkActive" [active]="isViewInitialized && isLinkActive(rla)">
+  <a *ngFor="let tab of tabs" mat-tab-link [routerLink]="tab.url" routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive">
     {{ tab.name }}
   </a>
 </nav>
