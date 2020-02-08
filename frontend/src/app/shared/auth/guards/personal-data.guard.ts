@@ -19,7 +19,7 @@ export class PersonalDataGuard implements CanActivate {
   async canActivate() {
     const auth = await this._authService.user$.pipe(first()).toPromise();
     const user = await this._userService.getUser(auth.uid).pipe(first()).toPromise();
-    if (user && user.forename && user.surname) {
+    if (user?.forename && user?.surname) {
       return true;
     }
 
