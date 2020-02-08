@@ -46,7 +46,6 @@ export class CreateRoundDialogComponent extends BaseComponent {
     names = this._route.snapshot.queryParams.names.split(',');
 
     const players = [this._createPlayer(true, names[0]), this._createPlayer(true, names[1])];
-    console.log(players);
 
     for (let i = 2; i < names.length; i++) {
       const player = this._createPlayer(true, names[i]);
