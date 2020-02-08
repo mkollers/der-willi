@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, InjectionToken } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import * as faker from 'faker';
 import * as _ from 'lodash';
 import { LapTime } from 'src/app/shared/data-access/models/lap-time';
 
@@ -28,7 +27,7 @@ export class TrackTimesDialogComponent {
     private _lapTimeService: LapTimeService
   ) {
     this.initFormGroup();
-    this.track = faker.random.number({ min: 1, max: maxTrack });
+    this.track = Math.floor(Math.random() * (maxTrack - 1 + 1) + 1);
   }
 
   private initFormGroup() {

@@ -3,7 +3,6 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseComponent } from '@shared/helper/components/base.component';
-import * as faker from 'faker';
 import storage from 'local-storage-fallback';
 import * as _ from 'lodash';
 import { distinctUntilChanged, map, takeWhile, tap } from 'rxjs/operators';
@@ -27,9 +26,6 @@ export class CreateRoundDialogComponent extends BaseComponent {
     super();
     this._initFormGroup();
     this._updateQueryParams();
-    for (let i = 0; i < faker.random.number({ min: 5, max: 30 }); i++) {
-      this.names.push(faker.name.firstName());
-    }
   }
 
   private _updateQueryParams() {
