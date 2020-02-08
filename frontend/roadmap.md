@@ -1,5 +1,4 @@
 * Autocomplete users
-* Ranking
 * CanLoad Guards instead of CanActivate
 * Hot reload
 * Add sentry logging 
