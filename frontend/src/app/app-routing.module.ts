@@ -9,21 +9,6 @@ import { TrackmaniaReadGuard } from './shared/trackmania/guards/trackmania-read.
 
 const routes: Routes = [
   {
-    path: '', component: ShellComponent, canActivate: [AuthGuard, PersonalDataGuard],
-    runGuardsAndResolvers: 'always', children: [
-      {
-        path: '', canActivate: [TrackmaniaReadGuard], children: [
-          { path: 'ranking', loadChildren: () => import('./pages/ranking-page/ranking-page.module').then(m => m.RankingPageModule) },
-          {
-            path: 'tracks',
-            loadChildren: () => import('./pages/track-list-page/track-list-page.module').then(m => m.TrackListPageModule)
-          },
-          { path: '**', redirectTo: 'ranking' }
-        ]
-      }
-    ]
-  },
-  {
     path: 'error', component: NoShellComponent, children: [
       {
         path: 'forbidden',
@@ -40,6 +25,21 @@ const routes: Routes = [
     path: 'signup',
     component: NoShellComponent,
     loadChildren: () => import('./pages/auth/register-page/register-page.module').then(m => m.RegisterPageModule)
+  },
+  {
+    path: '', component: ShellComponent, canActivate: [AuthGuard, PersonalDataGuard],
+    runGuardsAndResolvers: 'always', children: [
+      {
+        path: '', canActivate: [TrackmaniaReadGuard], children: [
+          { path: 'ranking', loadChildren: () => import('./pages/ranking-page/ranking-page.module').then(m => m.RankingPageModule) },
+          {
+            path: 'tracks',
+            loadChildren: () => import('./pages/track-list-page/track-list-page.module').then(m => m.TrackListPageModule)
+          },
+          { path: '**', redirectTo: 'ranking' }
+        ]
+      }
+    ]
   },
   { path: '**', redirectTo: '' }];
 
