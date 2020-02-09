@@ -12,16 +12,16 @@
     <ng-container formArrayName="players" *ngFor="let player of fg.get('players')['controls']; let i = index;">
       <mat-form-field [formGroupName]="i" color="accent">
         <mat-label>Spieler {{ i + 1 }}</mat-label>
-        <input [tabindex]="-1" type="text" matInput formControlName="name" [matAutocomplete]="auto"
+        <input [tabindex]="i + 1  " type="text" matInput formControlName="name" [matAutocomplete]="auto"
           [required]="fg.get('players')['controls'][i].get('name').errors !== null && fg.get('players')['controls'][i].get('name').errors.required">
       </mat-form-field>
     </ng-container>
-    <button tabindex="0" color="accent" mat-stroked-button (click)="addPlayer()" type="button">
+    <button tabindex="998" color="accent" mat-stroked-button (click)="addPlayer()" type="button">
       <mat-icon>&#xe147;</mat-icon>&nbsp;Spieler hinzufügen
     </button>
   </mat-dialog-content>
   <mat-toolbar mat-dialog-actions>
-    <button type="submit" mat-button color="accent">Weiter</button>
+    <button type="submit" tabindex="999" mat-stroked-button color="accent">Weiter</button>
   </mat-toolbar>
 </form>
 

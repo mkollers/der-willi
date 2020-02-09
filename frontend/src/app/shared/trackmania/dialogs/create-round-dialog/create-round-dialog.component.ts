@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -20,6 +21,7 @@ export class CreateRoundDialogComponent extends BaseComponent {
   constructor(
     private _dialogRef: MatDialogRef<CreateRoundDialogComponent>,
     private _fb: FormBuilder,
+    private _location: Location,
     private _router: Router,
     private _route: ActivatedRoute
   ) {
@@ -35,8 +37,8 @@ export class CreateRoundDialogComponent extends BaseComponent {
       map(names => _.filter(names, n => !!n)),                          // remove empty string from list
       map(names => names.join(',')),                                    // join to comma seperated string
       distinctUntilChanged(),
-      tap(names => this._router.navigate(['.'], { queryParams: { names } })),
-      tap(names => storage.setItem('names', names))
+      tap(names => storage.setItem('names', names)),
+      tap(names => this._location.go(`${this._route.url}?names=${names}`))
     ).subscribe();
   }
 
