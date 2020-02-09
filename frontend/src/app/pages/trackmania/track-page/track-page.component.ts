@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LapTime } from '@shared/data-access/models/lap-time';
+import { BaseComponent } from '@shared/helper/components/base.component';
+import { HeaderService } from '@shared/layout/services/header.service';
 import { Observable } from 'rxjs';
 import { map, takeWhile, tap } from 'rxjs/operators';
-
-import { LapTime } from '../../../shared/data-access/models/lap-time';
-import { BaseComponent } from '../../../shared/helper/components/base.component';
-import { HeaderService } from '../../../shared/layout/services/header.service';
 
 @Component({
   selector: 'app-track-page',

@@ -1,32 +1,58 @@
+@import '../../../../themes/breakpoints.scss';
+
 :host {
-    flex-direction: column;
-    padding-top: 0;
-  }
-  
-  // Table
-  :host ::ng-deep .mat-footer-row,
-  :host ::ng-deep .mat-header-row,
-  :host ::ng-deep .mat-row {
+  display: grid;
+  grid-column-gap: 0;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.mat-table {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+:host .mat-table ::ng-deep {
+
+  .mat-footer-row,
+  .mat-header-row,
+  .mat-row {
     border-bottom: none;
   }
-  
-  :host ::ng-deep .mat-header-row {
+
+  .mat-header-row {
     text-transform: uppercase;
-    min-height: 40px;
   }
-  
-  :host ::ng-deep .mat-header-cell {
+
+  .mat-header-cell {
     color: rgba(255, 255, 255, .4);
     align-items: flex-end;
+    min-height: 40px;
   }
-  
-  :host ::ng-deep .mat-cell {
+
+  .mat-cell {
     color: rgba(255, 255, 255, .8);
   }
-  
-  :host ::ng-deep .mat-cell,
-  :host ::ng-deep .mat-footer-cell,
-  :host ::ng-deep .mat-header-cell {
+
+  .mat-cell,
+  .mat-footer-cell,
+  .mat-header-cell {
     font-weight: 300;
   }
-  
+}
+
+@media #{$mat-gt-sm} {
+  :host {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr auto 1fr;
+  }
+
+  .mat-table {
+    border-radius: .25rem;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+    grid-area: 2 / 2 / 3 / 3;
+    margin: 1rem;
+    min-width: 30rem;
+    padding: 0 1rem 1rem 1rem;
+  }
+}
