@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@shared/auth/services/auth.service';
 import { Ranking } from '@shared/data-access/models/ranking';
+import { RacerService } from '@shared/data-access/services/racer.service';
 import { RankingService } from '@shared/data-access/services/ranking.service';
 import { BaseComponent } from '@shared/helper/components/base.component';
 import { HeaderService } from '@shared/layout/services/header.service';
@@ -12,7 +13,7 @@ import { TrackTimesDialogComponent } from '@shared/trackmania/dialogs/track-time
 import storage from 'local-storage-fallback';
 import shuffle from 'lodash/shuffle';
 import { merge, Observable } from 'rxjs';
-import { distinctUntilChanged, filter, map, skip, takeWhile, tap } from 'rxjs/operators';
+import { distinctUntilChanged, filter, first, map, skip, takeWhile, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ranking-page',
@@ -29,6 +30,7 @@ export class RankingPageComponent extends BaseComponent {
     private _authService: AuthService,
     private _dialog: MatDialog,
     private _header: HeaderService,
+    private _racerService: RacerService,
     private _route: ActivatedRoute,
     private _router: Router,
     private _title: Title,
@@ -54,15 +56,17 @@ export class RankingPageComponent extends BaseComponent {
     return this._router.navigate(['.'], { queryParams: { names } });
   }
 
-  start() {
+  async start() {
+    const racer = await this._racerService.getAll().pipe(first()).toPromise();
     const dialogref = this._dialog.open(CreateRoundDialogComponent, {
       panelClass: ['no-padding', 'fullscreen-mobile'],
-      maxWidth: '28rem'
+      maxWidth: '28rem',
+      data: racer.map(r => r.name)
     });
 
     dialogref.beforeClosed().pipe(
       tap(() => this._router.navigate([this._router.url], { queryParams: {} })), // Remove query params
-      filter(names => names && names.length), // Open next dialog if names are set
+      filter(names => names?.length), // Open next dialog if names are set
       tap(names => this._trackRound(names))
     ).subscribe();
   }

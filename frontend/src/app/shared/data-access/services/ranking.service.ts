@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import flatten from 'lodash/flatten';
 import groupBy from 'lodash/groupBy';
 import mapValues from 'lodash/mapValues';
 import orderBy from 'lodash/orderBy';
+import sumBy from 'lodash/sumBy';
 import uniqBy from 'lodash/uniqBy';
 import values from 'lodash/values';
-import flatten from 'lodash/flatten';
-import sumBy from 'lodash/sumBy';
-import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { LapTime } from '../models/lap-time';
 import { Ranking } from '../models/ranking';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

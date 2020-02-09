@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { BaseComponent } from '@shared/helper/components/base.component';
 import storage from 'local-storage-fallback';
@@ -15,9 +15,9 @@ import { distinctUntilChanged, map, takeWhile, tap } from 'rxjs/operators';
 })
 export class CreateRoundDialogComponent extends BaseComponent {
   fg: FormGroup;
-  names: string[] = [];
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public names: string[] = [],
     private _dialogRef: MatDialogRef<CreateRoundDialogComponent>,
     private _fb: FormBuilder,
     private _location: Location,

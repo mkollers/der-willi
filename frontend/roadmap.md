@@ -1,4 +1,3 @@
-* Autocomplete users
 * Cleanup folder structure
 * CanLoad Guards instead of CanActivate
 * Hot reload
