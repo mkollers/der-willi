@@ -1,9 +1,36 @@
-h1 {
-  text-align: center;
-  font-weight: 300;
-  text-transform: uppercase;
+:host {
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
-.mat-dialog-content {
-  margin: 0;
+.dialog__header {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  row-gap: .5rem;
+  padding: 0 1.5rem;
+
+  h1 {
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+}
+
+form {
+  display: grid;
+  grid-template-rows: 1fr auto;
+
+  .mat-dialog-content {
+    display: grid;
+    margin: 0;
+    padding: 0 1.5rem;
+    row-gap: .5rem;
+
+    .mat-stroked-button {
+      margin: 0 auto 1rem auto;
+    }
+  }
+
+  .mat-dialog-actions {
+    padding: 0 1.5rem;
+  }
 }

@@ -57,6 +57,11 @@ export class CreateRoundDialogComponent extends BaseComponent {
     });
   }
 
+  getCssGridRows() {
+    const rows: number = this.fg.get('players')['controls'].length + 2;
+    return new Array(rows).fill('auto').join(' ') + ' 1fr';
+  }
+
   private _createPlayer(required = false, name = '') {
     const validators = [];
     if (required) {

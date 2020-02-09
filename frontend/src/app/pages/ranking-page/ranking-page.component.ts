@@ -56,7 +56,8 @@ export class RankingPageComponent extends BaseComponent {
 
   start() {
     const dialogref = this._dialog.open(CreateRoundDialogComponent, {
-      panelClass: 'fullscreen-mobile'
+      panelClass: ['no-padding', 'fullscreen-mobile'],
+      maxWidth: '28rem'
     });
 
     dialogref.beforeClosed().pipe(
