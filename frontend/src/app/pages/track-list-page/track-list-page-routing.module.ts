@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', component: TrackListPageComponent },
   {
     path: ':trackId',
-    loadChildren: () => import('../trackmania/track-page/track-page.module').then(m => m.TrackPageModule)
+    loadChildren: () => import('../track-page/track-page.module').then(m => m.TrackPageModule)
   }
 ];
 
