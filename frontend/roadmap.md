@@ -1,4 +1,3 @@
-* Fix lodash imports
 * Autocomplete users
 * Cleanup folder structure
 * CanLoad Guards instead of CanActivate

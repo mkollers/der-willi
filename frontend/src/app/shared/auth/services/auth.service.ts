@@ -1,7 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Dictionary } from 'lodash';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 
@@ -11,7 +10,7 @@ import { filter, map, switchMap, tap } from 'rxjs/operators';
 export class AuthService implements OnDestroy {
   private _refreshTokenSubscription: Subscription;
   user$: Observable<firebase.User>;
-  permissions$: Observable<Dictionary<boolean>>;
+  permissions$: Observable<{ [key: string]: boolean }>;
 
   constructor(
     private _auth: AngularFireAuth,

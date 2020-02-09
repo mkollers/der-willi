@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject, InjectionToken } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LapTime } from '@shared/data-access/models/lap-time';
 import { LapTimeService } from '@shared/data-access/services/lap-time.service';
-import * as _ from 'lodash';
 
 export const MAX_TRACK = new InjectionToken<string>('MAX_TRACK');
 
@@ -30,11 +29,10 @@ export class TrackTimesDialogComponent {
   }
 
   private initFormGroup() {
-    const controls = _.chain(this.names)
-      .map((n: string) => ({ key: n, control: this._fb.control('00:00,00', Validators.required) }))
-      .keyBy(o => o.key)
-      .mapValues(o => o.control)
-      .value();
+    const controls: { [key: string]: FormControl } = {};
+    for (const name of this.names) {
+      controls[name] = this._fb.control('00:00,00', Validators.required);
+    }
 
     this.fg = this._fb.group(controls);
   }

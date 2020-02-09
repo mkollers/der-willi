@@ -2,10 +2,9 @@ import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BaseComponent } from '@shared/helper/components/base.component';
 import storage from 'local-storage-fallback';
-import * as _ from 'lodash';
 import { distinctUntilChanged, map, takeWhile, tap } from 'rxjs/operators';
 
 @Component({
@@ -22,7 +21,6 @@ export class CreateRoundDialogComponent extends BaseComponent {
     private _dialogRef: MatDialogRef<CreateRoundDialogComponent>,
     private _fb: FormBuilder,
     private _location: Location,
-    private _router: Router,
     private _route: ActivatedRoute
   ) {
     super();
@@ -33,9 +31,9 @@ export class CreateRoundDialogComponent extends BaseComponent {
   private _updateQueryParams() {
     this.fg.get('players').valueChanges.pipe(
       takeWhile(() => this.alive),
-      map((values: { name: string }[]) => _.map(values, v => v.name)),  // flatten objects
-      map(names => _.filter(names, n => !!n)),                          // remove empty string from list
-      map(names => names.join(',')),                                    // join to comma seperated string
+      map((values: { name: string }[]) => values.map(v => v.name)),  // flatten objects
+      map(names => names.filter(n => !!n)),                          // remove empty string from list
+      map(names => names.join(',')),                                 // join to comma seperated string
       distinctUntilChanged(),
       tap(names => storage.setItem('names', names)),
       tap(names => this._location.go(`${this._route.url}?names=${names}`))
