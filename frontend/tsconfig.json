@@ -5,10 +5,11 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "target": "es2015",
     "typeRoots": [
@@ -19,15 +20,13 @@
       "dom"
     ],
     "paths": {
-      "@shared*": [
-        "src/app/shared*"
-      ],
-      "@pages/*": [
-        "src/app/pages/*"
-      ],
-      "@mocks/*": [
-        "src/mocks/*"
-      ]
+      "@shared*": ["src/app/shared*"],
+      "@pages/*": ["src/app/pages/*"],
+      "@mocks/*": ["src/mocks/*"]
     }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }

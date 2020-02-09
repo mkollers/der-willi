@@ -8,7 +8,7 @@
       "schematics": {
         "@schematics/angular:component": {
           "changeDetection": "OnPush",
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "root": "",
@@ -155,6 +155,6 @@
   },
   "defaultProject": "der-willi",
   "cli": {
-    "analytics": false
+    "analytics": "a36cb21b-b880-47f0-bb65-ede72bbef282"
   }
 }
