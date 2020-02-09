@@ -11,3 +11,4 @@
 * e2e Tests
 * Facebook login
 * Angular Universal + GCP Hosting
+* Push notifications
