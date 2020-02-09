@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
-import { AuthService } from '../../../shared/auth/services/auth.service';
-import { User } from '../../../shared/data-access/models/user';
-import { UserService } from '../../../shared/data-access/services/user.service';
-import { LoaderService } from '../../../shared/layout/services/loader.service';
+import { AuthService } from '@shared/auth/services/auth.service';
+import { User } from '@shared/data-access/models/user';
+import { UserService } from '@shared/data-access/services/user.service';
+import { LoaderService } from '@shared/layout/services/loader.service';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -16,8 +15,6 @@ import { first } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonalDataPageComponent {
-  @HostBinding('class.center-vertical') centerVertical = true;
-  @HostBinding('class.page-padding') pagePadding = true;
   fg: FormGroup;
 
   constructor(
@@ -29,7 +26,7 @@ export class PersonalDataPageComponent {
     fb: FormBuilder
   ) {
     this.fg = fb.group({
-      forename: fb.control('', [Validators.required]),
+      forename: fb.control('', Validators.required),
       surname: fb.control('', Validators.required),
       nickname: fb.control(''),
     });

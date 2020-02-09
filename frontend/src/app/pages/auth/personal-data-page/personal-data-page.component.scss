@@ -1,0 +1,20 @@
+:host {
+  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1fr auto 1fr;
+  row-gap: 1rem;
+}
+
+form {
+  display: grid;
+  grid-area: 2 / 2 / 3 / 3;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, auto);
+  max-width: 28rem;
+  row-gap: .5rem;
+}
+
+.mat-flat-button {
+  margin: 0 0 0 auto;
+}
