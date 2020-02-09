@@ -88,7 +88,7 @@ export class RankingPageComponent extends BaseComponent {
 
     const dialogref = this._dialog.open(TrackTimesDialogComponent, {
       data: names,
-      panelClass: 'fullscreen-mobile'
+      panelClass: ['no-padding', 'fullscreen-mobile']
     });
 
     dialogref.beforeClosed().pipe(

@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject, InjectionToken } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { LapTime } from '@shared/data-access/models/lap-time';
+import { LapTimeService } from '@shared/data-access/services/lap-time.service';
 import * as _ from 'lodash';
-import { LapTime } from 'src/app/shared/data-access/models/lap-time';
-
-import { LapTimeService } from '../../../data-access/services/lap-time.service';
 
 export const MAX_TRACK = new InjectionToken<string>('MAX_TRACK');
 
@@ -38,6 +37,11 @@ export class TrackTimesDialogComponent {
       .value();
 
     this.fg = this._fb.group(controls);
+  }
+
+  getCssGridRows() {
+    const rows: number = this.names.length + 1;
+    return new Array(rows).fill('auto').join(' ') + ' 1fr';
   }
 
   async finish(again = false) { // TODO: show loading animation

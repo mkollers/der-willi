@@ -1,23 +1,22 @@
-<mat-toolbar>
-  <div fxFlex="40px"></div>
-  <h1 fxFlex>Track {{ track }}</h1>
+<mat-toolbar class="dialog__header">
+  <h1>Track {{ track }}</h1>
   <button tabindex="-1" mat-icon-button mat-dialog-close>
     <mat-icon>&#xe5cd;</mat-icon>
   </button>
 </mat-toolbar>
 <form [formGroup]="fg" (ngSubmit)="fg.valid && finish()">
-  <mat-dialog-content fxLayout="column">
-    <div *ngFor="let name of names" fxLayout="row">
-      <span fxFlex class="name-label">{{ name }}</span>
-      <mat-form-field color="accent" fxFlex="150px">
+  <mat-dialog-content [style.grid-template-rows]="getCssGridRows()">
+    <ng-container *ngFor="let name of names">
+      <span class="name-label">{{ name }}</span>
+      <mat-form-field color="accent">
         <mat-label>Zeit</mat-label>
-        <input [textMask]="{mask: mask}" [tabindex]="-1" type="text" matInput [formControlName]="name" required autocomplete="off" (focus)="select($event)">
+        <input [textMask]="{mask: mask}" [tabindex]="-1" type="text" matInput [formControlName]="name" required
+          autocomplete="off" (focus)="select($event)">
       </mat-form-field>
-    </div>
+    </ng-container>
   </mat-dialog-content>
   <mat-toolbar mat-dialog-actions>
-    <button type="button" mat-button color="accent" (click)="fg.valid && finish(true)">Weitere Runde</button>
-    <span fxFlex></span>
-    <button type="submit" mat-button color="accent">Fertig</button>
+    <button type="button" mat-flat-button color="accent" (click)="fg.valid && finish(true)">Weitere Runde</button>
+    <button type="submit" mat-stroked-button color="accent">Fertig</button>
   </mat-toolbar>
 </form>

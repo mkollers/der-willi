@@ -1,11 +1,42 @@
-h1 {
-  text-align: center;
-  font-weight: 300;
-  text-transform: uppercase;
+:host {
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
-.mat-dialog-content {
-  margin: 16px 0;
+.dialog__header {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  row-gap: .5rem;
+  padding: 0 1.5rem;
+
+  h1 {
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+}
+
+form {
+  display: grid;
+  grid-template-rows: 1fr auto;
+
+  .mat-dialog-content {
+    column-gap: .5rem;
+    display: grid;
+    grid-template-columns: 1fr 9rem;
+    margin: 0;
+    padding: 1rem 1.5rem;
+    row-gap: .5rem;
+  }
+
+  .mat-dialog-actions {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding: 0 1.5rem;
+
+    *:last-child {
+      grid-area: 1 / 3 / 2 / 4;
+    }
+  }
 }
 
 .name-label {
