@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { AuthService } from '../../../shared/auth/services/auth.service';
-import { LoaderService } from '../../../shared/layout/services/loader.service';
+import { AuthService } from '@shared/auth/services/auth.service';
+import { LoaderService } from '@shared/layout/services/loader.service';
 
 @Component({
   selector: 'app-forbidden-page',
