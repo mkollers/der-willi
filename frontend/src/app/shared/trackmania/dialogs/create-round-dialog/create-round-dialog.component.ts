@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BaseComponent } from '@shared/helper/components/base.component';
 import storage from 'local-storage-fallback';
 import { distinctUntilChanged, map, takeWhile, tap } from 'rxjs/operators';
@@ -21,7 +21,8 @@ export class CreateRoundDialogComponent extends BaseComponent {
     private _dialogRef: MatDialogRef<CreateRoundDialogComponent>,
     private _fb: FormBuilder,
     private _location: Location,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _router: Router
   ) {
     super();
     this._initFormGroup();
@@ -36,7 +37,7 @@ export class CreateRoundDialogComponent extends BaseComponent {
       map(names => names.join(',')),                                 // join to comma seperated string
       distinctUntilChanged(),
       tap(names => storage.setItem('names', names)),
-      tap(names => this._location.go(`${this._route.url}?names=${names}`))
+      tap(names => this._location.go(`${this._router.url.split('?')[0]}?names=${names}`))
     ).subscribe();
   }
 
