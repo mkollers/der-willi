@@ -10,7 +10,6 @@ import { BaseComponent } from '@shared/helper/components/base.component';
 import { HeaderService } from '@shared/layout/services/header.service';
 import { CreateRoundDialogComponent } from '@shared/trackmania/dialogs/create-round-dialog/create-round-dialog.component';
 import { TrackTimesDialogComponent } from '@shared/trackmania/dialogs/track-times-dialog/track-times-dialog.component';
-import storage from 'local-storage-fallback';
 import shuffle from 'lodash/shuffle';
 import { merge, Observable } from 'rxjs';
 import { distinctUntilChanged, filter, first, map, skip, takeWhile, tap } from 'rxjs/operators';
@@ -52,7 +51,7 @@ export class RankingPageComponent extends BaseComponent {
   }
 
   startRound() {
-    const names = storage.getItem('names') || '';
+    const names = localStorage.getItem('names') || '';
     return this._router.navigate(['.'], { queryParams: { names } });
   }
 

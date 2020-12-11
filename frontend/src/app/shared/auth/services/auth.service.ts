@@ -1,6 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import firebase from 'firebase/app';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 
@@ -26,15 +27,14 @@ export class AuthService implements OnDestroy {
       filter(user => !!user),
       switchMap(this._mergeUserAndIssuedAtTime$),
       switchMap(([user, issuedAtTime]) => this._hasToEnforceTokenRefresh$(user, issuedAtTime)),
-      tap(() => this._auth.auth.currentUser.getIdToken(true)),
       tap(() => console.log('refresh token'))
     ).subscribe();
   }
 
-  forgotPassword = (email: string) => this._auth.auth.sendPasswordResetEmail(email);
-  login = (email: string, password: string) => this._auth.auth.signInWithEmailAndPassword(email, password);
-  logout = () => this._auth.auth.signOut();
-  register = (email: string, password: string) => this._auth.auth.createUserWithEmailAndPassword(email, password);
+  forgotPassword = (email: string) => this._auth.sendPasswordResetEmail(email);
+  login = (email: string, password: string) => this._auth.signInWithEmailAndPassword(email, password);
+  logout = () => this._auth.signOut();
+  register = (email: string, password: string) => this._auth.createUserWithEmailAndPassword(email, password);
 
   ngOnDestroy = () => this._refreshTokenSubscription.unsubscribe();
 

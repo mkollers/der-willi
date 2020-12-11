@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
 import { AuthService } from '../../../auth/services/auth.service';
