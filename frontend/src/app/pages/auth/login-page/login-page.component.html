@@ -15,9 +15,7 @@
       autocomplete="current-password">
     <mat-error *ngIf="fg.controls['password'].invalid">Bitte gib dein Kennwort ein</mat-error>
   </mat-form-field>
-  <a class="btn forgot-password" mat-stroked-button (click)="forgotPassword()">Kennwort vergessen?</a>
-  <a class="btn signup" mat-stroked-button routerLink="/signup">Konto erstellen</a>
-  <button class="btn submit login" mat-flat-button color="accent" type="submit">
-    <mat-icon>&#xe877;</mat-icon>&nbsp;Anmelden
-  </button>
+  <a class="outlined-btn forgot-password" (click)="forgotPassword()">Kennwort vergessen?</a>
+  <a class="outlined-btn signup" routerLink="/signup">Konto erstellen</a>
+  <button class="contained-btn primary submit login" type="submit">Anmelden</button>
 </form>

@@ -1,63 +1,24 @@
-@import './themes/turquoise-grey/index';
 @import './themes/dialog';
 @import './themes/tabs';
 @import './themes/toolbar';
 @import './app/shared/layout/components/header/_header-theme';
+@import 'themes/themes';
+
+/* Include common styles */
+@include mat-core();
+
+/* All custom styles, which probably override material styles */
+@import 'global';
 
 html,
 body {
+  font-family: 'Roboto', Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
   height: 100%;
-}
-
-body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1,
-h2,
-h3 {
-  margin: 0;
-}
-
-@mixin custom-theme($theme) {
-  @include der-willi-header-theme($theme);
-  @include tabs-theme($theme);
-  @include toolbar-theme($theme);
-}
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-$theme: $turquoise-grey-theme;
-@include angular-material-theme($theme);
-@include custom-theme($theme);
-
-/* General styles */
-$primary: map-get($theme, primary);
-$accent: map-get($theme, accent);
-$warn: map-get($theme, warn);
-$background: map-get($theme, background);
-$foreground: map-get($theme, foreground);
-$is-dark-theme: map-get($theme, is-dark);
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-text-fill-color: mat-color($foreground, text) !important;
-  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-h1 {
-  font-weight: 300;
-}
-
-.mat-menu-content:not(:empty) {
-  padding: 0 !important;
-}
-
-.no-padding .mat-dialog-container {
-  padding: 0;
+// Transition between themes
+* {
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s !important;
 }

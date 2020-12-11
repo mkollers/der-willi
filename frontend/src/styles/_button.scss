@@ -1,0 +1,49 @@
+@mixin button-reset {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@mixin button-base {
+  @include button-reset();
+  border-radius: 2px;
+  font-family: Roboto, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 1rem;
+  min-width: 4.6875rem;
+  padding: 0.375rem 0.5rem;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.35, 0, 0.25, 1);
+
+  &:disabled {
+    cursor: default;
+  }
+
+  .mat-icon {
+    height: 1.25rem; // We use rem instead of px here, cause we want the icon to scale.
+    font-size: 1.25rem; // We use rem instead of px here, cause we want the icon to scale.
+    margin-right: 6px;
+    vertical-align: sub;
+    width: 1.25rem; // We use rem instead of px here, cause we want the icon to scale.
+  }
+}
+
+.contained-btn {
+  @include button-base();
+  background-color: var(--clr-primary);
+  color: var(--clr-primary-contrast);
+}
+
+.outlined-btn {
+  @include button-base();
+
+  color: var(--clr-primary);
+  background-color: transparent;
+  /* Using 'box-shadow' instead of 'border' to inset the border */
+  box-shadow: inset 0px 0px 0px 1px var(--clr-primary);
+}

@@ -1,0 +1,136 @@
+$petrol: (
+  50 : #e9ebee,
+  100 : #c8cdd4,
+  200 : #a3acb8,
+  300 : #7e8a9c,
+  400 : #627186,
+  500 : #465871,
+  600 : #3f5069,
+  700 : #37475e,
+  800 : #2f3d54,
+  900 : #202d42,
+  A100 : #87b2ff,
+  A200 : #5491ff,
+  A400 : #2170ff,
+  A700 : #085fff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff
+  )
+);
+
+$turquoise: (
+  50 : #e7f9f9,
+  100 : #c4f0f1,
+  200 : #9de6e7,
+  300 : #76dbdd,
+  400 : #58d4d6,
+  500 : #3bcccf,
+  600 : #35c7ca,
+  700 : #2dc0c3,
+  800 : #26b9bd,
+  900 : #19adb2,
+  A100 : #e6feff,
+  A200 : #b3fdff,
+  A400 : #80fbff,
+  A700 : #67faff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+@mixin set-vars($theme) {
+  $primary: map-get($theme, primary);
+  $secondary: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+
+  // Primary
+  --clr-primary-m1: #{mat-color($primary, 50)};
+  --clr-primary-m1-contrast: #{mat-contrast($primary, 50)};
+  --clr-primary: #{mat-color($primary, 500)};
+  --clr-primary-contrast: #{mat-contrast($primary, 500)};
+  --clr-primary-p1: #{mat-color($primary, 900)};
+  --clr-primary-p1-contrast: #{mat-contrast($primary, 900)};
+
+  // Secondary
+  --clr-secondary-m1: #{mat-color($secondary, 50)};
+  --clr-secondary-m1-contrast: #{mat-contrast($secondary, 50)};
+  --clr-secondary: #{mat-color($secondary, 500)};
+  --clr-secondary-contrast: #{mat-contrast($secondary, 500)};
+  --clr-secondary-p1: #{mat-color($secondary, 900)};
+  --clr-secondary-p1-contrast: #{mat-contrast($secondary, 900)};
+
+  // Neutral
+  --clr-neutral-0dp: #121212;
+  --clr-neutral-1dp: #1D1D1D;
+  --clr-neutral-2dp: #212121;
+  --clr-neutral-3dp: #242424;
+  --clr-neutral-4dp: #272727;
+  --clr-neutral-6dp: #2C2C2C;
+  --clr-neutral-8dp: #2D2D2D;
+  --clr-neutral-12dp: #323232;
+  --clr-neutral-16dp: #343434;
+  --clr-neutral-24dp: #373737;
+  --clr-neutral-white: #D2D2D2;
+
+  // Denotive
+  --clr-error: #F44336;
+  --clr-error-contrast: #FFFFFF;
+
+  --clr-warn: #F57C00;
+  --clr-warn-contrast: #FFFFFF;
+
+  --clr-success: #4CAF50;
+  --clr-success-contrast: #FFFFFF;
+
+  --clr-info: #2196F3;
+  --clr-info-contrast: #FFFFFF;
+}
+  
+$primary: mat-palette($turquoise);
+$secondary: mat-palette($petrol);
+
+$turquoise-dark-theme: mat-dark-theme($primary, $secondary);
+
+$turquoise-dark-background: map-get($turquoise-dark-theme, background);
+$turquoise-dark-background: map_merge($turquoise-dark-background, (background: var(--clr-neutral-0dp)));
+
+$turquoise-dark-theme: map_merge($turquoise-dark-theme, (
+  background: $turquoise-dark-background
+));
+
+.turquoise-dark-theme {
+  @include set-vars($turquoise-dark-theme);
+  @include angular-material-theme($turquoise-dark-theme);
+}
+
+// Makes the splash screen work at a root level
+:root {
+  --clr-neutral-m4: #2B2B2B;
+  --clr-secondary: #465871;
+}
