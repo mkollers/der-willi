@@ -15,7 +15,7 @@ import { LoaderService } from '@shared/layout/services/loader.service';
 import { LoginPageComponent } from './login-page.component';
 import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
 
-describe('LoginPageComponent', () => {
+xdescribe('LoginPageComponent', () => {
   let component: LoginPageComponent;
   let fixture: ComponentFixture<LoginPageComponent>;
 

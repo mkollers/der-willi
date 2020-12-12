@@ -1,12 +1,12 @@
-@import './../../../../themes/breakpoints.scss';
+@import 'breakpoints.scss';
 
 :host {
   grid-template-columns: 1fr auto 1fr;
   grid-template-rows: 1fr auto 1fr;
   grid-template-areas:
-    "s1 s2 s3"
-    "s4 content s5"
-    "s6 s7 s8";
+    "_1 _2 _3"
+    "_4 content _5"
+    "_6 _7 _8";
 }
 
 form {

@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, INJECTOR, Injector } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
 import { ForgotPasswordDialogComponent } from '@shared/auth/dialogs/forgot-password-dialog/forgot-password-dialog.component';
 import { AuthService } from '@shared/auth/services/auth.service';
 import { BaseComponent } from '@shared/helper/components/base.component';
 import { LoaderService } from '@shared/layout/services/loader.service';
-import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
 
 @Component({
   selector: 'app-login-page',
@@ -19,11 +19,7 @@ export class LoginPageComponent extends BaseComponent {
   fg: FormGroup;
 
   constructor(
-    private _authService: AuthService,
-    private _dialog: MatDialog,
-    private _loaderService: LoaderService,
-    private _snackBar: MatSnackBar,
-    private _router: Router,
+    @Inject(INJECTOR) private _injector: Injector,
     fb: FormBuilder
   ) {
     super();
@@ -35,29 +31,37 @@ export class LoginPageComponent extends BaseComponent {
   }
 
   async login() {
-    this._loaderService.isLoading = true;
+    const authService = this._injector.get(AuthService);
+    const loaderService = this._injector.get(LoaderService);
+    const router = this._injector.get(Router);
+
+    loaderService.isLoading = true;
 
     try {
       const email: string = this.fg.value.email;
       const password: string = this.fg.value.password;
 
-      await this._authService.login(email, password);
-      this._router.navigateByUrl('/');
+      await authService.login(email, password);
+      router.navigateByUrl('/');
     } catch (err) {
       this._handleError(err);
-      this._loaderService.isLoading = false;
+      loaderService.isLoading = false;
     }
   }
 
   forgotPassword() {
-    this._dialog.open<ForgotPasswordDialogComponent, MatDialogConfig, void>(ForgotPasswordDialogComponent, {
+    const dialog = this._injector.get(MatDialog);
+
+    dialog.open<ForgotPasswordDialogComponent, MatDialogConfig, void>(ForgotPasswordDialogComponent, {
       width: '450px',
       maxWidth: 'calc(100% - 32px)'
     });
   }
 
   private _handleError(err: any) {
+    const snackBar = this._injector.get(MatSnackBar);
+
     const message = AuthErrorMessages[err.code] || 'Hoppla, da ist was schiefgelaufen...';
-    this._snackBar.open(message, '', { duration: 10000 });
+    snackBar.open(message, '', { duration: 10000 });
   }
 }
