@@ -8,7 +8,7 @@ import { LoaderService } from './shared/layout/services/loader.service';
 import { UpdateService } from './shared/layout/services/update.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-root, [app-root]',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

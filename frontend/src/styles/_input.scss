@@ -1,0 +1,17 @@
+textarea.mat-input-element,
+.mat-form-field {
+  font-size: .875rem;
+  letter-spacing: .25px;
+  line-height: 1.25rem;
+}
+
+.mat-form-field-subscript-wrapper {
+  margin-top: 0;
+}
+
+::placeholder {
+  white-space: nowrap;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

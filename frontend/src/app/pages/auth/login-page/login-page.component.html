@@ -1,21 +1,19 @@
-<form class="login-form" [formGroup]="fg" (ngSubmit)="fg.valid && login()">
-  <h1 class="headline">Anmeldung</h1>
-  <p>
-    Melde dich wieder mit deinem bestehenden Willi-Konto an.
-  </p>
-  <mat-form-field color="accent" class="input-wrapper email">
+<form [formGroup]="fg" (ngSubmit)="fg.valid && login()">
+  <h1>Anmeldung</h1>
+  <p>Du hast dich bereits registriert? Dann melde dich wieder mit deinem bestehenden Willi-Konto an.</p>
+  <mat-form-field id="email-input">
     <mat-label>E-Mail</mat-label>
     <input autofocus matInput type="email" placeholder="Deine E-Mail Adresse" formControlName="email"
       autocomplete="email">
     <mat-error *ngIf="fg.controls['email'].invalid">Bitte gib eine gültige E-Mail Adresse ein</mat-error>
   </mat-form-field>
-  <mat-form-field color="accent" class="input-wrapper password">
+  <mat-form-field id="password-input">
     <mat-label>Kennwort</mat-label>
     <input matInput type="password" placeholder="Dein Kennwort" formControlName="password"
       autocomplete="current-password">
     <mat-error *ngIf="fg.controls['password'].invalid">Bitte gib dein Kennwort ein</mat-error>
   </mat-form-field>
-  <a class="outlined-btn forgot-password" (click)="forgotPassword()">Kennwort vergessen?</a>
-  <a class="outlined-btn signup" routerLink="/signup">Konto erstellen</a>
-  <button class="contained-btn primary submit login" type="submit">Anmelden</button>
+  <a class="outlined-btn" id="forgot-password-btn" (click)="forgotPassword()">Kennwort vergessen?</a>
+  <a class="outlined-btn" routerLink="/signup" id="signup-btn">Konto erstellen</a>
+  <button class="contained-btn" id="submit-btn" type="submit">Anmelden</button>
 </form>

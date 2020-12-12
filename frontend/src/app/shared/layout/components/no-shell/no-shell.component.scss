@@ -1,20 +1,11 @@
-.fullscreen-wrapper {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  overflow-y: auto;
-}
-
-#content {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  min-height: 100%;
+:host {
+  display: block;
+  height: 100%;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 :host ::ng-deep router-outlet+* {
   display: grid;
-  grid-area: 1 / 1 / 2 / 2;
+  min-height: 100%;
 }

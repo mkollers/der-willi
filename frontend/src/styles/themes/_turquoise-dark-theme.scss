@@ -1,7 +1,7 @@
 $petrol: (
   50 : #e9ebee,
   100 : #c8cdd4,
-  200 : #a3acb8,
+  200 : #2a86ff,
   300 : #7e8a9c,
   400 : #627186,
   500 : #465871,
@@ -70,20 +70,24 @@ $turquoise: (
   $foreground: map-get($theme, foreground);
 
   // Primary
-  --clr-primary-m1: #{mat-color($primary, 50)};
-  --clr-primary-m1-contrast: #{mat-contrast($primary, 50)};
-  --clr-primary: #{mat-color($primary, 500)};
-  --clr-primary-contrast: #{mat-contrast($primary, 500)};
-  --clr-primary-p1: #{mat-color($primary, 900)};
-  --clr-primary-p1-contrast: #{mat-contrast($primary, 900)};
+  --clr-primary-m1: #{mat-color($primary, 900)};
+  --clr-primary-m1-contrast: #{mat-contrast($primary, 900)};
+  --clr-primary: #{mat-color($primary, 300)};
+  --clr-primary-contrast: #{mat-contrast($primary, 300)};
+  --clr-primary-p1: #{mat-color($primary, 50)};
+  --clr-primary-p1-contrast: #{mat-contrast($primary, 50)};
+
+  --clr-primary-disabled: #{mix(black, rgba(mat-color($primary, 900), 0.2), 12%)};
+  --clr-primary-disabled-foreground: #{mix(black, mat-contrast($primary, 900), 12%)};
+  --clr-primary-hover: #{mix(white, mat-color($primary, 900), 8%)};
 
   // Secondary
-  --clr-secondary-m1: #{mat-color($secondary, 50)};
-  --clr-secondary-m1-contrast: #{mat-contrast($secondary, 50)};
-  --clr-secondary: #{mat-color($secondary, 500)};
-  --clr-secondary-contrast: #{mat-contrast($secondary, 500)};
-  --clr-secondary-p1: #{mat-color($secondary, 900)};
-  --clr-secondary-p1-contrast: #{mat-contrast($secondary, 900)};
+  --clr-secondary-m1: #{mat-color($secondary, 900)};
+  --clr-secondary-m1-contrast: #{mat-contrast($secondary, 900)};
+  --clr-secondary: #{mat-color($secondary, 300)};
+  --clr-secondary-contrast: #{mat-contrast($secondary, 300)};
+  --clr-secondary-p1: #{mat-color($secondary, 50)};
+  --clr-secondary-p1-contrast: #{mat-contrast($secondary, 50)};
 
   // Neutral
   --clr-neutral-0dp: #121212;
