@@ -18,8 +18,6 @@ import { RegisterPageComponent } from './register-page.component';
     ReactiveFormsModule,
 
     // Material
-    MatButtonModule,
-    MatIconModule,
     MatInputModule,
     MatSnackBarModule,
 

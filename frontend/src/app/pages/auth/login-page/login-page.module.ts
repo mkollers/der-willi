@@ -18,7 +18,6 @@ import { LoginPageComponent } from './login-page.component';
     ReactiveFormsModule,
 
     // Material
-    MatButtonModule,
     MatDialogModule,
     MatInputModule,
     MatSnackBarModule,

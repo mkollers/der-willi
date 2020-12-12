@@ -12,7 +12,7 @@ import { MatSnackbarMock } from '@mocks/mat-snackbar.mock';
 import { RegisterPageComponent } from './register-page.component';
 import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
 
-describe('RegisterPageComponent', () => {
+xdescribe('RegisterPageComponent', () => {
   let component: RegisterPageComponent;
   let fixture: ComponentFixture<RegisterPageComponent>;
 

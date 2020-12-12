@@ -1,20 +1,21 @@
 <form [formGroup]="fg" (ngSubmit)="fg.valid && submit()">
   <h1>Registrierung</h1>
-  <mat-form-field color="accent" class="email">
+  <p>Beim Männerabend anwesend? Noch keinen Einblick in die Rangliste? Du drückst dich davor Zeiten zu erfassen? Stell
+    dich nicht so an und erstell dir ein Konto!</p>
+  <mat-form-field id="email-input">
     <mat-label>E-Mail Adresse</mat-label>
     <input matInput type="email" placeholder="Deine E-Mail Adresse" formControlName="email" autocomplete="email"
       required>
     <mat-error *ngIf="fg.controls['email'].invalid">Bitte gib eine gültige E-Mail Adresse ein</mat-error>
   </mat-form-field>
-  <mat-form-field color="accent" class="password">
+  <mat-form-field id="password-input">
     <mat-label>Kennwort</mat-label>
-    <input matInput type="password" placeholder="Dein Kennwort" formControlName="password" autocomplete="new-password" required>
+    <input matInput type="password" placeholder="Dein Kennwort" formControlName="password" autocomplete="new-password"
+      required>
     <mat-error *ngIf="fg.controls['password'].errors?.required">Bitte gib ein Kennwort ein</mat-error>
     <mat-error *ngIf="fg.controls['password'].errors?.minlength">Das Kennwort muss mindestens 6 Zeichen lang sein
     </mat-error>
   </mat-form-field>
-  <a class="btn login" mat-stroked-button routerLink="/login">Du hast bereits ein Konto?</a>
-  <button class="btn submit" mat-flat-button color="accent" type="submit">
-    <mat-icon>&#xe877;</mat-icon>&nbsp;Konto erstellen
-  </button>
+  <a class="outlined-btn" id="signin-btn" routerLink="/login">Du hast bereits ein Konto?</a>
+  <button class="contained-btn" id="submit-btn" type="submit">Konto erstellen</button>
 </form>
