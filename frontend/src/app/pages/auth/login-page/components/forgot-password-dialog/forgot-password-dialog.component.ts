@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, INJECTOR, Injector } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '@shared/auth/services/auth.service';
 import { LoaderService } from '@shared/layout/services/loader.service';
-
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-forgot-password-dialog',
@@ -16,9 +15,7 @@ export class ForgotPasswordDialogComponent {
   fg: FormGroup;
 
   constructor(
-    private _authService: AuthService,
-    private _loaderService: LoaderService,
-    private _snackBar: MatSnackBar,
+    @Inject(INJECTOR) private _injector: Injector,
     public dialogRef: MatDialogRef<ForgotPasswordDialogComponent>,
     fb: FormBuilder
   ) {
@@ -28,18 +25,22 @@ export class ForgotPasswordDialogComponent {
   }
 
   async submit() {
-    this._loaderService.isLoading = true;
+    const authService = this._injector.get(AuthService);
+    const loaderService = this._injector.get(LoaderService);
+    const snackBar = this._injector.get(MatSnackBar);
+
+    loaderService.isLoading = true;
 
     try {
       const email = this.fg.value.email;
-      await this._authService.forgotPassword(email);
+      await authService.forgotPassword(email);
       this.dialogRef.close();
-      this._snackBar.open('Wir haben dir soeben eine E-Mail zugesendet', '', { duration: 10000 });
+      snackBar.open('Wir haben dir soeben eine E-Mail zugesendet', '', { duration: 10000 });
     } catch (err) {
       console.error(err);
-      this._snackBar.open('Hoppla, da ist was schiefgelaufen...', '', { duration: 10000 });
+      snackBar.open('Hoppla, da ist was schiefgelaufen...', '', { duration: 10000 });
     }
 
-    this._loaderService.isLoading = false;
+    loaderService.isLoading = false;
   }
 }

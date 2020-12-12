@@ -4,10 +4,11 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
-import { ForgotPasswordDialogComponent } from '@shared/auth/dialogs/forgot-password-dialog/forgot-password-dialog.component';
 import { AuthService } from '@shared/auth/services/auth.service';
 import { BaseComponent } from '@shared/helper/components/base.component';
 import { LoaderService } from '@shared/layout/services/loader.service';
+
+import { ForgotPasswordDialogComponent } from './components/forgot-password-dialog/forgot-password-dialog.component';
 
 @Component({
   selector: 'app-login-page',
@@ -54,7 +55,8 @@ export class LoginPageComponent extends BaseComponent {
 
     dialog.open<ForgotPasswordDialogComponent, MatDialogConfig, void>(ForgotPasswordDialogComponent, {
       width: '450px',
-      maxWidth: 'calc(100% - 32px)'
+      maxWidth: 'calc(100% - 32px)',
+      panelClass: 'willi-overlay-pane'
     });
   }
 

@@ -57,3 +57,17 @@
   /* Using 'box-shadow' instead of 'border' to inset the border */
   box-shadow: inset 0px 0px 0px 1px var(--clr-primary);
 }
+
+.icon-btn {
+  @include button-base();
+  background-color: transparent;
+  border-radius: 50%;
+  color: var(--clr-primary);
+  height: 2rem;
+  line-height: 2rem;
+  width: 2rem;  
+
+  .mat-icon {
+    vertical-align: baseline;
+  }
+}

@@ -8,12 +8,12 @@ import { AuthServiceMock } from '@mocks/auth-service.mock';
 import { LoaderServiceMock } from '@mocks/loader-service.mock';
 import { MatDialogMock } from '@mocks/mat-dialog.mock';
 import { MatSnackbarMock } from '@mocks/mat-snackbar.mock';
-import { ForgotPasswordDialogComponent } from '@shared/auth/dialogs/forgot-password-dialog/forgot-password-dialog.component';
+import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
 import { AuthService } from '@shared/auth/services/auth.service';
 import { LoaderService } from '@shared/layout/services/loader.service';
 
+import { ForgotPasswordDialogComponent } from './components/forgot-password-dialog/forgot-password-dialog.component';
 import { LoginPageComponent } from './login-page.component';
-import { AuthErrorMessages } from '@shared/auth/data/auth-error.messages';
 
 xdescribe('LoginPageComponent', () => {
   let component: LoginPageComponent;

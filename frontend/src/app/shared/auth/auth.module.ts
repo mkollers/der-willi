@@ -10,12 +10,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { ForgotPasswordDialogComponent } from './dialogs/forgot-password-dialog/forgot-password-dialog.component';
 import { HasPermissionPipe } from './pipes/has-permission.pipe';
 
 @NgModule({
-  declarations: [ForgotPasswordDialogComponent, HasPermissionPipe],
-  entryComponents: [ForgotPasswordDialogComponent],
+  declarations: [HasPermissionPipe],
   imports: [
     CommonModule,
     ReactiveFormsModule,
