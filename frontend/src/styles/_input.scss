@@ -1,3 +1,72 @@
+/* Form-Field */
+.mat-form-field {
+  &.mat-form-field-appearance-fill {
+    .mat-input-element {
+      color: var(--clr-secondary);
+
+      &::placeholder {
+        opacity: 0.5;
+      }
+    }
+
+    .mat-form-field-underline::before {
+      background-color: var(--clr-neutral-6dp);
+    }
+
+    .mat-form-field-ripple {
+      background-color: var(--clr-neutral-12dp);
+    }
+
+    .mat-form-field-flex {
+      background-color: var(--clr-neutral-1dp);
+    }
+
+    .mat-form-field-suffix {
+      .mat-button-disabled {
+        opacity: 0.5;
+      }
+
+      .mat--icon-button {
+        color: var(--clr-primary);
+        opacity: 1;
+      }
+    }
+
+    .mat-form-field-label,
+    .mat-form-field-required-marker {
+      color: var(--clr-secondary);
+    }
+
+    .mat-error {
+      color: var(--clr-error);
+    }
+  }
+
+  &.mat-focused {
+    .mat-form-field-ripple {
+      background-color: var(--clr-primary) !important;
+    }
+
+    .mat-form-field-label,
+    .mat-form-field-required-marker {
+      color: var(--clr-primary) !important;
+    }
+  }
+
+  &.mat-form-field-invalid {
+
+    .mat-form-field-label,
+    .mat-form-field-required-marker {
+      color: var(--clr-error) !important;
+    }
+
+    .mat-form-field-ripple {
+      background-color: var(--clr-error) !important;
+    }
+  }
+}
+
+/* Input */
 textarea.mat-input-element,
 .mat-form-field {
   font-size: .875rem;
@@ -14,4 +83,13 @@ textarea.mat-input-element,
   font-style: italic;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--clr-secondary) !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  transition: background-color 5000s ease-in-out 0s!important;
 }
