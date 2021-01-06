@@ -7,12 +7,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { AuthModule } from '@shared/auth/auth.module';
 
 import { ActionBarComponent } from './components/action-bar/action-bar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NoShellComponent } from './components/no-shell/no-shell.component';
 import { ShellComponent } from './components/shell/shell.component';
 import { TabsComponent } from './components/tabs/tabs.component';
+import { ColorPipe } from './pipes/color.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { TabsComponent } from './components/tabs/tabs.component';
     HeaderComponent,
     TabsComponent,
     ShellComponent,
-    NoShellComponent
+    NoShellComponent,
+    ColorPipe
   ], imports: [
     CommonModule,
     RouterModule,
@@ -31,7 +34,10 @@ import { TabsComponent } from './components/tabs/tabs.component';
     MatMenuModule,
     MatSnackBarModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+
+    // Custom
+    AuthModule,
   ], exports: [
     ActionBarComponent,
     HeaderComponent,

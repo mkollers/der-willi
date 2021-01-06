@@ -11,9 +11,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HasPermissionPipe } from './pipes/has-permission.pipe';
+import { UserNamePipe } from './pipes/user-name.pipe';
 
 @NgModule({
-  declarations: [HasPermissionPipe],
+  declarations: [
+    HasPermissionPipe,
+    UserNamePipe
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -30,7 +34,8 @@ import { HasPermissionPipe } from './pipes/has-permission.pipe';
     MatInputModule,
     MatSnackBarModule
   ], exports: [
-    HasPermissionPipe
+    HasPermissionPipe,
+    UserNamePipe
   ]
 })
 export class AuthModule { }

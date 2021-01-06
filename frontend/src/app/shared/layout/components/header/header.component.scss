@@ -1,37 +1,99 @@
+@import 'breakpoints';
+
 :host {
-  display: block;
+  align-content: center;
+  align-items: center;
+  background-color: var(--clr-neutral-1dp);
+  box-sizing: border-box;
+  color: var(--clr-secondary);
+  display: grid;
+  gap: 0 24px;
+  grid-template-areas:
+    "logo content user";
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 40px;
+  height: var(--header-height-small);
+  height: calc(var(--header-height-small) + env(safe-area-inset-top));
   left: 0;
+  min-width: min-content;
+  padding: 0;
+  padding-top: env(safe-area-inset-top, 0);
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 999;
+  user-select: none;
+  width: 100%;
+  z-index: 2;
 }
 
-.mat-toolbar {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
+.user-btn {
+  grid-area: user;
+  height: 40px;
+  min-width: 200px;
 }
 
-.spacer {
-  box-sizing: border-box;
-  flex: 1 1 40px;
-  max-width: 40px;
-  min-width: 40px;
+.user {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto 1fr;
+  line-height: normal;
+  text-align: start;
 }
 
-h1 {
-  box-sizing: border-box;
-  flex: 1 1 0%;
-  font-weight: 300;
-  margin: 0 16px;
+.avatar {
+  border-radius: 4px;
+  color: var(--clr-neutral-white);
+  display: inline-block;
+  font-size: .875rem;
+  height: 28px;
+  line-height: 28px;
+  opacity: .8;
+  opacity: 1;
   text-align: center;
-  text-transform: uppercase;
+  vertical-align: middle;
+  width: 28px;
 }
 
-#user-avatar {
-  border-radius: 1000px;
-  font-weight: 400;
-  line-height: 40px;
-  text-align: center;
+.user-info {
+  align-items: center;
+  display: grid;
+  font-size: 0.75rem;
+}
+
+.name {
+  font-weight: 700;
+}
+
+#logo {
+  display: grid;
+  font-size: 16px;
+  grid-area: logo;
+  margin-left: 16px;
+
+  .mat-icon {
+    height: calc(var(--header-height-small) - 8px);
+    width: calc(var(--header-height-small) - 8px);
+  }
+}
+
+
+@media #{$mat-lt-md} {
+  .user-btn {
+    display: none;
+  }
+
+  h1 {
+    display: none;
+  }
+}
+
+@media #{$mat-gt-sm} {
+
+  ::ng-deep .user-menu {
+    &.mat-menu-panel {
+      width: 200px;
+      max-width: 100%;
+    }
+  }
 }

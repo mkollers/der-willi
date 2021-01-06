@@ -1,7 +1,7 @@
 @import './themes/dialog';
 @import './themes/tabs';
 @import './themes/toolbar';
-@import './app/shared/layout/components/header/_header-theme';
+@import 'breakpoints';
 @import 'themes/themes';
 
 /* Include common styles */
@@ -9,6 +9,17 @@
 
 /* All custom styles, which probably override material styles */
 @import 'global';
+
+:root {
+  --content-padding: 48px;
+
+  // Header
+  --header-height-small: 40px;
+
+  @media #{$mat-lt-md} {
+    --content-padding: 16px;
+  }
+}
 
 html,
 body {

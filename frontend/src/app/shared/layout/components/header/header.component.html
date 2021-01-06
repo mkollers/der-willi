@@ -1,17 +1,17 @@
-<mat-toolbar>
-  <div class="spacer">
-    <button mat-icon-button [routerLink]="uri" *ngIf="navigateBackUri$ | async as uri">
-      <mat-icon>&#xe5c4;</mat-icon>
-    </button>
+<span id="logo">
+  <mat-icon svgIcon="custom:logo"></mat-icon>
+</span>
+<h1>Männerabend 2.0</h1>
+<button class="user-btn" mat-button [matMenuTriggerFor]="userMenu">
+  <div class="user" *ngIf="user$ | async as user">
+    <span [style.background-color]="user?.email | color"
+      class="avatar">{{ user.email[0]?.toUpperCase() }}</span>
+    <div class="user-info">
+      <span class="name">{{ user | userName }}</span>
+      <span *ngIf="user?.displayName">{{user?.email}}</span>
+    </div>
   </div>
-  <h1 fxFlex>{{ headline$ | async }}</h1>
-  <div class="spacer">
-    <button mat-icon-button id="user-avatar" *ngIf="user$ | async as user" [matMenuTriggerFor]="appMenu">
-      {{ user.email[0]?.toUpperCase() }}
-    </button>
-  </div>
-</mat-toolbar>
-
-<mat-menu #appMenu="matMenu">
+</button>
+<mat-menu #userMenu="matMenu" class="willi-menu user-menu" xPosition="before">
   <button mat-menu-item (click)="logout()">Abmelden</button>
 </mat-menu>

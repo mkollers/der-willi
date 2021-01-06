@@ -1,34 +1,32 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, INJECTOR, Injector } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@shared/auth/services/auth.service';
 import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
-import { AuthService } from '../../../auth/services/auth.service';
-import { HeaderService } from './../../services/header.service';
-
 @Component({
-  selector: 'app-header',
+  selector: 'app-header, [app-header]',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'der-willi-header'
+  }
 })
 export class HeaderComponent {
   user$: Observable<firebase.User>;
-  headline$: Observable<string>;
-  navigateBackUri$: Observable<string | any[]>;
 
   constructor(
     private _authService: AuthService,
-    private _router: Router,
-    headerService: HeaderService
+    @Inject(INJECTOR) private _injector: Injector
   ) {
     this.user$ = _authService.user$;
-    this.headline$ = headerService.headline$;
-    this.navigateBackUri$ = headerService.navigateBackUri$;
   }
 
   async logout() {
+    const router = this._injector.get(Router);
+
     await this._authService.logout();
-    this._router.navigateByUrl('/login');
+    router.navigateByUrl('/login');
   }
 }
