@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { AuthModule } from '@shared/auth/auth.module';
 import { HelperModule } from '@shared/helper/helper.module';
@@ -17,7 +16,6 @@ import { TrackPageComponent } from './track-page.component';
     TrackPageRoutingModule,
 
     // Material
-    MatButtonModule,
     MatTableModule,
 
     // Custom
