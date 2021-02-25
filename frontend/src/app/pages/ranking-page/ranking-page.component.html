@@ -20,6 +20,5 @@
 </mat-table>
 
 <app-action-bar *ngIf="'trackmania_write' | hasPermission | async">
-  <span></span>
-  <button mat-button color="accent" (click)="startRound()">Runde Starten</button>
+  <button class="contained-btn" color="primary" (click)="startRound()">Runde Starten</button>
 </app-action-bar>

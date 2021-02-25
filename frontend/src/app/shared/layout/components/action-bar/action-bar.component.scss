@@ -1,14 +1,16 @@
 :host {
-  display: block;
+  align-content: center;
+  align-items: center;
+  background-color: var(--clr-neutral-1dp);
+  box-sizing: border-box;
+  color: var(--clr-secondary);
+  padding: 8px;
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
   z-index: 999;
-}
 
-.mat-toolbar {
-  flex-direction: row;
-  box-sizing: border-box;
-  display: flex;
+  display: grid;
+  gap: 8px;
 }

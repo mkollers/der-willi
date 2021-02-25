@@ -11,33 +11,8 @@
   grid-area: 1 / 1 / 2 / 2;
 }
 
-:host .mat-table ::ng-deep {
-
-  .mat-footer-row,
-  .mat-header-row,
-  .mat-row {
-    border-bottom: none;
-  }
-
-  .mat-header-row {
-    text-transform: uppercase;
-  }
-
-  .mat-header-cell {
-    color: rgba(255, 255, 255, .4);
-    align-items: flex-end;
-    min-height: 40px;
-  }
-
-  .mat-cell {
-    color: rgba(255, 255, 255, .8);
-  }
-
-  .mat-cell,
-  .mat-footer-cell,
-  .mat-header-cell {
-    font-weight: 300;
-  }
+app-action-bar {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 @media #{$mat-gt-sm} {
@@ -45,14 +20,5 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     grid-template-rows: 1fr auto 1fr;
-  }
-
-  .mat-table {
-    border-radius: .25rem;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
-    grid-area: 2 / 2 / 3 / 3;
-    margin: 1rem;
-    min-width: 30rem;
-    padding: 0 1rem 1rem 1rem;
   }
 }

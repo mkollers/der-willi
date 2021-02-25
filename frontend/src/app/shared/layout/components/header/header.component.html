@@ -2,7 +2,7 @@
   <mat-icon svgIcon="custom:logo"></mat-icon>
 </span>
 <h1>Männerabend 2.0</h1>
-<button class="user-btn" mat-button [matMenuTriggerFor]="userMenu">
+<button class="user-btn" [matMenuTriggerFor]="userMenu">
   <div class="user" *ngIf="user$ | async as user">
     <span [style.background-color]="user?.email | color"
       class="avatar">{{ user.email[0]?.toUpperCase() }}</span>
