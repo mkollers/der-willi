@@ -97,13 +97,3 @@
     line-height: 1.25rem;
   }
 }
-
-@media #{$mat-gt-sm} {
-
-  ::ng-deep .user-menu {
-    &.mat-menu-panel {
-      width: 200px;
-      max-width: 100%;
-    }
-  }
-}
