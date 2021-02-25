@@ -1,10 +1,10 @@
 @import 'breakpoints';
 
 :host {
-  column-gap: .5rem;
+  column-gap: 4px;
   display: grid;
-  padding: 3.5rem .5rem .5rem .5rem;
-  row-gap: .5rem;
+  padding: 100px 4px 4px 4px!important;
+  row-gap: 4px;
 }
 
 .track-button {
