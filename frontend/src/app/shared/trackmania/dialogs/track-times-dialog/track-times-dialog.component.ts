@@ -27,7 +27,7 @@ export class TrackTimesDialogComponent {
     route: ActivatedRoute
   ) {
     this.initFormGroup();
-    this.track = route.snapshot.queryParams.trackid || Math.floor(Math.random() * (maxTrack - 1 + 1) + 1);
+    this.track = +route.snapshot.queryParams.trackid || Math.floor(Math.random() * (maxTrack - 1 + 1) + 1);
   }
 
   private initFormGroup() {
