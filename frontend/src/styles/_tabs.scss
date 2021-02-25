@@ -1,12 +1,6 @@
-// .mat-tab-nav-bar {
-//   background-color: var(--clr-primary) !important;
-//   border-bottom: none;
-// }
-
-
-
 mat-tab-nav-bar,
 .mat-tab-header {
+  background-color: var(--clr-neutral-1dp);
   border-bottom: none;
 
   .mat-tab-header-pagination {

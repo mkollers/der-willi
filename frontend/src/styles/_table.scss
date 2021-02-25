@@ -1,0 +1,109 @@
+.willi-table {
+  display: block;
+
+  &.mat-table {
+    background-color: var(--clr-neutral-0dp);
+  }
+
+  thead,
+  tbody {
+    display: block;
+  }
+
+  .willi-header-row,
+  .willi-row {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    height: 38px;
+    min-height: 38px;
+  }
+
+  thead,
+  .willi-header-row {
+    background-color: var(--clr-neutral-1dp);
+  }
+
+  .willi-header-row {
+    .mat-header-cell {
+      border-bottom: none;
+      border-right-color: var(--clr-neutral-8dp);
+      color: var(--clr-secondary);
+      font-size: .75rem;
+      font-weight: 500;
+      height: 100%;
+      line-height: 1rem;
+      padding: 0 16px;
+
+      &:not(:last-child) {
+        border-right-style: solid;
+        border-right-width: 1px;
+      }
+    }
+  }
+
+  .willi-row {
+    background-color: var(--clr-neutral-0dp);
+
+    &:first-child .mat-cell:not(.mat-column-anchor) {
+      border-top: 1px solid var(--clr-neutral-8dp);
+    }
+
+    .mat-cell {
+      color: var(--clr-secondary);
+      font-size: .8125rem;
+      line-height: 1.25rem;
+      padding: 0 16px;
+    }
+  }
+
+  .mat-cell,
+  .mat-header-cell {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex: 1;
+    min-height: inherit;
+    overflow: hidden;
+    word-wrap: break-word;
+
+    & .mat-tooltip-trigger {
+      z-index: 1;
+    }
+  }
+
+  /**
+   * Additional styles for anchor-rows.
+   */
+
+  // Make rows relatively positioned so that the child cell can use absolute
+  // positioning relative to this row.
+  .mat-row,
+  .mat-header-row {
+    position: relative;
+  }
+
+  // Cells in this column should stretch to fill the row. You have to name the column anchor
+  .mat-column-anchor {
+    opacity: .2;
+    position: absolute;
+    top: 0;
+    left: -16px;
+    right: -16px;
+    bottom: 0;
+    border: none;
+
+    // The anchor should stretch to fill the cell.
+    a {
+      display: block;
+      height: 100%;
+      transition: 400ms background ease-in-out;
+      width: 100%;
+
+      &:hover {
+        transition: 400ms background ease-in-out;
+        background-color: var(--clr-neutral-8dp);
+      }
+    }
+  }
+}

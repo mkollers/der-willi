@@ -12,35 +12,6 @@
   grid-area: 1 / 1 / 2 / 2;
 }
 
-:host .mat-table ::ng-deep {
-
-  .mat-footer-row,
-  .mat-header-row,
-  .mat-row {
-    border-bottom: none;
-  }
-
-  .mat-header-row {
-    text-transform: uppercase;
-  }
-
-  .mat-header-cell {
-    color: rgba(255, 255, 255, .4);
-    align-items: flex-end;
-    min-height: 40px;
-  }
-
-  .mat-cell {
-    color: rgba(255, 255, 255, .8);
-  }
-
-  .mat-cell,
-  .mat-footer-cell,
-  .mat-header-cell {
-    font-weight: 300;
-  }
-}
-
 @media #{$mat-gt-sm} {
   :host {
     display: grid;
