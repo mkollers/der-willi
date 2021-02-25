@@ -1,9 +1,0 @@
-@import "~@angular/material/theming";
-
-@mixin toolbar-theme($theme) {
-  $primary: map-get($theme, primary);
-
-  .mat-toolbar {
-    background-color: mat-color($primary, 500);
-  }
-}

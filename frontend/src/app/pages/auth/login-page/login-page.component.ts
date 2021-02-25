@@ -56,7 +56,7 @@ export class LoginPageComponent extends BaseComponent {
     dialog.open<ForgotPasswordDialogComponent, MatDialogConfig, void>(ForgotPasswordDialogComponent, {
       width: '450px',
       maxWidth: 'calc(100% - 32px)',
-      panelClass: 'willi-overlay-pane'
+      panelClass: ['willi-overlay-pane']
     });
   }
 

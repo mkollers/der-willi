@@ -58,8 +58,11 @@ export class RankingPageComponent extends BaseComponent {
   async start() {
     const racer = await this._racerService.getAll().pipe(first()).toPromise();
     const dialogref = this._dialog.open(CreateRoundDialogComponent, {
-      panelClass: ['no-padding', 'fullscreen-mobile'],
+      panelClass: ['willi-overlay-pane', 'willi-fullscreen-dialog'],
+      width: '100vW',
+      height: '100vh',
       maxWidth: '28rem',
+      maxHeight: '100vh',
       data: racer.map(r => r.name)
     });
 
@@ -91,7 +94,11 @@ export class RankingPageComponent extends BaseComponent {
 
     const dialogref = this._dialog.open(TrackTimesDialogComponent, {
       data: names,
-      panelClass: ['no-padding', 'fullscreen-mobile']
+      width: '100vW',
+      height: '100vh',
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      panelClass: ['willi-fullscreen-dialog', 'willi-overlay-pane']
     });
 
     dialogref.beforeClosed().pipe(

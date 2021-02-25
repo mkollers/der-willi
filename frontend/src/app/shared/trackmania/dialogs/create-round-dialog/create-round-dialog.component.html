@@ -16,13 +16,13 @@
           [required]="fg.get('players')['controls'][i].get('name').errors !== null && fg.get('players')['controls'][i].get('name').errors.required">
       </mat-form-field>
     </ng-container>
-    <button tabindex="998" color="accent" mat-stroked-button (click)="addPlayer()" type="button">
+    <button tabindex="998" class="outlined-btn" (click)="addPlayer()" type="button">
       <mat-icon>&#xe147;</mat-icon>&nbsp;Spieler hinzufügen
     </button>
   </mat-dialog-content>
-  <mat-toolbar mat-dialog-actions>
-    <button type="submit" tabindex="999" mat-stroked-button color="accent">Weiter</button>
-  </mat-toolbar>
+  <mat-dialog-actions>
+    <button type="submit" tabindex="999" class="contained-btn">Weiter</button>
+  </mat-dialog-actions>
 </form>
 
 <mat-autocomplete #auto="matAutocomplete">

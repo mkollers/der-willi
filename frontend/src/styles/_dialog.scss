@@ -3,15 +3,14 @@ $dialog-border-radius: 4px;
 
 .willi-overlay-pane {
   .mat-dialog-container {
-    background-color: var(--clr-neutral-4dp);
-    display: block;
-    position: relative;
     padding: 0;
   }
 
   .mat-dialog-container {
+    background-color: var(--clr-neutral-0dp);
     border-radius: $dialog-border-radius;
     box-shadow: $dialog-shadow;
+    color: var(--clr-secondary);
   }
 
   .mat-dialog-title {
@@ -24,18 +23,8 @@ $dialog-border-radius: 4px;
   }
 
   .mat-dialog-title,
-  .close-btn[mat-dialog-close] {
-    color: var(--clr-primary-contrast);
-  }
-
-  .close-btn {
-    line-height: 2rem;
-    height: 2rem;
-    min-width: 0;
-    position: absolute;
-    right: 2px;
-    top: 2px;
-    width: 2rem;
+  .mat-icon-button[mat-dialog-close] {
+    color: var(--clr-primary);
   }
 
   .mat-dialog-content {
@@ -46,13 +35,33 @@ $dialog-border-radius: 4px;
   }
 
   .mat-dialog-actions {
-    border-top: 1px solid var(--clr-neutral-1dp);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: var(--clr-neutral-1dp);
     height: 56px;
     margin-bottom: 0;
     padding: 0 24px;
+  }
+}
 
-    :first-child {
-      justify-self: end;
-    }
+.willi-fullscreen-dialog {
+  .mat-dialog-container {
+    padding: 0;
+    background-color: var(--clr-neutral-0dp);
+  }
+
+  .mat-dialog-actions {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: grid;
+    align-content: center;
+    align-items: center;
+    background-color: var(--clr-neutral-1dp);
+    box-sizing: border-box;
+    color: var(--clr-secondary);
+    padding: 8px;
+    gap: 8px;
   }
 }
