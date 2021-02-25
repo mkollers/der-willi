@@ -13,14 +13,12 @@ import { ActionBarComponent } from './components/action-bar/action-bar.component
 import { HeaderComponent } from './components/header/header.component';
 import { NoShellComponent } from './components/no-shell/no-shell.component';
 import { ShellComponent } from './components/shell/shell.component';
-import { TabsComponent } from './components/tabs/tabs.component';
 import { ColorPipe } from './pipes/color.pipe';
 
 @NgModule({
   declarations: [
     ActionBarComponent,
     HeaderComponent,
-    TabsComponent,
     ShellComponent,
     NoShellComponent,
     ColorPipe
@@ -40,8 +38,7 @@ import { ColorPipe } from './pipes/color.pipe';
     AuthModule,
   ], exports: [
     ActionBarComponent,
-    HeaderComponent,
-    TabsComponent
+    HeaderComponent
   ]
 })
 export class LayoutModule { }

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, InjectionToken } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { LapTime } from '@shared/data-access/models/lap-time';
 import { LapTimeService } from '@shared/data-access/services/lap-time.service';
 
@@ -22,10 +23,11 @@ export class TrackTimesDialogComponent {
     @Inject(MAX_TRACK) maxTrack: number,
     private _dialogRef: MatDialogRef<TrackTimesDialogComponent>,
     private _fb: FormBuilder,
-    private _lapTimeService: LapTimeService
+    private _lapTimeService: LapTimeService,
+    route: ActivatedRoute
   ) {
     this.initFormGroup();
-    this.track = Math.floor(Math.random() * (maxTrack - 1 + 1) + 1);
+    this.track = route.snapshot.queryParams.trackid || Math.floor(Math.random() * (maxTrack - 1 + 1) + 1);
   }
 
   private initFormGroup() {

@@ -42,4 +42,10 @@ export class TrackPageComponent extends BaseComponent {
       tap(value => this._title.setTitle(`Track ${value.toString().padStart(3, '0')} - Männerabend 2.0`))
     ).subscribe();
   }
+
+  startRound() {
+    const names = localStorage.getItem('names') || '';
+    const trackid = +this._route.snapshot.params.trackId;
+    return this._router.navigate(['/ranking'], { queryParams: { names, trackid } });
+  }
 }
