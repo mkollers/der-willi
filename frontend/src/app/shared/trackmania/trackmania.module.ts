@@ -11,14 +11,12 @@ import { RouterModule } from '@angular/router';
 import { TextMaskModule } from 'angular2-text-mask';
 
 import { LayoutModule } from '../layout/layout.module';
-import { NavTabsComponent } from './components/nav-tabs/nav-tabs.component';
 import { CreateRoundDialogComponent } from './dialogs/create-round-dialog/create-round-dialog.component';
 import { TrackTimesDialogComponent } from './dialogs/track-times-dialog/track-times-dialog.component';
 
 @NgModule({
   declarations: [
     CreateRoundDialogComponent,
-    NavTabsComponent,
     TrackTimesDialogComponent
   ],
   imports: [
@@ -39,7 +37,6 @@ import { TrackTimesDialogComponent } from './dialogs/track-times-dialog/track-ti
     LayoutModule
   ], exports: [
     CreateRoundDialogComponent,
-    NavTabsComponent,
     TrackTimesDialogComponent
   ], entryComponents: [
     CreateRoundDialogComponent,

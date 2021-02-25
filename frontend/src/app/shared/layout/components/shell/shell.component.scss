@@ -1,6 +1,5 @@
 main {
   min-height: calc(100% - var(--header-height-small));
-  padding-top: var(--header-height-small);
 }
 
 :host ::ng-deep router-outlet+* {
